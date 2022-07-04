@@ -1,0 +1,16 @@
+/*Xác định font chữ hiển thị bảng. Viền bảng hiển thị nét mảnh. Độ rộng 100%.*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+/*Xác định đường viền cho bảng. Nội dung từng ô căn bên trái. Các ô cách nhau 8px. */
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+/*Xác định màu nền của các dòng chẵn là #dddddd*/
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

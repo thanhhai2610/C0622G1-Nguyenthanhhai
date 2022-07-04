@@ -1,0 +1,19 @@
+body{
+    padding: 50px;
+}
+._table{
+    border-collapse: collapse;
+
+}
+._td{
+    border: 1px solid black;
+    padding: 10px;
+    border-collapse: collapse
+}
+._th {
+    border: 1px solid black;
+    padding: 10px;
+    border-collapse: collapse;
+    background-color: yellow;
+    text-align: center;
+}

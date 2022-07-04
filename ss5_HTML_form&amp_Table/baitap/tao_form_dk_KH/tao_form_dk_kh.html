@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DK_KH</title>
+    <link rel="stylesheet" href="Tao_form_dk_kh.css">
+</head>
+<body>
+    <h2>Market Research Survey</h2>
+    <p> Please take a few moment to complete this satisfaction survey</p>
+    <p>What is your age range?</p>
+    <select  style="width: 400px" >
+        <option value="18-24">18-24</option>
+        <option value="24-30">24-30</option>
+    </select>
+
+    <p>What is your yearly income range?</p>
+    <select  style="width: 400px" >
+        <option value="0-25,000">$0-$25,000</option>
+        <option value="25,000-50,000">$25,00-$50,000</option>
+    </select>
+
+    <p>Gender</p>
+    <label><input type="radio" name="gd" value="gender">Male</label><br>
+    <label><input type="radio" name="gd" value="gender">Female</label>
+
+    <p>Which of the followwing products have purchased in the last 2 months. plase check all that apply</p>
+    <label><input type="checkbox" name="pr" value="pr">Product 1</label><br>
+    <label><input type="checkbox" name="pr" value="pr">Product 2</label><br>
+    <label><input type="checkbox" name="pr" value="pr">Product 3</label><br>
+
+    <p>How often wwould you use our new product?</p>
+    <label><input type="radio" name="day" value="daily">Daily</label><br>
+    <label><input type="radio" name="day" value="Weekly">Weekly</label><br>
+    <label><input type="radio" name="day" value="Monthly">Monthly</label><br>
+
+    <p>What would you pay for the new product?</p>
+    <table >
+        <TR>
+            <td class="hh">$</td>
+            <td class="hh"><input type="text" name="dollas"> -</td>
+            <td class="hh" ><input  style="width:10px" type="text" name="cents"></td>
+        </TR>
+        <TR>
+            <td class="hh"></td>
+            <td class="hh">Dollas</td>
+            <td class="hh" style="width:5px">Cents</td>
+        </TR>
+    </table>
+
+    <p>What features would you like to see in the new product</p>
+    <input class="height" type="text" name="fe"><br>
+    <br>
+
+    <span>Plaese rate your level of argreenment with the followwing statements.</span>
+    <br> <br>
+    <table>
+        <tr>
+            <th></th>
+            <th>Strongly Disagree</th>
+            <th>Disagree</th>
+            <th>Agree</th>
+        </tr>
+        <tr>
+            <td>Our Products are price fairly.</td>
+            <td style="text-align: center"><input type="radio"><br>1</td>
+            <td style="text-align: center"><input type="radio"><br>2</td>
+            <td style="text-align: center"><input type="radio"><br>3</td>
+        </tr>
+        <tr class="dn">
+            <td>Our Products are high quality</td>
+            <td style="text-align: center"><input type="radio"><br>1</td>
+            <td style="text-align: center"><input type="radio"><br>2</td>
+            <td style="text-align: center"><input type="radio"><br>3</td>
+        </tr>
+        <tr>
+            <td>You would recomenend our product to a friend or cowoker</td>
+            <td style="text-align: center"><input type="radio"><br>1</td>
+            <td style="text-align: center"><input type="radio"><br>2</td>
+            <td style="text-align: center"><input type="radio"><br>3</td>
+        </tr>
+
+    </table> <br>
+    <input type="submit" value="Submit">
+</body>
+</html>

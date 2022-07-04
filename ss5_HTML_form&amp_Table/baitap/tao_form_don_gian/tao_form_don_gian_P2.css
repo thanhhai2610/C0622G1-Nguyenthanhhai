@@ -1,0 +1,18 @@
+table{
+    border-collapse: collapse;
+    background-color: darkkhaki;
+    height: 300px;
+    width: 40%;
+    font-family: Arial;
+}
+tr{
+    padding: 20px;
+}
+th{
+    background-color: aqua ;
+    color: blue;
+    text-align: left;
+}
+.Blu{
+    color: darkblue;
+}
