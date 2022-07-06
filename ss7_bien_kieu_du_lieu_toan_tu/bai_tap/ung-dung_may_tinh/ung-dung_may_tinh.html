@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ung-dung_may_tinh</title>
+</head>
+<body>
+    <h3>Caculator</h3>
+    <TABLE>
+        <TR>
+            <td colspan="2"><input id="inp1" type="text"></td>
+            <td colspan="2"><input id="inp2" type="text"></td>
+        </TR>
+        <tr>
+            <td><button onclick="add()" id="add" style="width: 100%">Cộng(+)</button></td>
+            <td><button onclick="apf()" id="apart_from" style="width: 100%">Trừ(-)</button></td>
+            <td><button onclick="core()" id="core" style="width: 100%">Nhân(x)</button></td>
+            <td><button onclick="divide()" id="divide" style="width: 100%">Chia(/)</button></td>
+        </tr>
+    </TABLE>
+    <h4 id="ans">Kết Quả = </h4>
+</body>
+<script >
+    function add() {
+        let inPut1= parseFloat(document.getElementById(`inp1`).value)
+        let inPut2= parseFloat(document.getElementById(`inp2`).value)
+        let ans
+        ans=inPut1+inPut2
+        document.getElementById(`ans`).innerHTML=`Kết quả =`+ ans
+    }
+    function apf() {
+        let inPut1= parseFloat(document.getElementById(`inp1`).value)
+        let input2= parseFloat(document.getElementById(`inp2`).value)
+        let ans
+        ans=inPut1-input2
+        document.getElementById(`ans`).innerHTML=`Kết quả =`+ ans
+    }
+    function core() {
+        let inPut1= parseFloat(document.getElementById(`inp1`).value)
+        let inPut2= parseFloat(document.getElementById(`inp2`).value)
+        let ans
+        ans=inPut1*inPut1ut2
+        document.getElementById(`ans`).innerHTML=`Kết quả =`+ ans
+    }function divide() {
+        let inPut1= parseFloat(document.getElementById(`inp1`).value)
+        let input2= parseFloat(document.getElementById(`inp2`).value)
+        let ans
+        ans=inPut1/input2
+        document.getElementById(`ans`).innerHTML=`Kết quả =`+ ans
+    }
+
+</script>
+</html>
