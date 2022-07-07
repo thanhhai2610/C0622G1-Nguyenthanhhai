@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>suKienBanPhim</title>
+</head>
+<body onload="docReady()">
+    <img id="nobita" width="400" height="400"
+     src="https://photo-cms-anninhthudo.zadn.vn/w660/Uploaded/2022/173/2016_01_25/dzlzozil.jpg?width=500">
+</body>
+
+<script>
+    function upArrowPressed() {
+        let element = document.getElementById("nobita");
+        element.style.top = parseInt(element.style.top) - 5 + 'px';
+    }
+    function downArrowPressed() {
+        let element = document.getElementById("nobita");
+        element.style.top = parseInt(element.style.top) + 5 + 'px';
+    }
+    function leftArrowPressed() {
+        let element = document.getElementById("nobita");
+        element.style.left = parseInt(element.style.left) - 5 + 'px';
+    }
+    function rightArrowPressed() {
+        let element = document.getElementById("nobita");
+        element.style.left = parseInt(element.style.left) + 5 + 'px';
+
+    }
+    function moveSelection(evt) {
+        switch (evt.key) {
+            case 37:
+                leftArrowPressed();
+                break;
+            case 39:
+                rightArrowPressed();
+                break;
+            case 38:
+                upArrowPressed();
+                break;
+            case 40:
+                downArrowPressed();
+                break;
+        }
+    }
+    function docReady() {
+        window.addEventListener('keydown', moveSelection);
+    }
+    // function uptop() {
+    //     let ozil = document.getElementById(`img`);
+    //     ozil.style.top = parseInt(ozil.style.top) - 5 + `px`
+    // }
+    //
+    // function updown() {
+    //     let ozil = document.getElementById(`img`);
+    //     ozil.style.top = parseInt(ozil.style.top) + 5 + `px`
+    // }
+    //
+    // function upleft() {
+    //     let ozil = document.getElementById(`img`);
+    //     ozil.style.right = parseInt(ozil.style.top) + 5 + `px`
+    // }
+    //
+    // function upright() {
+    //     let ozil = document.getElementById(`img`);
+    //     ozil.style.right = parseInt(ozil.style.top) - 5 + `px`
+    // }
+    //
+    // function move(evt) {
+    //     // switch (evt.keycode) {
+    //         case 37:
+    //             upleft();
+    //             break
+    //         case 38:
+    //             upright();
+    //             break
+    //         case 39:
+    //             uptop();
+    //             break
+    //         case 40:
+    //             updown();
+    //             break
+    //     }
+    // }
+    //
+    // function docReady() {
+    //     window.addEventListener('keydown', move);
+    // }
+    //
+    // // window.onload = move
+
+</script>
+
+</html>

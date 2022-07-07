@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>luyen_tap_voi_cau_truc_if_else_else</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputname = prompt(`ID`, ``);
+
+    if (inputname === `Admin`) {
+        let pass = prompt(`Mật khẩu ID?`, ``)
+        if (pass === `TheMaster`) {
+            alert(`Welcome`)
+        } else if (pass === `Null`) {
+            alert(`Canceled`)
+        } else {
+            alert(`Wrong password.`)
+        }
+    } else if (inputname === `Null`) {
+        alert(`Canceled`)
+    } else {
+        alert(`I don’t know you`)
+    }
+
+
+</script>
+</html>

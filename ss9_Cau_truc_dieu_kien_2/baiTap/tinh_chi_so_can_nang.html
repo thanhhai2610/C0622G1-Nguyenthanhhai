@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tinhsChiSoCannang</title>
+</head>
+<body>
+
+</body>
+<script>
+    let weight = prompt(`Cân nặng của bạn là `)
+    let height = prompt(`Chiều cao của bạn là `)
+    let bmi = weight / (height * height)
+    alert(`chir số BMI của bạn là ` + bmi)
+    if (bmi < 18.5) {
+        alert(`phân loại Underweight`)
+    } else if (bmi < 25) {
+        alert(`Phaan laoi Normal`)
+    }
+    if (bmi >= 25 && bmi <= 30){
+        alert(`Phan loai Overweight`)
+    }
+    if (bmi >= 30 ){
+        alert(`Phan loai Obese`)
+    }
+
+</script>
+</html>

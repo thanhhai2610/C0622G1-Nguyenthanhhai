@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu lệnh switch case</title>
+</head>
+<body>
+    <h2>Kiểm tra số ngày trong tháng</h2>
+    <input id="month" type="text" placeholder="Nhập tháng">
+    <button onclick="tinhSoNgay()"> Tính số ngày</button>
+    <p id="asn">Kết quả</p>
+
+</body>
+<script>
+
+    function tinhSoNgay() {
+        let thang1 = "Tháng 1 có 31 ngày";
+        let thang2 = `Tháng 2 có 28 ngày or 29 này`;
+        let thang3 = `Tháng 3 có 31 ngày`;
+        let thang4 = `Tháng 4 có 30 ngày`;
+        let thang5 = `Tháng 5 có 31 ngày`;
+        let thang6 = `Tháng 6 có 30 ngày`;
+        let thang7 = `Tháng 7 có 31 ngày`;
+        let thang8 = `Tháng 8 có 31 ngày`;
+        let thang9 = `Tháng 9 có 30 ngày`;
+        let thang10 = `Tháng 10 có 31 ngày`;
+        let thang11 = `Tháng 11 có 30 ngày`;
+        let thang12 = `Tháng 1 có 31 ngày`;
+        let thang = +document.getElementById(`month`).value;
+        // alert(thang)
+        switch (thang) {
+            case 1:
+                document.getElementById(`asn`).innerHTML = thang1;
+                break;
+            case 2:
+                document.getElementById(`asn`).innerText = thang2;
+                break;
+            case 3:
+                document.getElementById(`asn`).innerText = thang3;
+                break;
+            case 4:
+                document.getElementById(`asn`).innerText = thang4;
+                break;
+            case 5:
+                document.getElementById(`asn`).innerText = thang5;
+                break;
+            case 6:
+                document.getElementById(`asn`).innerText = thang6;
+                break;
+            case 7:
+                document.getElementById(`asn`).innerText = thang7;
+                break;
+            case 8:
+                document.getElementById(`asn`).innerText = thang8;
+                break;
+            case 9:
+                document.getElementById(`asn`).innerText = thang9;
+                break;
+            case 10:
+                document.getElementById(`asn`).innerText = thang10;
+                break;
+            case 11:
+                document.getElementById(`asn`).innerText = thang11;
+                break;
+            case 12:
+                document.getElementById(`asn`).innerText = thang12;
+                break;
+
+        }
+
+
+    }
+</script>
+</html>

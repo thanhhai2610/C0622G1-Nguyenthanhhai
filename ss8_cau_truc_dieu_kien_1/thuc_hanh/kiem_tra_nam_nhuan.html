@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>luyen_tap_cau_truc_if_else</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td><input type="text" id="year"></td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="xacDinhNamNhuan()">Kết quả</button>
+        </td>
+    </tr>
+</table>
+<p id="ketQua">Năm có phải là năm nhuận không?</p>
+</body>
+<script>
+    function xacDinhNamNhuan() {
+        let year = parseInt(document.getElementById(`year`).value );
+        let divisible_by_4 = year % 4 === 0;
+        let divisible_by_100 = year % 100 === 0;
+        let undivisible_by_100 = year % 100 !== 0;
+        let divisible_by_400 = year % 400 === 0;
+        let dk1= divisible_by_4 && undivisible_by_100;
+        let dk2= divisible_by_4 && divisible_by_100 && divisible_by_400;
+
+        if ((dk1) || (dk2)) {
+            let namNhuan = `Là năm nhuận `;
+            document.getElementById(`ketQua`).innerHTML = namNhuan;
+        } else {
+            let namKhongNhuan = `Không phải là năm nhuận`;
+            document.getElementById(`ketQua`).innerHTML = namKhongNhuan;
+        }
+    }
+
+
+</script>
+</html>
+<!--/* chia hết cho 4-->
+<!--th1 k chia hết cho 100      th2chia hết cho 100-->
+<!--                            chia hết cho 400 là năm nhuận*/-->

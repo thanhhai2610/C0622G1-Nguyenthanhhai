@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kiem_tra_gia_tri_nhap_vao</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputvalue = parseFloat(prompt(`Nhập giá trị cần kiểm tra`));
+    switch (true) {
+        case inputvalue > 0: {
+            alert(`Là số Dương`);
+            break;
+        }
+        case inputvalue < 0:
+         {
+            alert(`Là số Âm`);
+            break;
+        }
+        default: {
+            alert(0);
+        }
+    }
+</script>
+</html>

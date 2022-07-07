@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>su_kien_chuot</title>
+</head>
+<body>
+<img id="img" width="300" src="https://thuviendohoa.vn/upload/images/items/hinh-anh-qua-bong-vang-png-454.webp">
+<p>Click button below to move the image to right</p>
+<button onclick="loadight()">Click Me</button>
+</body>
+<script>
+    function onClick() {
+        document.getElementById(`img`).style.position = `relative`;
+        document.getElementById(`img`).style.left = `0px`;
+    }
+
+    function loadight() {
+        document.getElementById(`img`).style.left = parseFloat(document.getElementById(`img`).style.left) + 10 + `px`
+
+    }
+
+    window.onload = onClick
+
+
+</script>
+</html>
