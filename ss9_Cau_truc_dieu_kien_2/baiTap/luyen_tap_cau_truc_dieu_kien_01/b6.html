@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b6_luyen_tap_cau_truc_dieu_kien_01</title>
+</head>
+<body>
+
+</body>
+<script>
+    let input1 = +prompt(` Nhập giá trị doanh thu Quí 1 đơn vị (tỷ đồng) `)
+    let input2 = +prompt(` Nhập giá trị doanh thu Quí 2 đơn vị (tỷ đồng)`)
+    let input3 = +prompt(` Nhập giá trị doanh thu Quí 3 đơn vị (tỷ đồng)`)
+
+    if (input1 > 3) {
+        alert(`Hoa hồng 5% `)
+    }
+    if (input2 >(input1+input1*0.1) ) {
+        alert(`Hoa hồng 7%`)
+    }
+    else if (input3 >(input2+input2*0.15 && input2 >(input1+input1*0.1) )) {
+        alert(`Hoa hồng 9%`)
+
+    }
+
+
+</script>
+</html>

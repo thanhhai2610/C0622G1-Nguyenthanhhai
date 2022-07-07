@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b5_luyen_tap_cau_truc_dieu_kien_01</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Toán</td>
+        <td><input id="toan" type="text"></td>
+    </tr>
+    <tr>
+        <td>lý</td>
+        <td><input id="ly" type="text"></td>
+    </tr>
+    <tr>
+        <td>Hoá</td>
+        <td><input id="hoa" type="text"></td>
+    </tr>
+    <tr>
+        <td>Anh văn</td>
+        <td><input id="anh" type="text"></td>
+    </tr>
+    <tr>
+        <td>Văn</td>
+        <td><input id="van" type="text"></td>
+    </tr>
+
+    <tr>
+        <td><input onclick="tongDiem()" type="button" value="Tổng điểm"></td>
+        <td><span id="tb"></span></td>
+    </tr>
+    <tr>
+        <td>Phân Loạim</td>
+        <td><span id="phanLoai"></span></td>
+    </tr>
+</table>
+
+</body>
+<script>
+    function tongDiem() {
+        let toan = +(document.getElementById(`toan`).value);
+        let vatLy = +(document.getElementById(`ly`).value);
+        let hoaHoc = +(document.getElementById(`hoa`).value);
+        let anhVan = +(document.getElementById(`anh`).value);
+        let vanHoc = +(document.getElementById(`van`).value);
+        let pointTb = (toan + vatLy + hoaHoc + anhVan + vanHoc) / 5;
+        alert(pointTb)
+        document.getElementById(`tb`).innerHTML = pointTb;
+        // document.getElementById(`asn`).innerHTML = thang1;
+
+
+        if (pointTb <= 6.5) {
+            alert(`Phan loai Trung bình `)
+            document.getElementById(`phanLoai`).innerHTML = `Trung bình`
+        } else if (pointTb < 8) {
+            alert(`Phan loai Khá`)
+            document.getElementById(`phanLoai`).innerHTML = `Khá`
+        } else if (pointTb < 9) {
+            alert(`Phan loai Giỏ`)
+            document.getElementById(`phanLoai`).innerHTML = `Giỏ`
+        } else if (pointTb < 10) {
+            alert(`Phan loai Xuất sắc`)
+            document.getElementById(`phanLoai`).innerHTML = `Xuất sắc`
+
+        }
+    }
+
+
+</script>
+</html>
