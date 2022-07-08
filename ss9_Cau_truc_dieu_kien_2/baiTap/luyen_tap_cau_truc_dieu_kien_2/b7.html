@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b7_luyen_tap_cau_truc_dieu_kien_02</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputa = +prompt(` Nhập giá trị a `);
+    let inputb = +prompt(` Nhập giá trị b `);
+    let inputc = +prompt(` Nhập giá trị c `);
+    let delta = inputb * inputb - 4 * inputa * inputc;
+    alert(delta)
+    if (delta < 0) {
+        alert(`Phương trình vô nghiệm`)
+    }
+    if (delta === 0) {
+        let x1 = -(inputb / (2 * inputa))
+        let x2 = -(inputb / (2 * inputa))
+        alert(`Phương trình nghiệm kép X1=X2=` + x1)
+    }
+    if (delta > 0) {
+        let x11 = (-inputb + Math.sqrt(delta)) / (2 * inputa)
+        let x21 = (-inputb - Math.sqrt(delta)) / (2 * inputa)
+        alert(`Phương trình có hai nghiệm phân biệc` + `X1=` + x11 + ` X2=` + x21)
+    }
+
+
+</script>
+</html>

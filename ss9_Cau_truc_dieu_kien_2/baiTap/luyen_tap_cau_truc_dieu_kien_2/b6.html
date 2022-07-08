@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b6_luyen_tap_cau_truc_dieu_kien_01</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputa = +prompt(` Nhập giá trị a `);
+    let inputb = +prompt(` Nhập giá trị b `);
+    let x=(-inputb)/inputa;
+    if (inputa === 0 && inputb === 0) {
+        alert(`Phương trình vô số nghiệm`)
+    }
+    if (inputa === 0 && inputb !== 0) {
+        alert(`Phương trình vô  nghiệm`)
+    }
+    if (inputa !== 0 && inputb !== 0) {
+        alert(`Phương trình có nghiệm là` + x)
+    }
+
+
+
+</script>
+</html>

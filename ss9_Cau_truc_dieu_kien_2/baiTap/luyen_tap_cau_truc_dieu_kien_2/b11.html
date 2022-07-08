@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b10_luyen_tap_cau_truc_dieu_kien_2</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>TT</th>
+        <th>Luong</th>
+        <th>Thue</th>
+
+    </tr>
+    <tr>
+        <td>Thang 1</td>
+        <td><input id="luong" type="text"></td>
+        <td><input id="thue" type="text"></td>
+    </tr>
+
+    <tr>
+        <td>
+            <BUTTON onclick="xuatketQua()">Xuất kết quả</BUTTON>
+        </td>
+
+    </tr>
+
+
+</table>
+</body>
+<script>
+    function xuatketQua() {
+        let inputluong1 = +document.getElementById(`luong`).value;
+        let tientrathue = inputluong1 - 11000000
+        let tienTra
+        if (tientrathue < 5000000) {
+            tienTra = tientrathue * 0.05;
+        } else if (tientrathue < 10000000) {
+            tienTra = 0.05 * 5000000 + ((tientrathue - 5000000) * 0.1);
+        } else if (tientrathue < 18000000) {
+            tienTra = 0.05 * 5000000 + 5000000 * 0.1 + ((tientrathue - 10000000) * 0.15);
+        } else if (tientrathue < 32000000) {
+            tienTra = 0.05 * 5000000 + 5000000 * 0.1 + 0.15 * 8000000 + ((tientrathue - 18000000) * 0.20);
+        } else if (tientrathue < 52000000) {
+            tienTra = 0.05 * 5000000 + 5000000 * 0.1 + 0.15 * 8000000 + 0.2 * 14000000 + ((tientrathue - 32000000) * 0.25);
+        } else if (tientrathue < 80000000) {
+            tienTra = 0.05 * 5000000 + 5000000 * 0.1 + 0.15 * 8000000 + 0.2 * 14000000 + 0.25 * 20000000 + ((tientrathue - 52000000) * 0.30);
+        } else {
+            tienTra = 0.05 * 5000000 + 5000000 * 0.1 + 0.15 * 8000000 + 0.2 * 14000000 + 0.25 * 20000000 +0.30 * 28000000+ ((tientrathue - 80000000) * 0.35);
+        }
+        document.getElementById(`thue`).value = tienTra;
+
+    }
+
+
+</script>
+</html>

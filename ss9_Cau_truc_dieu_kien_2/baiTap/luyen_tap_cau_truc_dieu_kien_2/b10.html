@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b10_luyen_tap_cau_truc_dieu_kien_2</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Tháng</th>
+        <th>Số chữ điện</th>
+        <th>Tiền điẹn</th>
+
+    </tr>
+    <tr>
+        <td>Quí 1</td>
+        <td><input id="chuDien1" type="text"></td>
+        <td><input id="tienDien1" type="text"></td>
+    </tr>
+    <tr>
+        <td>Quí 2</td>
+        <td><input id="chuDien2" type="text"></td>
+        <td><input id="tienDien2" type="text"></td>
+
+    </tr>
+    <tr>
+        <td>Quí 3</td>
+        <td><input id="chuDien3" type="text"></td>
+        <td><input id="tienDien3" type="text"></td>
+    </tr>
+    <tr>
+        <td>
+            <BUTTON onclick="xuatketQua()">Xuất kết quả</BUTTON>
+        </td>
+
+    </tr>
+
+
+</table>
+</body>
+<script>
+    function xuatketQua() {
+        let inputChuDien1 = +document.getElementById(`chuDien1`).value;
+        let inputChuDien2 = +document.getElementById(`chuDien2`).value;
+        let inputChuDien3 = +document.getElementById(`chuDien3`).value;
+        let tienTra
+        if (inputChuDien1 < 100) {
+            tienTra = inputChuDien1 * 1000;
+        } else if (inputChuDien1 < 150) {
+            tienTra = 100 * 1000 + ((inputChuDien1 - 100) * 2000);
+        } else if (inputChuDien1 < 200) {
+            tienTra = 100 * 1000 + 50 * 2000 + ((inputChuDien1 - 150) * 2500);
+        } else {
+            tienTra = 100 * 1000 + 50 * 2000 + 50 * 2500 + ((inputChuDien1 - 150) * 2500);
+        }
+        alert(tienTra)
+        document.getElementById(`tienDien1`).value = tienTra
+
+
+        if (inputChuDien2 < 100) {
+            let tienTra2 = inputChuDien2 * 1000
+            // alert(tienTra2)
+            document.getElementById(`tienDien2`).value = tienTra2
+        } else if (inputChuDien2 < 150) {
+            let tienTra2 = 100 * 1000 + ((inputChuDien2 - 100) * 2000)
+            document.getElementById(`tienDien2`).value = tienTra2
+        } else if (inputChuDien2 < 200) {
+            let tienTra2 = 100 * 1000 + 50 * 2000 + ((inputChuDien2 - 150) * 2500)
+            document.getElementById(`tienDien2`).value = tienTra2
+        } else {
+            let tienTra2 = 100 * 1000 + 50 * 200 + 50 * 2500 + ((inputChuDien2 - 150) * 2500)
+            document.getElementById(`tienDien2`).value = tienTra2
+        }
+
+        if (inputChuDien3 < 100) {
+            let tienTra3 = inputChuDien3 * 1000
+            // alert(tienTra)
+            document.getElementById(`tienDien3`).value = tienTra3
+        } else if (inputChuDien3 < 150) {
+            let tienTra3 = 100 * 1000 + ((inputChuDien3 - 100) * 2000)
+            document.getElementById(`tienDien3`).value = tienTra3
+        } else if (inputChuDien3 < 200) {
+            let tienTra3 = 100 * 1000 + 50 * 2000 + ((inputChuDien3 - 150) * 2500)
+            document.getElementById(`tienDien3`).value = tienTra3
+        } else {
+            let tienTra3 = 100 * 1000 + 50 * 200 + 50 * 2500 + ((inputChuDien3 - 150) * 2500)
+            // alert(tienTra3)
+            document.getElementById(`tienDien3`).value = tienTra3
+        }
+
+
+
+    }
+
+</script>
+</html>

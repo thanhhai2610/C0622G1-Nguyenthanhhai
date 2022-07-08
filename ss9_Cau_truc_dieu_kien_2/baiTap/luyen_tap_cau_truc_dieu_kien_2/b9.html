@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b7_luyen_tap_cau_truc_dieu_kien_02</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputa = +prompt(` Nhập giá trị a `);
+    let inputb = +prompt(` Nhập giá trị b `);
+    let inputc = +prompt(` Nhập giá trị c `);
+    let dk1 = (inputa > 0 && inputb > 0 && inputc > 0);
+    let dk2 = (inputa + inputb > inputc);
+    let dk3 = (inputc + inputb > inputa);
+    let dk4 = (inputa + inputc > inputb)
+    if ((dk1 && dk2 )|| (dk1 && dk3) || (dk1 && dk4)) {
+        alert(`a,b,c là  cạnh của một tam giác`)
+    } else {
+        alert(`a,b,c không là  cạnh của một tam giác`)
+    }
+
+</script>
+</html>
