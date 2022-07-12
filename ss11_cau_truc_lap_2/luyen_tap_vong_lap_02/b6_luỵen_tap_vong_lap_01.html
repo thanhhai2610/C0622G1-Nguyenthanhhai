@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b6_luỵen_tap_vong_lap_02</title>
+</head>
+<body>
+</body>
+<script>
+    let i
+    let j
+    for (i = 0; i < 5; i++) {
+        for (j = 0; j < 5; j++) {
+            if (i === 0 || j === 0 || i === 5 - 1 || j === 5 - 1) {
+                if (i === 2 && (j === 0||j === 4)) {
+                    document.writeln(`*`);
+                    continue
+                }
+                if (i === 4 && j === 2) {
+                    document.writeln(`*`);
+                    continue
+                }
+
+                document.writeln(`\xa0\xa0`);
+            } else {
+                if ((i === 2 && j === 0)) {
+                    document.writeln(`*`);
+                    continue
+                }
+
+                if ((i === 1 && j === 2)) {
+                    document.writeln(`\xa0\xa0`);
+                    continue
+                }
+                document.writeln(`*`);
+            }
+        }
+        document.writeln(`<br>`);
+    }
+</script>
+</html>

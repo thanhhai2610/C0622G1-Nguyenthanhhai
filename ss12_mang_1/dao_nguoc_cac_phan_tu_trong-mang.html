@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+    <script>
+        let bienX=[`Sinh`,` ngay`,26,10,1999];
+        let sttDau=0;
+        let sttCuoi= bienX.length-1;
+        while (sttDau<sttCuoi){
+            tam=bienX[sttDau];
+            bienX[sttDau]=bienX[sttCuoi];
+            bienX[sttCuoi]=tam;
+            sttDau++;
+            sttCuoi--;
+        }
+        document.write(bienX)
+    </script>
+</html>

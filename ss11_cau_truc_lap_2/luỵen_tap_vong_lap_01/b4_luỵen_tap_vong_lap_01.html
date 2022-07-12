@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b4_luỵen_tap_vong_lap_01</title>
+</head>
+<body>
+</body>
+<script>
+    document.write(`<hi>`)
+    let f0 = 1;
+    let f1 = 2;
+    let st3 = 0;
+    for (i = 0; i < 6; i++) {
+        st3 = f0 + f1;
+        f0 = f1;
+        f1 = st3;
+        if (st3 % 5 === 0) {
+            break
+        }
+        alert(`Số đầu tiên chia hết cho 5 là:` + st3)
+
+    }
+</script>
+</html>

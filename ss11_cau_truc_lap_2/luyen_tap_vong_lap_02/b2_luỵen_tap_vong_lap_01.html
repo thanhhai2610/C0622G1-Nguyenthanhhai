@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b2_luỵen_tap_vong_lap_02</title>
+</head>
+<body>
+</body>
+<script>
+    let input;
+    do {
+        input = +prompt(` Nhập số nguyên dương cần tính giai thừa `);
+    } while (input < 0);
+
+    let giaiThua = 1;
+    for (let i = 1; i <= input; i++) {
+        giaiThua = giaiThua * i;
+    }
+    alert(`Giao thừa của ` + input + ` là ` + giaiThua)
+
+</script>
+</html>

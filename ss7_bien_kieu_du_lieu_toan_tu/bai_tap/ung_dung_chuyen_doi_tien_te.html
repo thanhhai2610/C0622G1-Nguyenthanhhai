@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Amount</th>
+        <th>From Curency</th>
+        <th>To Curency</th>
+    </tr>
+    <tr>
+        <th><input type="text" id="Amount"></th>
+        <th>
+            <select id="Form">
+                <option value="VND">VNĐ</option>
+                <option value="USD">USD</option>
+            </select>
+        </th>
+        <th>
+            <select id="To">
+                <option value="USD">USD</option>
+                <option value="VND">VND</option>
+            </select>
+        </th>
+        <TD><button onclick="ChangeMoney()">Convert</button> </TD>
+    </tr>
+</table>
+<p id="KetQua">Result</p>
+</body>
+<script>
+    function ChangeMoney() {
+        let Amount = document.getElementById(`Amount`).value;
+        let Form = document.getElementById(`Form`).value;
+        let To = document.getElementById(`To`).value;
+        let KetQua;
+
+        if (Form === `VND` && To === `USD`) {
+            KetQua = `KET QUA= ` + (Amount / 23000) + `$`
+        } else if (Form === `USD` && To === `VND`) {
+            KetQua = `KET QUA= ` + (Amount * 23000) + `đ`
+        } else if (Form === `USD`) {
+            KetQua = `KET QUA= ` + (Amount) + `$`
+        } else {
+            KetQua = `KET QUA=` + (Amount) + `đ`
+        }
+
+        document.getElementById(`KetQua`).innerHTML = KetQua
+    }
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b3_luỵen_tap_vong_lap_02</title>
+</head>
+<body>
+</body>
+<script>
+
+    for (i = 1; i <= 6; i++) {
+        for (let j = 1; j < i; j++) {
+            document.writeln(`*`);
+        }
+        document.writeln(`*` + `<br>`);
+
+    }
+
+    for (i = 1; i <= 6; i++) {
+        for (let j = 6; j > i; j--) {
+            document.writeln(`* `);
+        }
+        document.writeln(`*` + `<br>`);
+
+    }
+    for (i = 1; i < 6; i++) {
+        for (let j = 1; j <6; j++) {
+            if (j <=(6-i)) {
+                document.writeln(`\xa0\xa0`);
+            } else {
+                document.writeln(`*`);
+            }
+        }
+        document.writeln(`*` + `<br>`);
+    }
+    for (i = 1; i <= 6; i++) {
+        for (let j = 1; j < 6; j++) {
+            if (j < i) { //ở hàng i số thứ tự chạy j <1 thì cach
+                document.writeln(`\xa0\xa0 `);
+            } else {
+                document.writeln(`*`);
+            }
+        }
+        document.writeln(`*` + `<br>`);
+    }
+
+
+</script>
+</html>
