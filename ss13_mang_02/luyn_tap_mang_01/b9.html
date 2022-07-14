@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<span> Giá trị a nhập vào là: </span>
+<span id="giaTriNhapVaoA"></span> <br>
+<span> Giá trị b nhập vào là: </span>
+<span id="giaTriNhapVaoB"></span> <br>
+<span>Giá trị Array c  là: </span>
+<span id="giaTriMangGop"></span>
+
+</body>
+<script>
+
+    let input;
+    let i = 0;
+    let j = 0;
+    let resulta = [];
+    let resultb = [];
+    let resultc
+
+    do {
+        input = +prompt(` Nhập dãy số nguyên cho mang a ` + (i + 1));
+        if ((resulta.includes(input)) === true) {
+            continue
+        }
+        resulta.push(input);
+        i++;
+    } while (i < 10);
+
+    do {
+        input = +prompt(` Nhập dãy số nguyên cho mang b  ` + (j + 1));
+        if ((resultb.includes(input)) === true) {
+            continue
+        }
+        resultb.push(input);
+        j++;
+    } while (j < 10);
+    document.getElementById(`giaTriNhapVaoA`).innerText = resulta
+    document.getElementById(`giaTriNhapVaoB`).innerText = resultb
+
+
+    resultc= [resulta.concat(resultb)]
+    console.log(resultc)
+    document.getElementById(`giaTriMangGop`).innerText = resultc
+
+
+</script>
+</html>

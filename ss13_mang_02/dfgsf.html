@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="viTri1"></p>
+<button onclick="chonViTri()">Change Value</button>
+<p id="viTri2"></p>
+</body>
+<script>
+    let mang = Array();
+    //Nhập
+    for (let i = 0; i < 10; i++) {
+        mang[i] = [];
+        for (let j = 0; j < 10; j++) {
+            mang[i][j] = 0;
+        }
+    }
+    xuatMang();//xuất
+
+    // Hàm xuất mảng
+    function xuatMang() {
+        let duLieuXuat = '';
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                duLieuXuat += mang[i][j] + '&ensp;';
+            }
+            duLieuXuat += '<br>';
+        }
+        document.getElementById("viTri1").innerHTML = duLieuXuat;
+    }
+
+    // Hàm chọn vị trí đánh dấu x
+    function chonViTri() {
+        let viTriXuatX = '<input id="viTri3"type="text" placeholder="Hàng số?" size="7">\n' +
+            '<input id="viTri4"type="text" placeholder="Cột số?" size="7">' +
+            '<button onclick="accept()">Accept</button>';
+        document.getElementById("viTri2").innerHTML = viTriXuatX;
+    }
+
+    //Hàm accept và in ra X
+    function accept() {
+        let dong = +document.getElementById("viTri3").value;
+        let cot = +document.getElementById("viTri4").value;
+        mang[dong][cot] = 'x';
+        xuatMang();
+    }
+</script>
+</html>

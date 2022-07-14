@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<span> Giá trị nhập vào là: </span>
+<span id="giaTriNhapVao"></span> <br>
+<span> Giá trị lớn hơn 10 là: </span>
+<span id="giaTriLonHon10"></span> <br>
+<span>Sô Giá trị lớn hơn 10 là: </span>
+<span id="soGiaTriLonHon10"></span>
+
+</body>
+<script>
+
+    let input;
+    let i = 0;
+    let result = [];
+    let lonHon10 = []
+    let str = 0;
+    do {
+        input = prompt(` Nhập dãy số nguyên thứ ` + (i + 1));
+        result.push(input);
+        i++;
+    } while (i < 10);
+    console.log(result);
+    document.getElementById(`giaTriNhapVao`).innerText = result
+
+    for (let j = 0; j < result.length; j++) {
+        if (result[j] > 10) {
+            lonHon10.push(result[j])
+            console.log(lonHon10);
+            str++
+            document.getElementById(`giaTriLonHon10`).innerText = lonHon10
+
+        }
+
+    }
+    document.getElementById(`soGiaTriLonHon10`).innerText = str
+
+
+</script>
+</html>

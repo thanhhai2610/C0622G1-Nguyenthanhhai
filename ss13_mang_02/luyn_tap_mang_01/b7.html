@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<span> Giá trị nhập vào là: </span>
+<span id="giaTriNhapVao"></span> <br>
+
+</body>
+<script>
+
+    let input;
+    let i = 0;
+    let result = [];
+    let dem = 0;
+    do {
+        input = prompt(` Nhập dãy số nguyên thứ ` + (i + 1));
+        if ((result.includes(input)) === true) {
+            continue
+        }
+        result.push(input);
+        i++;
+    } while (i < 10);
+    console.log(result);
+    document.getElementById(`giaTriNhapVao`).innerText = result;
+
+    let soNguyenV = `V`;
+    let a=result.indexOf(soNguyenV);
+    if (result.indexOf(soNguyenV) !== 1) {
+        result.splice(a,1,0)
+        alert(result);
+    }else {
+        alert("V is not in the array");
+
+    }
+
+
+</script>
+</html>

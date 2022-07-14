@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<span> Giá trị nhập vào là: </span>
+<span id="giaTriNhapVao"></span> <br>
+<span> Giá trị lớn nhat là: </span>
+<span id="giaTriLonHon10"></span> <br>
+<span>Vị trí của giá trị lớn nhất trong mảng là : </span>
+<span id="soGiaTriLonHon10"></span>
+
+</body>
+<script>
+
+    let input;
+    let i = 0;
+    let result = [];
+    let dem = 0;
+    do {
+        input = prompt(` Nhập dãy số nguyên thứ ` + (i + 1));
+        if ((result.includes(input)) === true) {
+            continue
+        }
+        result.push(input);
+        i++;
+    } while (i < 10);
+
+    console.log(result);
+    document.getElementById(`giaTriNhapVao`).innerText = result
+    max = result[0]
+    for (let j = 0; j < result.length; j++) {
+        if (result[j] > max) {
+            max = result[j]
+            console.log(max);
+            document.getElementById(`giaTriLonHon10`).innerText = max
+        }
+        console.log(result.indexOf(max))
+
+
+
+    }
+    document.getElementById(`soGiaTriLonHon10`).innerText = result.indexOf(max)
+
+
+</script>
+</html>

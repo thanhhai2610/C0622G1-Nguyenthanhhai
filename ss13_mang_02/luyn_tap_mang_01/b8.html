@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<span> Giá trị nhập vào là: </span>
+<span id="giaTriNhapVao"></span> <br>
+<span> Giá trị thứ tự giảm dần là: </span>
+<span id="giaTriLonHon10"></span> <br>
+
+
+</body>
+<script>
+
+    let input;
+    let i = 0;
+    let result = [];
+
+    do {
+        input = +prompt(` Nhập dãy số nguyên thứ ` + (i + 1));
+        if ((result.includes(input)) === true) {
+            continue
+        }
+        result.push(input);
+        i++;
+    } while (i < 10);
+    document.getElementById(`giaTriNhapVao`).innerText = result
+
+
+    result.sort(function (a, b) {
+        return a-b
+    })
+    console.log(result)
+
+    result.reverse()
+    console.log(result)
+    document.getElementById(`giaTriLonHon10`).innerText=result
+
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="hienThi"></p>
+<input onclick="xuatMang()" id="changeValue" type="button" value="Change value"><br>
+<input id="hang" type="text" placeholder=" Nhập hàng "><br>
+<input type="cot" placeholder=" Nhập cột "><br>
+<input id="run" type="button" value="Run"><br>
+
+</body>
+<script>
+    let mang =[];
+    for (let i = 0; i < 7; i++) {
+        mang[i] = []
+        for (let j = 0; j < 7; j++) {
+            mang[i][j] = 0
+        }
+    }
+    xuatMang();
+
+    function xuatMang() {
+        let hienThi = ``;
+        for (let i = 0; i < 7; i++) {
+            for (let j = 0; j < 7; j++) {
+                hienThi += mang[i][j] + `&ensp;&ensp;`
+            }
+            hienThi += `<br>`
+        }
+    }
+
+
+</script>
+</html>

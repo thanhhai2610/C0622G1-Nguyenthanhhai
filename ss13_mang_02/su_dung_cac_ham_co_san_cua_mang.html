@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>su_dung_cac_ham_cua-mang</title>
+</head>
+<body>
+
+</body>
+<script>
+    let myColer = [`red`, `Greeen`, `While`, `Black`,]
+    document.write(myColer.join(`_`))
+
+    //Viết một chương trình nhận một số nhập vào và chèn dấu (-) giữa 2  số chẵn.
+
+    let inputNhap = prompt(` Nhập một dãy các giá trị `)
+    let str = inputNhap.toString() //chuyển các số nhập cào thành một day chuỗi
+    let result = [str[0]] //khai báo một cái mảng để đẩy kết quả vào
+    for (let i = 1; i < str.length; i++) {
+        if ((str[i - 1] % 2 === 0) && (str[i] % 2 === 0)) {     //đk Số trc và số sau chiua hết cho hai
+            result.push(`-`, str[i])
+        } else {
+            result.push(str[i])
+        }
+    }
+    console.log(str[0])
+    console.log(result.join(``))
+
+    // Viết một chương trình nhập vào một chuỗi và chuyển các ký tự chữ thường trong chuỗi vừa nhập sang thành dạng chữ hoa
+
+    let inputNhapCau = `Nhập một câu mà bạn tâm đắc `
+    let strCau = inputNhapCau.toString() //chuyển các số nhập cào thành một day chuỗi
+    let UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let LOWER = 'abcdefghijklmnopqrstuvwxyz';
+    let resultCau = [] //khai báo một cái mảng để đẩy kết quả vào
+    for (let i = 0; i < strCau.length; i++) {
+        if (UPPER.indexOf(strCau[i]) !== -1) {        // UPPER.indexOf(strCau[i]) là xđ vị trí của gtri (strCau[i])
+            resultCau.push(strCau[i].toLowerCase());  // có trong UPPER hay là không nếu không có thì có kq là -1
+        } else if (LOWER.indexOf(strCau[i]) !== -1) {
+            resultCau.push(strCau[i].toUpperCase());
+        } else {
+            resultCau.push(strCau[i]);
+        }
+        console.log(resultCau.join(''));
+    }
+    console.log(resultCau.join(``))
+    console.log(UPPER.indexOf(strCau[0]))
+
+</script>
+</html>

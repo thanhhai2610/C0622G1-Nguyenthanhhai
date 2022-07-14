@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputNhap = prompt(` Nhập từ cần tra tiếng việt`)
+    let strChu = inputNhap.toString()
+    console.log(inputNhap)
+
+    let tuDienTiengAnh = ["banana", "apple", "orange", "pen", "pencil", "book"];
+    console.log(tuDienTiengAnh[1])
+
+    let tiDienTiengViet = ["chuối", "táo", "cam", "bút", "bút chì", "sách"];
+    for (let i = 0; i <= tuDienTiengAnh.length-1; i++) {
+        if (strChu === tuDienTiengAnh[i]) {
+            alert(tiDienTiengViet[i])
+            if (strChu !== tuDienTiengAnh[i]) {
+                alert(` Thông báo không tìm thấy`)
+            }
+        }
+
+    }
+</script>
+</html>

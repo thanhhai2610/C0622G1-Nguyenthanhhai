@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<span> Giá trị nhập vào là: </span>
+<span id="giaTriNhapVao"></span> <br>
+<span> Giá trị lớn nhat là: </span>
+<span id="giaTriLonHon10"></span> <br>
+<span>Vị trí của giá trị lớn nhất trong mảng là : </span>
+<span id="soGiaTriLonHon10"></span>
+
+</body>
+<script>
+
+    let input;
+    let i = 0;
+    let result = [];
+    do {
+        input = +prompt(` Nhập dãy số nguyên thứ ` + (i + 1));
+        if ((result.includes(input)) === true) {
+            continue
+        }
+        result.push(input);
+        i++;
+    } while (i < 10);
+
+    result.reverse()
+    console.log(result)
+
+</script>
+</html>
