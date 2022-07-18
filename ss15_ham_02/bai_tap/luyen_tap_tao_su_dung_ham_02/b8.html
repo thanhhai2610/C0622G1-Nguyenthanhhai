@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // Bài 8: Viết hàm truyền vào mảng số nguyên bất kỳ,
+    // sau đó đảo ngược mảng số nguyên đó.
+
+
+        let input
+    let giaTri = []
+    let dem = 1
+    do {
+        input = +prompt(` Nhập giá trị ` + dem)
+        giaTri.push(input)
+        dem++
+    } while (dem <= 10)
+    console.log(giaTri[0])
+    document.write(` Giá trị nhập vào: ` + giaTri)
+
+    let j = giaTri.length - 1
+    for (let i = 0; i < j; i++, j--) {
+        let tam = giaTri[i]
+        giaTri[i] = giaTri[j]
+        giaTri[j] = tam
+    }
+    console.log(giaTri)
+
+    document.write(` Giá trị đảo ngược: ` + giaTri)
+
+
+</script>
+</html>

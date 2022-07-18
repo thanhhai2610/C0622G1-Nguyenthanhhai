@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="nhapGiaTri" type="text" placeholder="Nhập giá trị ngôi sao">
+<input onclick="timChomSoa(document.getElementById(`nhapGiaTri`).value)" type="button" value="Kiểm tra">
+</body>
+<script>
+    let ngoiSao = [`Polaris`, `Aldebaran`, `Deneb`, `Vega`, `Altair`, `Dubhe`, `Regulus`]
+    let chomSoa = [`Ursa Minor`, `Tarurus`, `Cygnus`, `Lyra`, `Aquila`, `Ursa Major`, `Leo`]
+
+    function timChomSoa(input) {
+        for (let i = 0; i < ngoiSao.length; i++) {
+            for (let j = 0; j < chomSoa.length; j++) {
+                if (input === ngoiSao[i]) {
+                    j = i;
+                    alert(`Ngôi sao ` + ngoiSao[i] + ` tơng ứng ` + ` Chòm sao` + chomSoa[j]);
+                    break;
+                }
+            }
+            if (!ngoiSao.includes(input)) {
+                alert(` Nhập lại giá trị khác đi cha `);
+                break;
+            }
+        }
+
+
+    }
+
+
+</script>
+</html>

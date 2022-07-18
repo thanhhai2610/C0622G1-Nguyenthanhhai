@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // Bài 7: Viết hàm truyền vào 2 số nguyên bất kì,
+    // thực hiện đổi chỗ hai số nguyên đó.
+
+    let input
+    let giaTri = []
+    let giaTriMoi = []
+    let dem = 1
+    do {
+        input = +prompt(` Nhập giá trị ` + dem)
+        giaTri.push(input)
+        dem++
+    } while (dem <= 2)
+    document.write(` Giá trị nhập vào: ` + giaTri)
+
+
+function daoNguoc(duLieu) {
+    for (let i = 1; i <= duLieu.length; i++) {
+        giaTriMoi.push(duLieu[duLieu.length - i])
+    }        document.write(` Giá trị đảo ngược: `+giaTriMoi)
+
+}
+    daoNguoc(giaTri)
+
+
+
+</script>
+</html>

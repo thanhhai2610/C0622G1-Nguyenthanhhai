@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // Bài 5: Viết hàm nhận vào 3 số nguyên bất kỳ,
+    // trả về số nguyên có giá trị nhỏ nhất.
+
+    let inputGiaTri = [];
+    let input;
+    let lanNhap = 1;
+    do {
+        input = +prompt(` Nhập giá trị thứ ` + lanNhap);
+        inputGiaTri.push(input);
+        lanNhap++;
+    } while (lanNhap <= 3)
+
+    console.log(inputGiaTri);
+    document.write(` Các giá trị nhập vào là: ` + inputGiaTri);
+
+    function timSoNhoNhat(duLieu){
+        let min = duLieu[0];
+        for (let i = 0; i < duLieu.length; i++) {
+            if (duLieu[i] < min) {
+                min = duLieu[i];
+            }
+        }
+        document.write(` Giá trị nhỏ nhất trong các giá trị nhập vào là: ` + min);
+
+    }
+timSoNhoNhat(inputGiaTri);
+
+
+
+</script>
+</html>

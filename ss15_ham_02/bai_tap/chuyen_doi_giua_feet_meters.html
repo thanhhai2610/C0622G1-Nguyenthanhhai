@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>Feet</p>
+<input id="feet" type="number" oninput="chuyenDoiSangMeters(this.value)">
+
+<p>Meters</p>
+<input id="meters" type="number" oninput="chuyenDoiSangFeet(this.value)">
+
+</body>
+<script>
+    function chuyenDoiSangFeet(giaTri) {
+        giaTri= parseFloat(giaTri)
+        document.getElementById(`feet`).value = (giaTri*3.279)
+    }
+    function chuyenDoiSangMeters(giaTri) {
+        giaTri= parseFloat(giaTri)
+        document.getElementById(`meters`).value = (giaTri*0.305)
+    }
+
+
+</script>
+</html>

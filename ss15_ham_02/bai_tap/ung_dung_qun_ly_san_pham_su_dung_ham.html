@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input id="inputProduct" type="text" placeholder="New Product">
+<input type="button" value="Add" onclick="addproduct()">
+<h2>Display All Product</h2>
+<div id="viTriHienThiBang"></div>
+
+
+</body>
+<script>
+
+
+    let listProduct = [];
+
+    // hàm xuất ra bảng hiển thị trên màng hình
+    function pushProduct() {
+        let ketQua = ``;
+        ketQua = `<table  border="1" >`;
+        for (let i = 0; i < listProduct.length; i++) {
+            ketQua += `<tr>` +
+                `<td width="200">` + listProduct[i] + `</td>` +
+                `<td><input onclick="editProduct(` + i + `)" type="button" value="Edit"></td>` +
+                `<td><input onclick="deleteProduct(` + i + `)" type="button" value="Delete"></td>` + `</tr>`;
+        }
+        ketQua += `<table>`;
+        document.getElementById(`viTriHienThiBang`).innerHTML = ketQua
+        document.getElementById("inputProduct").value = '';
+
+    }
+
+    // hàm thực thi hành động là add
+    function addproduct() {
+        let duLieuNameProduct = document.getElementById(`inputProduct`).value
+            listProduct.push(duLieuNameProduct)
+        pushProduct()
+
+    }
+
+    //hàm xoá một sp (giống kiểu xoá một phần tử trong mảng,
+    // với phần tử là một hàng sản phẩm )
+
+    function deleteProduct(index) {
+        let xacNhanXoa = confirm(` Bạn có chắc chắn xoá `)
+        if (xacNhanXoa) {
+            listProduct.splice(index, 1)
+
+        }
+        pushProduct()
+    }
+
+    // hàm edit
+    function editProduct(index) {
+        let input = prompt(` Nhập vào sản phẩm mới `)
+        listProduct[index] = input
+        pushProduct()
+    }
+
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr = [3, 5, 1, 8, -3, 7, 8];
+
+    function timGiatriMin(duLieu) {
+        let min = duLieu[0];
+        for (let i = 0; i < duLieu.length; i++) {
+            if (duLieu[i] < min) {
+                min = duLieu[i];
+            }
+        }
+
+        return min;
+    }
+
+    document.write(` Giá trị nhở nhất trong mảng là; `+timGiatriMin(arr))
+</script>
+</html>

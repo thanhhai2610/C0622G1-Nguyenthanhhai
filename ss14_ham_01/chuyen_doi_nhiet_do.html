@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>ĐỘ F</p>
+<input id="doF" type="number">
+
+<p>ĐỘ C</p>
+<input id="doC" type="number">
+<input onclick="chuyenDoiNhietDo(document.getElementById(`doF`).value)" type="button" value="Chuyển đổi nhiệt độ">
+</body>
+<script>
+    function chuyenDoiNhietDo(giaTri) {
+        giaTri= parseFloat(giaTri)
+        document.getElementById(`doC`).value = (giaTri-32)/1.8
+    }
+
+
+</script>
+</html>

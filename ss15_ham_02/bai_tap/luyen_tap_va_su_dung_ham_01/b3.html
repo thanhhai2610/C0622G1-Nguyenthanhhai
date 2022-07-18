@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="input1" type="number" placeholder="Nhập giá trị 1">
+<input id="input2" type="number" placeholder="Nhập giá trị 2">
+<input onclick="tangGiaTri(+document.getElementById(`input1`).value,+document.getElementById(`input2`).value)"
+       type="button" value=" So sánh hai giá trị ">
+<input id="onput" type="number">
+
+</body>
+<script>
+    function tangGiaTri(duLieu1, duLieu2) {
+        if (duLieu1 > duLieu2) {
+            alert(duLieu1 + `>` + duLieu2);
+        }
+        if (duLieu2 > duLieu1) {
+            result = duLieu1 + duLieu2;
+            document.getElementById(`onput`).value=result;
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Nhập số cầm kiểm tra </p>
+<input id="giaTriNhaVao" type="number">
+<input onclick="kiemTraSoNguyenTo(+document.getElementById(`giaTriNhaVao`).value)" type="button" value="Kiểm Tra">
+
+</body>
+<script>
+
+    function kiemTraSoNguyenTo(duLieuVao) {
+        while (duLieuVao < 0) {
+            alert(`Yêu cầu là số lớn hơn 0`);
+            return;
+        }
+        if (duLieuVao === 1 || duLieuVao ===0){
+            alert(duLieuVao + ` không là só nguyên tố `);
+            return;
+        }
+        for (let i = 2; i < duLieuVao; i++) {
+            if (duLieuVao % i === 0 && duLieuVao % duLieuVao === 0 ) {
+                alert(duLieuVao + ` không là só nguyên tố `);
+                return;
+            }
+
+        }
+        alert(duLieuVao + `  Là số nguyên tố `);
+
+    }
+
+</script>
+</html>
