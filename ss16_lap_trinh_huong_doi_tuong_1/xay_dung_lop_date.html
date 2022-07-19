@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function lamThu(day, month, year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.getDay = function () {
+            return this.day;
+        }
+        this.getMonth = function () {
+            return this.month;
+        }
+        this.getYear = function () {
+            return this.year;
+        }
+        this.setDay = function (dayNew) {
+            this.day = dayNew;
+        }
+        this.setMonth = function (monthNew) {
+            this.month = monthNew;
+        }
+        this.setYear = function (yearNew) {
+            this.year = yearNew;
+        }
+    }
+
+    let creatLamThu= new lamThu(26,10,1999);
+
+    creatLamThu.setDay(3)
+    creatLamThu.setMonth(12)
+    creatLamThu.setYear(1999)
+
+
+    let day= creatLamThu.getDay()
+    let month= creatLamThu.getMonth()
+    let year= creatLamThu.getYear()
+
+    console.log(day)
+    console.log(month)
+    console.log(year)
+</script>
+
+</html>

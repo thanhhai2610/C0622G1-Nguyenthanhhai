@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class NhietDo {
+        constructor(doC) {
+            this.doC = doC;
+        }
+
+        getchuyenDoCsangDoF() {
+            return this.doC * 1.8 + 32
+        }
+
+        getchuyenDoCsangDoK() {
+            return this.doC +273.15
+        }
+    }
+
+    let chuyenNhietDo = new NhietDo(+prompt(` Nhập giá trị độ C`))
+    document.write(chuyenNhietDo.getchuyenDoCsangDoF()+`<br>`)
+    document.write(chuyenNhietDo.getchuyenDoCsangDoK())
+
+</script>
+</html>

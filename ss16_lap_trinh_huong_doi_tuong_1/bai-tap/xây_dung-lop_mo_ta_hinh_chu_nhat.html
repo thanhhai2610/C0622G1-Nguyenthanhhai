@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class HinhChuNhat{
+        constructor(dai,rong) {
+            this.dai=dai;
+            this.rong=rong;
+        }
+        getTinhDienTich(){
+            console.log(this.dai*this.rong)
+        }
+
+        getTinhChuVi() {
+            console.log((this.dai +this.rong)*2)
+        }
+    }
+    let ketQua= new HinhChuNhat(+prompt(` Nhập giá trị dài`), +prompt(` Nhập giá trị rộng`))
+    ketQua.getTinhDienTich()
+    ketQua.getTinhChuVi()
+</script>
+</html>
