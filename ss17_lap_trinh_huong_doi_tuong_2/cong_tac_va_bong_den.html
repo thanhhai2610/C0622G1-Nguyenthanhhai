@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //Mô tả
+    //Viết chương trình thể hiện sự tương tác giữa hai đối tượng: công tắc và bóng đèn.
+    //Khi công tắc bật hoặc tắt, hiển thị ra màn hình trạng thái của bóng đèn.
+    // Sử dụng các lớp vừa tạo xây dựng chương trình java theo kịch bản sau:
+    // Khai báo và khởi tạo một đối tượng công tắc và một đối tượng bóng đèn điện.
+    // Kết nối công tắc với bóng đèn.
+    // Bật tắt công tắc 10 lần.
+    class Lamp {
+        constructor() {
+            this.status = false
+        }
+
+        turnOff() {
+            if (this.status) {
+                this.status = false
+                console.log(` Đèn đã đuọc tắt `)
+
+            } else {
+                console.log(` Đèn đang tắt mà cha, tắt chỗ mô nữa`)
+
+            }
+        }
+
+        turnOn() {
+            if (this.status) {
+                console.log(` Đèn đang bật mà cha `)
+
+            } else {
+                this.status = true
+                console.log(` Đèn đèn đã đuọc bât `)
+
+            }
+            console.log(this.status)
+        }
+    }
+
+    class SwitchButton {
+        constructor(status, lamp) {
+            this.lamp = lamp
+            this.status = false;
+        }
+
+        connectToLamp(nameLamp) {
+            this.lamp = nameLamp
+        }
+
+        switchOff() {
+            this.status = false
+            this.lamp.turnOff()
+
+
+        }
+
+        switchOn() {
+            this.status = true
+            this.lamp.turnOn()
+
+        }
+    }
+
+    let bongDenLed = new Lamp();
+    let congTac = new SwitchButton();
+
+    congTac.connectToLamp(bongDenLed)
+
+    bongDenLed.turnOff()
+    congTac.switchOn()
+    congTac.switchOn()
+    congTac.switchOff()
+    congTac.switchOff()
+
+
+</script>
+</html>

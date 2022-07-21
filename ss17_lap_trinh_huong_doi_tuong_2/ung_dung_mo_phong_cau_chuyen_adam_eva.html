@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    class Apple {
+        constructor(weight) {
+            this.weight = weight
+        }
+
+        getWeight() {
+            return this.weight
+        }
+
+        // kiểm tra quả táo còn dv nào không?
+        isEmpty() {
+            if (this.weight <= 0) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        // hành động ăn táo
+        decrease() {
+            if (this.isEmpty) {
+                alert("Táo đã hết rồi");
+
+            } else {
+                this.weight--; //khối lượng quả táo sẽ giảm đi một đv
+            }
+
+        }
+
+
+    }
+
+    class Hunman {
+        constructor(name, gender, weight) {
+            this.name = name
+            this.gender = gender
+            this.weight = weight
+        }
+
+        // kiểm tra giới tính (gender)
+        isMale() {
+            if (this.gender === 1) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        // hành động đưa ra kêtgs quả giới tính
+        getGender() {
+            if (this.isMale()) {
+                return `Male`
+            } else {
+                return `Female`
+            }
+
+        }
+
+        // kiểm tra táo có còn miếng (1dv là 1 miếng) nào để ăn không?
+        checkApple(apple) {
+            return apple.isEmpty()
+        }
+
+        // hunmam Mỗi lần ăn, chỉ ăn một miếng táo (1đv)
+        eat(apple) {
+            if (apple.getWeight() < 0) { //hiểu là: khối lượng xuất ra của class táo
+                apple.decrease()         // thì thưccj hiện cái hành động giảm bớt dv của class táo
+                this.weight++  // Khi ăn táo, khối lượng của người đó sẽ tăng lên một đv
+            }
+        }
+
+        // hunmam bieets nois
+        say(string) {
+            console.log(string)
+        }
+
+        getName() {
+            return this.name
+        }
+
+        setName(name) {
+            this.name = name
+        }
+
+        getWeight() {
+            return this.weight
+
+        }
+
+        setWeight(weight) {
+            this.weight = weight
+        }
+
+
+    }
+</script>
+</body>
+</html>
