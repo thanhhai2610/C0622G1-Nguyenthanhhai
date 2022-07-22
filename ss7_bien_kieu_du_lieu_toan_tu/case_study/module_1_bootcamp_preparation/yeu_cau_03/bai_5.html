@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Menu</h1>
+<ol>
+    <li>Cafe</li>
+    <li>Cam vắt</li>
+    <li>Nước ép cà rốt</li>
+    <li>Nước ép cà chua</li>
+    <li>Nước lọc</li>
+    <li>Nước dừa</li>
+</ol>
+<!--<input id="inputMon" type="text" placeholder="Nhập món bất kì trong Menu ">-->
+<!--<input type="text" placeholder="Nhập số lượng ">-->
+<!--<input onclick="addMon()" id="add" type="button" value="Gọi món">-->
+<p id="hienThilist"></p>
+<span>Tổng tiền: </span>
+<span id="thanhTien"></span>
+
+
+</body>
+<script>
+    // Bài 5: Giả sử menu của chúng ta có các loại thức uống như sau:
+    // Cafe
+    // Cam vắt
+    // Nước ép cà rốt
+    // Nước ép cà chua
+    // Nước lọc
+    // Nước dừa
+    // Viết một chương trình gọi thức uống đơn giản.
+
+    // Gợi ý: Trước tiên in ra màn hinh danh sách các loại thức uống cho người dùng chọn lựa
+    // Đánh dấu theo thứ tự 1 (cafe), 2 (cam vắt), 3(nước ép cà rốt),
+    // 4(nước ép cà chua), 5(nước lọc), 6(nước dừa), 7(thoát gọi món)
+    // Khi người dùng lựa chọn 1 trong số các thức uống,
+    // chương trình sẽ hiện đơn giá của thức uống đó và cho phép người dùng nhập số lượng.
+    // Cuối cùng hiển thị tổng số tiền người dùng cần phải trả.
+    // Sử dụng vòng lặp do while lặp lại cho người dùng đặt thức uống,
+    // kết thúc quá trình đặt thức uống khi người nhấn số 7
+    //
+
+    let listMon = ["Cafe", 'Cam vắt', `Nước ép cà rốt`, `Nước ép cà chua`, `Nước lọc`, `Nước dừa`]
+    let donGia = [1000, 2000, 3000, 4000, 5000, 6000]
+    let showDonGia = [``, ``, ``, ``, ``, ``]
+    let soLuong = [``, ``, ``, ``, ``, ``]
+    let thanhTien = [``, ``, ``, ``, ``, ``]
+
+    function goiMon() {
+        let kakak = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th> STT </th>\n' +
+            '        <th width="150"> Món  </th>\n' +
+            '        <th> Số lượng  </th>\n' +
+            '        <th width="100"> Giá  </th>\n' +
+            '        <th width="100"> Thành tiền  </th>\n' +
+            '    </tr>'
+        for (let i = 0; i < listMon.length; i++) {
+            kakak += '<tr>\n' +
+                '    <td>' + +(i + 1) + '</td>\n' +
+                '    <td>' + `<input onclick="showGia(` + i + `)" style="width: 100%" type="button" value="` + listMon[i] + `">` + '</td>\n' +
+                '    <td>' + soLuong[i] + '</td>\n' +
+                '    <td>' + showDonGia[i] + '</td>\n' +
+                '    <td>' + thanhTien[i] + '</td>\n' +
+                '</tr>'
+        }
+
+        kakak += '</table>'
+
+        document.getElementById(`hienThilist`).innerHTML = kakak
+    }
+
+    goiMon(showDonGia, listMon)
+
+    function showGia(i) {
+        showDonGia[i] = donGia[i]
+        soLuong.splice(i, 0, +prompt(`Nhập số lượng`))
+        thanhTien[i] = soLuong[i] * donGia[i]
+        let sum = 0
+        for (let i = 0; i < thanhTien.length; i++) {
+            sum += thanhTien[i]
+        }
+        console.log(sum)
+        document.getElementById(`thanhTien`).innerHTML=sum
+        goiMon()
+    }
+
+
+
+
+</script>
+</html>
