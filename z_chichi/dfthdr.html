@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính cơ bản</title>
+</head>
+<body>
+<style>
+    table{
+        border-collapse: collapse;
+        border: 1px solid black;
+        text-align: center;
+        width: 200px;
+        height: 300px;
+        column-width: 50px;
+    }
+    tr, td{
+        border-collapse: collapse;
+        border: 1px solid black;
+        background-color: darkgray;
+    }
+    td{
+        width: 50px;
+    }
+    button{
+        border: 1px solid lightgray;
+        background-color: darkgray;
+        color: white;
+        font-weight: bolder;
+        width: 100%;
+        height: 100%;
+
+    }
+</style>
+
+<table>
+    <tr>
+        <td id='display' style="background-color: white" colspan="4"> </td>
+    </tr>
+    <tr>
+        <td><button onclick="bam('(')"  >(</button></td>
+        <td><button onclick="bam(')')"  >)</button></td>
+        <td><button onclick="bam('%')"  >%</button></td>
+        <td><button onclick="erase()" >AC</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="bam('7')"  >7 </button></td>
+        <td><button onclick="bam('8')"  >8 </button></td>
+        <td><button onclick="bam('9')"  >9 </button></td>
+        <td><button onclick="bam('/')"  >/ </button></td>
+    </tr>
+    <tr>
+        <td><button onclick="bam('4')"  >4 </button></td>
+        <td><button onclick="bam('5')"  >5 </button></td>
+        <td><button onclick="bam('6')"  >6 </button></td>
+        <td><button onclick="bam('*')"  >* </button></td>
+    </tr>
+    <tr>
+        <td><button onclick="bam('1')"  >1 </button></td>
+        <td><button onclick="bam('2')"  >2 </button></td>
+        <td><button onclick="bam('3')"  >3 </button></td>
+        <td><button onclick="bam('-')"  >- </button></td>
+    </tr>
+    <tr>
+        <td><button onclick="bam('0')"  > 0 </button></td>
+        <td><button onclick="bam('.')"  > . </button></td>
+        <td><button onclick="calculate()"> = </button></td>
+        <td><button onclick="bam('+')"  > + </button></td>
+    </tr>
+</table>
+
+<script>
+    let display='';
+    let result;
+    function bam(value) {
+        display+= value;
+        document.getElementById('display').innerHTML= display;
+    }
+    function calculate() {
+        result=eval(display);
+        display= ''+ result;
+        document.getElementById('display').innerHTML=result;
+    }
+    function erase(){
+        display='';
+        document.getElementById('display').innerHTML=display;
+    }
+</script>
+</body>
+</html>

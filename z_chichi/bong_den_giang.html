@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+    class BongDen {
+        constructor() {
+            this.status = false;
+        }
+
+        dongDienVao() {
+            this.status = true;
+        }
+
+        dongDienKhongVao() {
+            this.status = false;
+        }
+
+        checkLight() {
+            if (this.status) {
+                return "den sang";
+            } else {
+                return "den tat";
+            }
+        }
+    }
+
+    class CongTac {
+        constructor(bongDen, status) {
+            this.bongDen = bongDen;
+            this.status = false;
+        }
+
+        ketNoi(tenBongDen) {
+            this.bongDen = tenBongDen;
+        }
+
+        batCongTac() {
+            this.status = true;
+            this.bongDen.dongDienVao();
+        }
+
+        tatCongTac() {
+            this.status = false;
+            this.bongDen.dongDienKhongVao();
+        }
+    }
+
+    let bongDen3 = new BongDen();
+    let congTac3 = new CongTac();
+    document.write('Kết nối! <br>');
+    congTac3.ketNoi(bongDen3);
+    document.write('Kiểm tra <br>');
+    document.write(bongDen3.checkLight() + '<br>');
+    document.write('Bật công tắc <br>');
+    congTac3.batCongTac();
+    document.write(bongDen3.checkLight() + '<br>');
+    document.write('Tắt công tắc <br>');
+    congTac3.tatCongTac()
+    document.write(bongDen3.checkLight() + '<br>');
+
+</script>
+
+</html>

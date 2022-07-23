@@ -2,18 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>b4_luỵen_tap_vong_lap_02</title>
+    <title>b12_luyen_tap_cau_truc_dieu_kien_2</title>
 </head>
 <body>
-<!--Bài 5: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lại con)-->
-<!--khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.-->
 <table>
     <tr>
         <th>Tiền gửi</th>
         <th>Số năm gửi</th>
         <th>Lãi suất</th>
-        <th>Tiền lãi khi đến hạn </th>
-        <th>Tiền giốc và lãi khi đến hạn </th>
+        <th>Tiền lãi sau <span></span> năm</th>
 
     </tr>
     <tr>
@@ -21,7 +18,6 @@
         <td><input id="namGui" type="text"></td>
         <td><input id="laiSuat" type="text"></td>
         <td><input id="tienLai" type="text"></td>
-        <td><input id="tienGocLai" type="text"></td>
     </tr>
 
     <tr>
@@ -40,14 +36,12 @@
         let soNamGui = +document.getElementById(`namGui`).value;
         let laiSuat = +document.getElementById(`laiSuat`).value;
         let n;
-        let tinhLai = 0;
+        let tinhLai = tienGoc * (Math.pow((1 + laiSuat / n), n * soNamGui));
         for (n = 0; n < soNamGui; n++) {
-            tinhLai += tienGoc *laiSuat ;
+            tinhLai = tienGoc * (Math.pow((1 + laiSuat / n), n * soNamGui));
         }
-        tinhGocLai = tinhLai+tienGoc
-        alert(tinhGocLai)
+        alert(tinhLai)
         document.getElementById(`tienLai`).value = tinhLai;
-        document.getElementById(`tienGocLai`).value = tinhGocLai;
     }
 
 </script>

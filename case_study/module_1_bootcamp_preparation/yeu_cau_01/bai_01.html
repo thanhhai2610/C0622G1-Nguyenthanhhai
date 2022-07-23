@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // Bài 1: Vẽ hình chữ nhật rỗng chiều dài n và chiều rộng m theo hình dưới đây.
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 5; j++) {
+            if (i === 0 || i === 3 || j === 0 || j === 4) {
+                document.write(`*`)
+            } else {
+                document.write(`\xa0\xa0`)
+            }
+        }
+        document.write(`<br>`)
+
+    }
+</script>
+</html>

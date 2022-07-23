@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+</body>
+<script>
+    // Bài 1: Viết một hàm chuẩn hóa xâu ký tự:
+    // biến đổi xâu ký tự thành xâu, sao cho trong xâu không
+    // có 2 dấu cách liền nhau và bắt đầu mỗi từ phải in hoa.
+    // Ví dụ tRuong    TaN   HAI => Truong Tan Hai.
+
+    let input = `tRuong    taN   hAI`;
+    inputNew = input.toString().split(``);
+    let arr = [];
+    console.log(inputNew);
+    for (let i = 0; i < inputNew.length; i++) {
+        if ((inputNew[i] === inputNew[i - 1]) && inputNew[i] === " ") {
+        } else {
+            arr.push(inputNew[i]);
+
+        }
+    }
+    console.log(arr);
+    for (let i = 0; i < arr.length; i++) {
+        arr.splice(0, 1, arr[0].toUpperCase());
+
+        if (arr[i - 1] === " ") {
+            arr.splice(i, 1, arr[i].toUpperCase());
+            console.log(arr[i].toUpperCase());
+        } else {
+            arr.splice(i, 1, arr[i].toLowerCase());
+            console.log(arr[i].toLowerCase());
+        }
+    }
+    alert(arr.join(``))
+
+
+</script>
+</html>

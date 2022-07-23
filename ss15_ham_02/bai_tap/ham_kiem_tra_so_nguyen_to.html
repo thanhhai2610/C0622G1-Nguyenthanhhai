@@ -13,12 +13,8 @@
 <script>
 
     function kiemTraSoNguyenTo(duLieuVao) {
-        while (duLieuVao < 0) {
-            alert(`Yêu cầu là số lớn hơn 0`);
-            return;
-        }
-        if (duLieuVao === 1 || duLieuVao ===0){
-            alert(duLieuVao + ` không là só nguyên tố `);
+        while (duLieuVao < 1) {
+            alert(`Yêu cầu là số lớn hơn 1`);
             return;
         }
         for (let i = 2; i < duLieuVao; i++) {

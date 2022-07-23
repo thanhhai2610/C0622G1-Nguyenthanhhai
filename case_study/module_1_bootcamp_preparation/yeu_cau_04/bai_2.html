@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //     Bài 2: Cho xâu kí tự. Hãy đếm số lượng kí tự khác nhau trong xâu đó
+    //     Ví dụ: s = "cabca", thì kết quả differentSymbolsNaive(s) = 3.
+    // ⇨	Có 3 kí tự khác nhau là a, b và c.
+
+    let input = `cabca`;
+    inputNew = input.toString().split(``);
+    console.log(inputNew);
+    let arr = [];
+    for (let i = 0; i < inputNew.length; i++) {
+        if (!arr.includes(inputNew[i])) {
+            arr.push(inputNew[i])
+        }
+
+    }
+    console.log(arr)
+    alert(` Số lượng kí tự khác nhau: `+arr.length)
+
+</script>
+</html>

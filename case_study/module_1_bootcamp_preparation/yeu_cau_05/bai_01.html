@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // Bài 1: Viết hàm tính tổng các số chẵn trong ma trận có kích thước m*n.
+    // Với m, n là các số nhập từ bàn phím.
+
+    // let arr = [
+    //     [1,2,3,4,5,6],
+    //     [7,8,9,10,11,12],
+    // ]
+
+    let inputRow = +prompt(` Nhập giá trị hàng `);
+    let inputCol = +prompt(` Nhập giá trị cột `);
+
+    sumChan(inputRow, inputCol)
+
+    function sumChan(inputRow, inputCol) {
+        let arr = new Array(inputRow);
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] = new Array(inputCol);
+            for (let j = 0; j < arr[i].length; j++) {
+                arr[i][j] = +prompt(` nhập giá trị`);
+                if (arr[i][j] % 2 === 0) {
+                    sum += arr[i][j];
+                }
+            }
+        }
+        console.log(arr);
+        console.log(sum);
+    }
+
+
+</script>
+</html>
