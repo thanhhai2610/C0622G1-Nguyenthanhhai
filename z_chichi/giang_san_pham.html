@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <p>Add New Product</p>
+    <input id="viTriNhap" type="text" placeholder="New product">
+    <button onclick="addNewProduct()">Add</button>
+    <p>Display All Product</p>
+    <div id="viTriHienThiBang"></div>
+
+
+</body>
+<script>
+    let productList = [];
+
+    //display product list
+    function displayList() {
+        let list = '<table border="0" width="70%">\n' +
+            '    <tr>\n' +
+            '        <td>Product Name</td><td colspan="2"></td>\n' +
+            '        <td>' + productList.length + ' product</td></tr>';
+        for (let i = 0; i < productList.length; i++) {
+            list += '<tr><td>' + productList[i] +
+                '</td><td><button onclick="editProduct(' + i + ')">Edit</button></td>\n' +
+                '<td><button onclick="deleteProduct(' + i + ')">Delete</button></td>' +
+                '</tr>';
+        }
+        list += '</table>';
+        document.getElementById("viTriHienThiBang").innerHTML = list;
+        document.getElementById("viTriNhap").value = '';
+    }
+
+    //add product function.
+    function addNewProduct() {
+        let name = document.getElementById("viTriNhap").value;
+        productList.push(name);
+        displayList();
+    }
+
+    //edit function
+    function editProduct(viTri) {
+        let newName = prompt('Nhập lại tên cho product ' + productList[viTri]);
+        if (newName === null) {
+            return
+        } else {
+            productList[viTri] = newName;
+        }
+        displayList();
+    }
+
+    //delete function
+    function deleteProduct(viTri) {
+        productList.splice(viTri, 1,)
+        displayList();
+    }
+
+
+</script>
+
+</html>

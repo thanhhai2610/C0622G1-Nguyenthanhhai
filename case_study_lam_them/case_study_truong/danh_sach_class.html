@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="display"></p>
+
+<button onclick="addBook()"> Thêm</button>
+<button onclick="sapXep()"> Sắp xếp</button>
+
+</body>
+<script>
+    class Book {
+        constructor(nameBook, author) {
+            this.nameBook = nameBook;
+            this.author = author;
+        }
+
+        //set
+        setNameBook(value) {
+            this.nameBook = value;
+        }
+
+        setAuthor(value) {
+            this.author = value;
+        }
+
+        //get
+        getNameBook() {
+            return this.nameBook;
+        }
+
+        getAuthor() {
+            return this.author;
+        }
+    }
+
+    let display = []
+    let book1 = new Book(`b`, `222222`)
+    let book2 = new Book(`a`, `1111111`)
+    display.push(book1, book2)
+    console.log(display)
+    table(display)
+
+    function table(display) {
+        let table = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>Tên Sách</th>\n' +
+            '        <th>Tác giả</th>\n' +
+            '        <th>Delete</th>\n' +
+            '        <th>Edit</th>\n' +
+            '    </tr>'
+        for (let i = 0; i < display.length; i++) {
+            table += '<tr>\n' +
+                '        <th>' + (i + 1) + '</th>\n' +
+                '        <th> ' + display[i].getNameBook() + '</th>\n' +
+                '        <th>' + display[i].getAuthor() + '</th>\n' +
+                '        <th>' + '<button onclick="deleteBook(' + i + ')"> Delete </button>' + '</th>\n' +
+                '        <th>' + '<button onclick="editBook(' + i + ')"> Edit </button>' + '</th>\n' +
+                '    </tr>'
+        }
+        table += '</table>'
+        document.getElementById(`display`).innerHTML = table
+    }
+
+    function addBook() {
+        do {
+            addName = prompt(` Nhập Sách mới `)
+            addAuthor = prompt(` Nhập tác giả  mới `)
+            if (addName === `` || addAuthor === ''){
+                alert(` Yêu cầu nhập lại `)
+
+            }
+        } while (addName === `` || addAuthor === '')
+
+        let bookNew = new Book(addName, addAuthor)
+        display.push(bookNew)
+        table(display)
+
+    }
+
+    function sapXep() {
+        display.sort(function (a, b) {
+                if (b.getNameBook() > a.getNameBook()) {
+                    return -1
+                } else if (a.getNameBook() > b.getNameBook()) {
+                    return 1
+                } else {
+                    return 0
+                }
+
+            }
+        )
+        console.log(display)
+        table(display)
+
+    }
+
+    function deleteBook(index) {
+        if (confirm(` bạn có chắc chắc xoá`)) {
+            display.splice(index, 1)
+        }
+        table(display)
+    }
+
+    function editBook(index) {
+        display[index].setNameBook(prompt(` Nhập Tên sách cần sữa `));
+        display[index].setAuthor(prompt(` Nhập tác già sữa  `));
+        table(display)
+    }
+
+    // }function editBook(index) {
+    //     let editName = prompt(` Nhập Tên sách cần sữa `)
+    //     let editAuthor = prompt(` Nhập tác già sữa  `)
+    //     let bookEdit = new Book(editName, editAuthor)
+    //     display.splice(index, 1, bookEdit)
+    //     table(display)
+    // }
+
+</script>
+</html>

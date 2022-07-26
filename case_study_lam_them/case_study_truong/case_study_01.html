@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    do {
+        input = +prompt(` Nhập vào n  phần tử có trong mảng()`)
+        if (input > 50 || input < 0) {
+            alert(` Yêu cầu nhâp lại`)
+        }
+        break;
+    } while (input < 50)
+
+    let inputNew = new Array(input)
+    for (let i = 0; i < inputNew.length; i++) {
+        inputNew[i]= +prompt(` Nhập vào  phần tử  trong mảng`)
+    }
+
+    // let input = [15, 2, 3, 5, 10, 15, 7, 8, 9,10]
+    avg(inputNew)
+
+    function avg(input) {
+        let sum = 0
+        let dem = 0
+        for (let i = 0; i < input.length; i++) {
+            if (input[i] % 5 === 0 && (i) % 3 === 0) {
+                sum += input[i]
+                dem++
+            }
+        }
+        console.log(sum / dem)
+    }
+
+</script>
+</html>

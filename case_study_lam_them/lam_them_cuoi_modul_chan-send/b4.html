@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="hienThi"></p>
+<button onclick="addMayTinh()">Thêm mới</button>
+<button onclick="sapXep()">Sắp Xếp</button>
+</body>
+<script>
+
+    class MayTinh {
+        constructor(maMay, tenMay, tenHang, gia) {
+            this.maMay = maMay;
+            this.tenMay = tenMay;
+            this.tenHang = tenHang;
+            this.gia = gia;
+        }
+
+        setMaMay(value) {
+            this.maMay = value
+        }
+
+        setTenMay(value) {
+            this.tenMay = value
+        }
+
+        setTenHang(value) {
+            this.tenHang = value
+        }
+
+        setGia(value) {
+            this.gia = value
+        }
+
+        getMaMay() {
+            return this.maMay
+        }
+
+        getTenMay() {
+            return this.tenMay
+        }
+
+        getTenHang() {
+            return this.tenHang
+        }
+
+        getGia() {
+            return this.gia
+        }
+
+    }
+
+    let mayTinh1 = new MayTinh(`1111`, `PRECISION M4800`, `DELL`, 26)
+    let mayTinh2 = new MayTinh(`6666`, `Hp2022`, `HP`, 19)
+    let listMayTinh = [mayTinh1, mayTinh2]
+    console.log(listMayTinh)
+
+    hienThi(listMayTinh)
+
+    function hienThi(listMayTinh) {
+        let table = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>Mã máy </th>\n' +
+            '        <th>Tên máy</th>\n' +
+            '        <th>Tên hãng</th>\n' +
+            '        <th>Giá bán </th>\n' +
+            '        <th>Edit </th>\n' +
+            '        <th>Delete </th>\n' +
+            '    </tr>'
+        for (let i = 0; i < listMayTinh.length; i++) {
+            table += '    <tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + listMayTinh[i].getMaMay() + '</td>\n' +
+                '        <td>' + listMayTinh[i].getTenMay() + '</td>\n' +
+                '        <td>' + listMayTinh[i].getTenHang() + '</td>\n' +
+                '        <td>' + listMayTinh[i].getGia() + '</td>\n' +
+                '        <td><button onclick="editMayTinh(' + i + ')">Edit</button></td>\n' +
+                '        <td><button onclick="deleteMayTinh(' + i + ')">Delete</button></td>\n' +
+                '    </tr>'
+        }
+        table += '</table>\n'
+        document.getElementById(`hienThi`).innerHTML = table
+    }
+
+    function addMayTinh() {
+        let addMaMay = prompt(` Nhập mã máy`)
+        let addTenMay = prompt(` Nhập tên máy`)
+        let addTenHang = prompt(` Nhập tên hang`)
+        let addGia = prompt(` Nhập giá máy`)
+        let addMayMoi = new MayTinh(addMaMay, addTenMay, addTenHang, addGia)
+        listMayTinh.push(addMayMoi)
+        hienThi(listMayTinh)
+
+    }
+
+    function editMayTinh(index) {
+        listMayTinh[index].setMaMay(prompt(` Sữa mã máy`));
+        listMayTinh[index].setTenMay(prompt(`sữa tên máy`));
+        listMayTinh[index].setTenHang(prompt(` Sữa tên hãng`));
+        listMayTinh[index].setGia(prompt(` Sữa giá`));
+        if (confirm(` Bạn có chắc chắn`)) {
+            hienThi(listMayTinh);
+
+        }
+    }
+
+    function deleteMayTinh(index) {
+        if (confirm(` Bạn có chắc chắn`)) {
+            listMayTinh.splice(index,1)
+        }
+        hienThi(listMayTinh);
+
+    }
+
+    function sapXep() {
+        listMayTinh.sort(function (a, b) {
+            if (a.getGia() > b.getGia()) {
+                return 1
+            } else if (a.getGia() < b.getGia()) {
+                return -1
+            } else {
+                return 0
+            }
+
+        })
+        hienThi(listMayTinh)
+
+    }
+
+</script>
+</html>

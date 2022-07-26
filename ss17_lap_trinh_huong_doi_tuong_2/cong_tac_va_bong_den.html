@@ -17,7 +17,7 @@
     // Bật tắt công tắc 10 lần.
     class Lamp {
         constructor() {
-            this.status = false
+            this.status = false // cho trạng thái ban đầu của bóng đen là tắt
         }
 
         turnOff() {
@@ -27,7 +27,6 @@
 
             } else {
                 console.log(` Đèn đang tắt mà cha, tắt chỗ mô nữa`)
-
             }
         }
 
@@ -38,7 +37,6 @@
             } else {
                 this.status = true
                 console.log(` Đèn đèn đã đuọc bât `)
-
             }
             console.log(this.status)
         }
@@ -57,14 +55,11 @@
         switchOff() {
             this.status = false
             this.lamp.turnOff()
-
-
         }
 
         switchOn() {
             this.status = true
             this.lamp.turnOn()
-
         }
     }
 

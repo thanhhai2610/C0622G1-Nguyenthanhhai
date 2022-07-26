@@ -14,7 +14,7 @@
     // có 2 dấu cách liền nhau và bắt đầu mỗi từ phải in hoa.
     // Ví dụ tRuong    TaN   HAI => Truong Tan Hai.
 
-    let input = `tRuong    taN   hAI`;
+    let input = `tRuong    taN   hhAI`;
     inputNew = input.toString().split(``);
     let arr = [];
     console.log(inputNew);
@@ -25,10 +25,10 @@
 
         }
     }
+
     console.log(arr);
     for (let i = 0; i < arr.length; i++) {
         arr.splice(0, 1, arr[0].toUpperCase());
-
         if (arr[i - 1] === " ") {
             arr.splice(i, 1, arr[i].toUpperCase());
             console.log(arr[i].toUpperCase());
