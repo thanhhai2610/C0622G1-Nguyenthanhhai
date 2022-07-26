@@ -9,25 +9,21 @@
 </body>
 <script>
 
-    // let dem = 0
-    // let input
-    // let arr=[]
-    // do {
-    //     let input = prompt(` Nhập số đầu  vào`)
-    //     arr.push(input)
-    //     dem++
-    // } while (dem < 5)
-    // console.log(arr)
+    let dem = 0
+    let input
+    let arr=[]
+    do {
+        let input = +prompt(` Nhập số đầu  vào`)
+        arr.push(input)
+        dem++
+    } while (dem < 10)
+    console.log(arr)
 
-    let arr = [1, 5, 6, 13, 9, 12, 8, 0, 5, 1]
+    // let arr = [1, 5, 6, 13, 9, 12, 8, 0, 5, 1]
     let ketQua = []
 
-    // timFibonaci(arr)
-    //
-    // function timFibonaci(arr) {
-    //
-    //
-    // }
+
+
     checkFibonaci(arr)
 
     function checkFibonaci(dưlieu) {
@@ -44,6 +40,8 @@
         console.log(fibonaci)
         for (let i = 0; i < dưlieu.length; i++) {
             if (fibonaci.includes(dưlieu[i])) {
+                console.log(fibonaci.includes(dưlieu[i]))
+
                 ketQua.push(dưlieu[i])
             }
         }
