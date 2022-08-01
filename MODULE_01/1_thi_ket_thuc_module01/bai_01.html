@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let input
+    do {
+        input = +prompt(` Nhập số phần tử sô nguyên`);
+        if (input > 50 || input < 0) {
+            alert(` Yêu cầu nhập lại `);
+        }
+    } while (input >= 50 || input < 0);
+
+    let arr = new Array(input);
+
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = +prompt(` Nhập phân tử vào mảng `);
+    }
+    alert(arr);
+
+    if (checkMang(arr)) {
+        console.log(` Mảng ` + arr + ` true`);
+    } else {
+        console.log(` Mảng ` + arr + ` false`);
+
+    }
+
+    function checkMang(arr) {
+        for (let i = 1; i < arr.length - 1; i++) {
+            if ((arr[i] <= arr[i - 1] && arr[i] <= arr[i + 1]) || (arr[i] >= arr[i - 1] && arr[i] >= arr[i + 1])) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+
+</script>
+</html>

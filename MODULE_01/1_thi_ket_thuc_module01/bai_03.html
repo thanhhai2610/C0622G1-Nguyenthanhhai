@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="hienThi"></p>
+<button onclick="addXe()">Thêm mới</button>
+</body>
+<script>
+
+    class Xe {
+        constructor(bienSoXe, hoVaTen, cMT, hangXe, phi) {
+            this.bienSoXe = bienSoXe;
+            this.hoVaTen = hoVaTen;
+            this.cMT = cMT;
+            this.hangXe = hangXe;
+            this.phi = phi;
+        }
+
+        setBienSoXe(value) {
+            this.bienSoXe = value;
+        }
+
+        setHoVaTen(value) {
+            this.hoVaTen = value;
+        }
+
+        setCMT(value) {
+            this.cMT = value;
+        }
+
+        setHangXe(value) {
+            this.hangXe = value;
+        }
+
+        setPhi(value) {
+            this.phi = value;
+        }
+
+        getBienSoXe() {
+            return this.bienSoXe;
+        }
+
+        getHoVaTen() {
+            return this.hoVaTen;
+        }
+
+        getCMT() {
+            return this.cMT;
+        }
+
+        getHangXe() {
+            return this.hangXe;
+        }
+
+        getPhi() {
+            return this.phi;
+        }
+    }
+
+    let xe1 = new Xe(`1111`, `Nguyễn Thanh Hải`, `2660`, `HONDA`, 3000);
+    let xe2 = new Xe(`6666`, `Lê Hữu Trường`, `9999`, `HONDA`, 3000);
+    let listXe = [xe1, xe2]
+    console.log(listXe)
+
+    display(listXe)
+
+    function display(listXe) {
+        let table = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>Biển số xe </th>\n' +
+            '        <th>Họ & tên</th>\n' +
+            '        <th>CMND</th>\n' +
+            '        <th>Hãng Xe </th>\n' +
+            '        <th>Phí gửi </th>\n' +
+            '        <th>Delete </th>\n' +
+            '    </tr>';
+        for (let i = 0; i < listXe.length; i++) {
+            table += '    <tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + listXe[i].getBienSoXe() + '</td>\n' +
+                '        <td>' + listXe[i].getHoVaTen() + '</td>\n' +
+                '        <td>' + listXe[i].getCMT() + '</td>\n' +
+                '        <td>' + listXe[i].getHangXe() + '</td>\n' +
+                '        <td>' + listXe[i].getPhi() + '</td>\n' +
+                '        <td><button onclick="deleteXe(' + i + ')">Delete</button></td>\n' +
+                '    </tr>';
+        }
+        table += '</table>\n';
+        document.getElementById(`hienThi`).innerHTML = table
+    }
+
+    function addXe() {
+        let addBienSo;
+        let addHoVaTen;
+        let addCMT;
+        let addHangXe;
+        let addPhi;
+        do {
+            addBienSo = prompt(` Nhập biển sô`);
+            addHoVaTen = prompt(` Nhập học và tên`);
+            addCMT = +prompt(` Nhập CMT`);
+            addHangXe = prompt(` Nhập hãng xe`);
+            addPhi = +prompt(` Nhập phí đã gửi`);
+            if ((addBienSo === `` || addHoVaTen === `` || isNaN(addCMT) || addHangXe === `` || isNaN(addPhi))) {
+                alert(` Nhập lại`)
+            }
+        } while ((addBienSo === `` || addHoVaTen === `` || isNaN(addCMT) || addHangXe === `` || isNaN(addPhi)))
+
+        let addXeMoi = new Xe(addBienSo, addHoVaTen, addCMT, addHangXe, addPhi)
+        listXe.push(addXeMoi)
+        display(listXe)
+
+    }
+
+    function deleteXe(index) {
+        if (confirm(` Bạn có chắc chắn`)) {
+            listXe.splice(index, 1);
+        }
+        display(listXe);
+    }
+
+
+
+</script>
+</html>

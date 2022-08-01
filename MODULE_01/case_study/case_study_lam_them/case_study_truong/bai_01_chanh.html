@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    let inputRow = +prompt(` Nhập số lượng hàng`);
+    let inputCol = +prompt(` Nhập số lượng cột`);
+
+    aaaaaaaaaa(inputRow,inputCol);
+    function aaaaaaaaaa(inputRow,inputCol) {
+        let arr = new Array(inputRow);
+        let sum=0;
+        let dem=0;
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] = new Array(inputCol);
+            for (let j = 0; j < arr[i].length; j++) {
+                arr[i][j] = +prompt(` Nhập phần tử `);
+                if (j%2===0){
+                    sum+= arr[i][j];
+                    dem++;
+                }
+            }
+        }
+        console.log(arr);
+        console.log(sum);
+        console.log(dem);
+        console.log(sum/dem);
+    }
+
+
+</script>
+
+
+</html>

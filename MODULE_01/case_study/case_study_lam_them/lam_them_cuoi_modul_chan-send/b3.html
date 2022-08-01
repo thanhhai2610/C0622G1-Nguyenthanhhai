@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let dem = 0
+    let input
+    let arr=[]
+    do {
+        let input = +prompt(` Nhập số đầu  vào`)
+        arr.push(input)
+        dem++
+    } while (dem < 10)
+    console.log(arr)
+
+    // let arr = [1, 5, 6, 13, 9, 12, 8, 0, 5, 1]
+    let ketQua = []
+
+
+
+    checkFibonaci(arr)
+
+    function checkFibonaci(dưlieu) {
+        let fibo = 0
+        let fib1 = 1
+        let fibi = 0
+        let fibonaci = []
+        for (let i = 0; i < 50; i++) {
+            fibonaci.push(fibo)
+            fibi = fibo + fib1
+            fibo = fib1
+            fib1 = fibi
+        }
+        console.log(fibonaci)
+
+
+        for (let i = 0; i < dưlieu.length; i++) {
+            if (fibonaci.includes(dưlieu[i])) {
+                console.log(fibonaci.includes(dưlieu[i]))
+
+                ketQua.push(dưlieu[i])
+            }
+        }
+        ketQua.sort(function (a, b) {
+            if (b > a) {
+                return -1
+            } else if (a>b) {
+                return 1
+            }else  {
+                return 0
+            }
+        })
+        console.log(ketQua)
+    }
+
+
+</script>
+</html>

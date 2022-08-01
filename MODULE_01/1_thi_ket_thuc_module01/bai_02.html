@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>luyen_tap_cau_truc_if_else</title>
+</head>
+<body>
+</body>
+<script>
+
+
+    let day
+    let mounth
+    let year
+    let arrInput = []
+    do {
+        day = +prompt(`Nhập ngày`);
+        mounth = +prompt(`Nhập tháng`);
+        year = prompt(`Nhập năm`);
+        if (day > 31 || mounth > 12 || year < 1000) {
+            alert(` Yêu cầu nhập đúng định dạng`)
+            continue
+        }
+        arrInput.push(day, mounth, year)
+    } while (day > 31 || mounth > 12 || year < 1000)
+
+
+    alert(` Chuỗi đầu vào ` + arrInput.join(`/`))
+
+    xacDinhNamNhuan(arrInput[arrInput.length - 1])
+
+    function xacDinhNamNhuan(year) {
+        let divisible_by_4 = year % 4 === 0;
+        let divisible_by_100 = year % 100 === 0;
+        let undivisible_by_100 = year % 100 !== 0;
+        let divisible_by_400 = year % 400 === 0;
+        let dk1 = divisible_by_4 && undivisible_by_100;
+        let dk2 = divisible_by_4 && divisible_by_100 && divisible_by_400;
+        if ((dk1) || (dk2)) {
+            alert(year + ` Là năm nhuận `);
+        } else {
+            alert(year + ` Không Là năm nhuận `);
+        }
+    }
+
+
+</script>
+</html>

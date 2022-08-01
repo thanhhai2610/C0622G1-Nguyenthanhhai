@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // let input=`AbcDefG`
+    // let ketQua=[]
+    // let kiemTra=`QWERTYUIOPASDFGHJKLLZXCVBNMMM`
+    // console.log(kiemTra.length)
+    // for (let i = 0; i <input.length ; i++) {
+    //     for (let j = 0; j <kiemTra.length ; j++) {
+    //         if (input[i]===kiemTra[j]){
+    //             ketQua.push(input[i])
+    //         }
+    //     }
+    // }
+    // console.log(ketQua)
+
+
+    let input = `AbcDefG`
+    console.log(input.charCodeAt(0))
+    let ketQua = []
+    aaaaaa(input)
+    function aaaaaa(input) {
+        for (let i = 0; i < input.length; i++) {
+            if (input.charCodeAt(i) <= 90 && input.charCodeAt(i) >= 65) {
+                ketQua.push(input[i])
+            }
+        }
+        console.log(ketQua)
+    }
+
+
+</script>
+</html>
