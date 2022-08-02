@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class readNumbersIntoWords {
+public class ReadNumbersIntoWords {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -85,8 +85,8 @@ public class readNumbersIntoWords {
             }
         } else if (number < 100) {
             String str2 = String.valueOf(number);
-            String[] array2 = str2.split("");
-            ArrayList<String> stringRead = new ArrayList<>();
+            String[] array2 = str2.split(""); //chuyen str sang mang string
+            ArrayList<String> stringRead = new ArrayList<>(); //tao mang string empty
             String[] arrayNumber = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
             String[] arrayReadFirst = {"Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
             String[] arrayReadSecond = {"One", "two", "three", "four", "fif", "six", "seven", "eight", "nine"};
