@@ -11,7 +11,7 @@ public class MergeArray {
             arr[i]=arr1[i];
         }
         for (int i = 0; i < arr1.length; i++) {
-            arr[8+i] = arr1[i];
+            arr[arr1.length+i] = arr1[i];
         }
         for (int i = 0; i < arr.length - 1; i++) {
             System.out.print(arr[i] + "\t");
