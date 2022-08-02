@@ -13,10 +13,12 @@ public class SumNumbersInColumn {
 
         int[][] arr = new int[inputRow][inputCol];
         int sum = 0;
+        int count=1;
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                System.out.println("Nhập phần tủ số " + (j + 1));
+                System.out.println("Nhập phần tủ số " + (count));
                 arr[i][j] = Integer.parseInt(scanner.nextLine());
+                count++;
             }
         }
         int indexCol;
