@@ -1,9 +1,11 @@
-package ss3_array_method;
+package demo;
 
 import java.util.Scanner;
 
-public class SumDiagonal {
+public class FindTheMin {
+
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập số hàng  ");
         int inputRow = Integer.parseInt(scanner.nextLine());
@@ -23,24 +25,22 @@ public class SumDiagonal {
                 count++;
             }
         }
-//         Duyệt mảng
-        for ( i = 0; i < arr.length; i++) {
-            for ( j = 0; j < arr[i].length; j++) {
-                if (i == j) {
-                    sum += arr[i][j];
-                }
-            }
-        }
-        for ( i = 0; i < arr.length; i++) {
-            for ( j = arr[i].length - 1; j >= 0; j--) {
-                if ((arr[i].length-1) - i == j) {
-//                    System.out.println(arr[i][j]);
-                    sum += arr[i][j];
-                }
-            }
-        }
-        System.out.print("Kết quả là: ");
-        System.out.println(sum);
+        ten( arr);
+
     }
 
+    public static void ten (int [][] arr) {
+        int i;
+        int j;
+        int min = arr[0][0];
+        for ( i = 0; i < arr.length; i++) {
+            for ( j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] < min) {
+                    min = arr[i][j];
+                }
+            }
+        }
+        System.out.println("Số nhỏ nhất trong mảng là: "+min);
+
+    }
 }
