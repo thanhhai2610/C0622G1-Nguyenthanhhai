@@ -4,10 +4,12 @@ public class DisplayingPrimeNumbersLessThan100 {
     public static void main(String[] args) {
 
         int input = 2;
+        int count = 0;
+        int i;
+        boolean check ;
         while (input < 100) {
-            int count = 0;
-            boolean check = true;
-            for (int i = 2; i < input; i++) {
+            check = true;
+            for ( i = 2; i < input; i++) {
                 if (input % i == 0) {
                     check = false;
                     break;

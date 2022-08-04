@@ -4,9 +4,11 @@ public class ShowFirst20Primes {
     public static void main(String[] args) {
         int count = 0;
         int input = 2;
+        boolean check;
+        int i;
         while (count < 20) {
-            boolean check = true;
-            for (int i = 2; i < input; i++) {
+            check = true;
+            for ( i = 2; i < input; i++) {
                 if (input % i == 0) {
                     check = false;
                     break;
