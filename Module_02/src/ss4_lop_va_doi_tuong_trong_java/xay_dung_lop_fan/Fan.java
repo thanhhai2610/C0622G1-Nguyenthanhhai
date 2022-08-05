@@ -54,7 +54,7 @@ public class Fan {
         if (on) {
             return this.speed + this.color + this.radius + "fan is on";
         } else {
-            return this.speed + this.color + this.radius + "fan is off";
+            return  this.color + this.radius + "fan is off";
         }
     }
 }
