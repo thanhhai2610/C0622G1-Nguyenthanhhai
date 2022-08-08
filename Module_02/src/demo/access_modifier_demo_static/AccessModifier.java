@@ -1,10 +1,15 @@
-package ss5_access_modiffier_static_method_static_propety.access_modifier;
+package demo.access_modifier_demo_static;
 
 public class AccessModifier {
-    public double radius = 1;
-    private String color = "red";
+    public static double radius = 1;
+    private static String color = "red";
 
-    public AccessModifier() {
+    public  double radius2 = 1;
+    private  String color2 = "red";
+
+
+
+    public  AccessModifier() {
     }
 
     public AccessModifier(double radius, String color) {
