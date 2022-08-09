@@ -46,9 +46,11 @@ public class MoveablePoint extends Point {
         return String.format("(%.1f,%.1f),speed=(%.1f,%.1f)",getX(),getY(),xSpeed,ySpeed);
     }
 
+
+
     public MoveablePoint move() {
-        setX(getX()+xSpeed);
-        setY(getY()+ySpeed);
+        setX(getX() + xSpeed);
+        setY(getY() + ySpeed);
         return this;
     }
 }
