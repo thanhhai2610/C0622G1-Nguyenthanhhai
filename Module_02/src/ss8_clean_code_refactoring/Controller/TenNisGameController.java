@@ -2,6 +2,8 @@ package ss8_clean_code_refactoring.Controller;
 
 import java.util.Scanner;
 
+import static ss8_clean_code_refactoring.Model.TennisGame.readScore;
+
 public class TenNisGameController {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
