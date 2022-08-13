@@ -34,8 +34,30 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void removeTeacher() {
+        Teacher teacher = this.input();
+        if(teacher == null) {
+            System.out.println("Không tìm thấy đối tượng cần xóa");
+        } else {
+            System.out.println("Bạn có chắc muốn xóa đối tượng có id là "+teacher.getiD()+" không?");
+            System.out.println("1. Có");
+            System.out.println("2. Không");
+            int choice = Integer.parseInt(scanner.nextLine());
+            if(choice == 1) {
+                arrTeacher.remove(teacher);
+                System.out.println("Xóa thành công!");
+            }
+        }
 
-
+    }
+    public Teacher input() {
+        System.out.print("Mời bạn nhập vào id cần xóa: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        for(int i = 0 ; i< arrTeacher.size(); i++) {
+            if(arrTeacher.get(i).getiD() == id) {
+                return arrTeacher.get(i);
+            }
+        }
+        return null;
     }
 
 

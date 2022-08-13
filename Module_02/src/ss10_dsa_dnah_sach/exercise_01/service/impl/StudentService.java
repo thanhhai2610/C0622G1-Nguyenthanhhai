@@ -23,11 +23,8 @@ public class StudentService implements IStudentService {
         System.out.println("Thêm mới học sinh thành công");
     }
 
-    @Override
-    public void removeStudent() {
 
 
-    }
     @Override
     public void displayAllStudent() {
         for (Student x:arrStudent) {
@@ -35,7 +32,33 @@ public class StudentService implements IStudentService {
         }
     }
 
+    @Override
+    public void removeStudent() {
+        Student student = this.input();
+        if(student == null) {
+            System.out.println("Không tìm thấy đối tượng cần xóa");
+        } else {
+            System.out.println("Bạn có chắc muốn xóa đối tượng có id là "+student.getiD()+" không?");
+            System.out.println("1. Có");
+            System.out.println("2. Không");
+            int choice = Integer.parseInt(scanner.nextLine());
+            if(choice == 1) {
+                arrStudent.remove(student);
+                System.out.println("Xóa thành công!");
+            }
+        }
 
+    }
+    public Student input() {
+        System.out.print("Mời bạn nhập vào id cần xóa: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        for(int i = 0 ; i< arrStudent.size(); i++) {
+            if(arrStudent.get(i).getiD() == id) {
+                return arrStudent.get(i);
+            }
+        }
+        return null;
+    }
 
     public Student infoStudent() {
         System.out.print("Mời bạn nhập ID: ");
