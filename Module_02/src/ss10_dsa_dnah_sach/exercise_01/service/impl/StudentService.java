@@ -73,7 +73,6 @@ public class StudentService implements IStudentService {
         double point = Double.parseDouble(scanner.nextLine());
         System.out.print("Mời bạn nhập tên lớp: ");
         String nameClass = scanner.nextLine();
-        Student student = new Student(id, name,gender, dateOfBirth, nameClass,point);
-        return student;
+        return new Student(id, name,gender, dateOfBirth, nameClass,point);
     }
 }
