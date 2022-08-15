@@ -14,6 +14,7 @@ public class MainController {
 //            }
 //        }
 //            System.out.println(" chuỗi Palindrome");
+
         Queue<String> input3 = new LinkedList<>();
         for (int i = 0; i < input2.length; i++) {
             input3.add(input2[i]);

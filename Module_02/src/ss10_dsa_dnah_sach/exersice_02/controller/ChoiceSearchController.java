@@ -23,12 +23,12 @@ public class ChoiceSearchController {
     }
 
     public void search() {
-        Vehicle truck = this.check(" mời bạn nhập vào biển kiểm xoát cần tim kiếm ");
-        if (truck == null) {
-            System.out.println("Không tìm thấy phương tiện cần tìm");
-        } else {
-            System.out.println(truck.toString());
-        }
+            Vehicle vehicle = this.check(" mời bạn nhập vào biển kiểm xoát cần tim kiếm ");
+            if (vehicle == null) {
+                System.out.println("Không tìm thấy phương tiện cần tìm");
+            } else {
+                System.out.println(vehicle.toString());
+            }
     }
 
     public Vehicle check(String notification) {

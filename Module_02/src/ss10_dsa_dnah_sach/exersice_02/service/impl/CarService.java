@@ -20,7 +20,15 @@ public class CarService implements IVehicle {
 
     @Override
     public void add() {
-        arraycar.add(infoCar());
+        Vehicle tam1=infoCar();
+        String tam = tam1.getLicensePlates();
+        for (int i = 0; i < arraycar.size(); i++) {
+            if (arraycar.get(i).getLicensePlates().equals(tam)) {
+                System.out.println("Biển số bị trùng");
+                return;
+            }
+        }
+        arraycar.add(tam1);
         System.out.println("Thêm mới xe thành công");
     }
 
@@ -37,14 +45,7 @@ public class CarService implements IVehicle {
             System.out.println(x.toString());
         }
     }
-    public void searchArr() {
-        Vehicle vehicle = this.input(" mời bạn nhập vào biển kiểm xoát cần tim kiếm");
-        if (vehicle == null) {
-            System.out.println("Không tìm thấy phương tiện cần tìm");
-        } else {
-            System.out.println(vehicle.toString());
-        }
-    }
+
 
     @Override
     public void remove() {

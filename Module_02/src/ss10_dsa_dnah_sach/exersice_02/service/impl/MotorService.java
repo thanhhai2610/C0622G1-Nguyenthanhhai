@@ -21,7 +21,15 @@ public class MotorService implements IVehicle {
 
     @Override
     public void add() {
-        arrayMotor.add(infoMotor());
+        Vehicle tam1=infoMotor();
+        String tam = tam1.getLicensePlates();
+        for (int i = 0; i < arrayMotor.size(); i++) {
+            if (arrayMotor.get(i).getLicensePlates().equals(tam)) {
+                System.out.println("Biển số bị trùng");
+                return;
+            }
+        }
+        arrayMotor.add(tam1);
         System.out.println("Thêm mới xe thành công");
     }
     public void addArr(List<Vehicle> arr) {

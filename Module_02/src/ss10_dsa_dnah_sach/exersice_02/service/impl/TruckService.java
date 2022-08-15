@@ -21,15 +21,30 @@ public class TruckService implements IVehicle {
 
     @Override
     public void add() {
-        arrayTruck.add(infoTruck());
+        Vehicle tam1=infoTruck();
+        String tam = tam1.getLicensePlates();
+        for (int i = 0; i < arrayTruck.size(); i++) {
+            if (arrayTruck.get(i).getLicensePlates().equals(tam)) {
+                System.out.println("Biển số bị trùng");
+                return;
+            }
+        }
+        arrayTruck.add(tam1);
         System.out.println("Thêm mới xe thành công");
+//        if (truck == null) {
+//            System.out.println("Không tìm thấy phương tiện cần tìm");
+//        } else {
+//            System.out.println(truck.toString());
+//        }
     }
+
     public void addArr(List<Vehicle> arr) {
         for (Vehicle x : arrayTruck) {
             arr.add(x);
 
         }
     }
+
     @Override
     public void display() {
         for (Vehicle x : arrayTruck) {
@@ -54,7 +69,6 @@ public class TruckService implements IVehicle {
         }
 
     }
-
 
     public Vehicle input(String notification) {
         System.out.print(notification);
