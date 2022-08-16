@@ -15,7 +15,6 @@ public class CarService implements IVehicle {
     static {
         arraycar.add(new Car("333333333", "Honda", 2022, "Nguyễn Thanh Hải", 16, "Xe du lich"));
         arraycar.add(new Car("444444444", "Vinfast", 2022, "Nguyễn Thanh Hải", 4, "Xe gia oto 4 gia đình"));
-
     }
 
     @Override
