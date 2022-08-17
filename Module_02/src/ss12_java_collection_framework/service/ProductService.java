@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ProductService {
+public class ProductService implements IProductService {
     Scanner scanner = new Scanner(System.in);
     private static List<Product> arrProduct = new LinkedList<>();
 
