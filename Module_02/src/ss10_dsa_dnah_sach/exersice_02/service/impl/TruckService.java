@@ -31,11 +31,6 @@ public class TruckService implements IVehicle {
         }
         arrayTruck.add(tam1);
         System.out.println("Thêm mới xe thành công");
-//        if (truck == null) {
-//            System.out.println("Không tìm thấy phương tiện cần tìm");
-//        } else {
-//            System.out.println(truck.toString());
-//        }
     }
 
     public void addArr(List<Vehicle> arr) {
