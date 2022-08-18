@@ -47,7 +47,7 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return String.format("|%-9d|%-10s|%-4S|%-8s|", iD, name, gender, dataOfBirth);
+        return String.format("|%-9d|%-20s|%-4S|%-8s", iD, name, gender, dataOfBirth);
 
     }
 }

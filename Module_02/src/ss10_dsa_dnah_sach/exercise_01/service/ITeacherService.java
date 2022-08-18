@@ -6,4 +6,8 @@ public interface ITeacherService {
     void displayAllYTeacher();
 
     void removeTeacher();
+
+    void searchID();
+    void searchName();
+    void sortReduceTeacherName();
 }

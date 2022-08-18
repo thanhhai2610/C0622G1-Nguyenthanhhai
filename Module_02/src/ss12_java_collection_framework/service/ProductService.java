@@ -12,8 +12,9 @@ public class ProductService implements IProductService {
 
     static {
         arrProduct.add(new Product("1111", 1999, "Duy Trung", 10));
-        arrProduct.add(new Product("2222", 1997, "Duy Xuyên", 30));
-        arrProduct.add(new Product("6666", 1997, "Duy Xuyên", 20));
+        arrProduct.add(new Product("2222", 1997, "Duy Xuyên", 60));
+        arrProduct.add(new Product("6666", 1997, "Duy Xuyên", 30));
+        arrProduct.add(new Product("3333", 1997, "Duy Xuyên", 20));
     }
 
     /**
@@ -96,12 +97,15 @@ public class ProductService implements IProductService {
      * sắp xếp product theo chiều tăng dần
      */
     public void sortRaiseProductPrice() {
-        for (int i = 0; i < arrProduct.size() - 1; i++) {
+        boolean isSwap = true;
+        for (int i = 0; i < arrProduct.size() - 1 && isSwap; i++) {
+            isSwap = false;
             for (int j = i + 1; j < arrProduct.size(); j++) {
                 if (arrProduct.get(j).getPrice() < arrProduct.get(i).getPrice()) {
                     Product tam = arrProduct.get(i);
                     arrProduct.set(i, arrProduct.get(j));
                     arrProduct.set(j, tam);
+                    isSwap = true;
                 }
             }
         }
@@ -114,12 +118,15 @@ public class ProductService implements IProductService {
      * sắp xếp product theo chiều giảm dần
      */
     public void sortReduceProductPrice() {
+        boolean isSwap = true;
         for (int i = 0; i < arrProduct.size() - 1; i++) {
+            isSwap = false;
             for (int j = i + 1; j < arrProduct.size(); j++) {
                 if (arrProduct.get(j).getPrice() > arrProduct.get(i).getPrice()) {
                     Product tam = arrProduct.get(i);
                     arrProduct.set(i, arrProduct.get(j));
                     arrProduct.set(j, tam);
+                    isSwap = true;
                 }
             }
         }
