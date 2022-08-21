@@ -16,7 +16,7 @@ public class MianController {
         for (int i = 0; i < string.length(); i++) {
             if (stringMap.containsKey(string.charAt(i))) {
                 Integer value = stringMap.get(string.charAt(i));// .get(key)-> giá trị value
-                System.out.println(stringMap);
+//                System.out.println(stringMap);
                 value++;
                 stringMap.replace(string.charAt(i), value);
             } else {

@@ -45,8 +45,9 @@ public class MotorService implements IVehicle {
         }
     }
 
+
     @Override
-    public void remove() {
+    public void removeByLicensePlates() {
         Vehicle motor = this.input("Mời bạn nhập vào biển kiểm xoát  cần xóa: ");
         if (motor == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");

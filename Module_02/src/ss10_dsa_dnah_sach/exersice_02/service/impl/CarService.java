@@ -17,6 +17,9 @@ public class CarService implements IVehicle {
         arraycar.add(new Car("444444444", "Vinfast", 2022, "Nguyễn Thanh Hải", 4, "Xe gia oto 4 gia đình"));
     }
 
+    /**
+     * thêm xe mới
+     */
     @Override
     public void add() {
         Vehicle tam1=infoCar();
@@ -31,13 +34,19 @@ public class CarService implements IVehicle {
         System.out.println("Thêm mới xe thành công");
     }
 
+    /**
+     * thêm mảng arrCar vào mảng cha (Vehicle)
+     * @param arr "tham sô đầu vào là một mảng cha (vehicle)"
+     */
     public void addArr(List<Vehicle> arr) {
         for (Vehicle x : arraycar) {
             arr.add(x);
-
         }
     }
 
+    /**
+     * hiển thị car
+     */
     @Override
     public void display() {
         for (Vehicle x : arraycar) {
@@ -45,9 +54,11 @@ public class CarService implements IVehicle {
         }
     }
 
-
+    /**
+     * xoá một đối tượng car theo BKS
+     */
     @Override
-    public void remove() {
+    public void removeByLicensePlates() {
         Vehicle car = this.input("Mời bạn nhập vào biển kiểm xoát  cần xóa: ");
         if (car == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
@@ -64,6 +75,11 @@ public class CarService implements IVehicle {
 
     }
 
+    /**
+     * check giá trị thuộc tính nhập vào có sẵn chưa
+     * @param notification
+     * @return vùng nhớ chưa giá trị thuộc tính nhập
+     */
     public Vehicle input(String notification) {
         System.out.print(notification);
         String licensePlates = scanner.nextLine();
@@ -75,6 +91,10 @@ public class CarService implements IVehicle {
         return null;
     }
 
+    /**
+     * Nhập thông tin Car
+     * @return vùng nhớ dối tương car mới có thông tin mới nhập vào
+     */
     public Vehicle infoCar() {
         System.out.print("Mời bạn nhập BIển kiểm xoát: ");
         String licensePlates = scanner.nextLine();

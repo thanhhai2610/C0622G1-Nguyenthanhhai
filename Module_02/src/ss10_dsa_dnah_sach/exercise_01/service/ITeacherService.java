@@ -8,6 +8,8 @@ public interface ITeacherService {
     void removeTeacher();
 
     void searchID();
+
     void searchName();
+
     void sortReduceTeacherName();
 }

@@ -2,6 +2,7 @@ package ss10_dsa_dnah_sach.exercise_01.service.impl;
 
 import ss10_dsa_dnah_sach.exercise_01.model.Student;
 import ss10_dsa_dnah_sach.exercise_01.service.IStudentService;
+import utils.exception.PointException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,6 +104,7 @@ public class StudentService implements IStudentService {
 
     /**
      * check tên nhập vào trong mảng student
+     *
      * @return vùng nhớ dữ liệu có chưa tên nhập vào
      */
     public Student inputName() {
@@ -118,6 +120,7 @@ public class StudentService implements IStudentService {
 
     /**
      * check ID nhập vào trong mảng student
+     *
      * @return vùng nhớ dữ liệu chưa iD nhập vào
      */
     public Student inputID() {
@@ -133,6 +136,7 @@ public class StudentService implements IStudentService {
 
     /**
      * Nhập thông tin studet
+     *
      * @return vùng nhớ dữ liệu stuet với cái thuộc tính cưa nhập
      */
     public Student infoStudent() {
@@ -144,10 +148,25 @@ public class StudentService implements IStudentService {
         String gender = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");
         String dateOfBirth = scanner.nextLine();
-        System.out.print("Mời bạn nhập điểm: ");
-        double point = Double.parseDouble(scanner.nextLine());
-        System.out.print("Mời bạn nhập tên lớp: ");
-        String nameClass = scanner.nextLine();
-        return new Student(id, name, gender, dateOfBirth, nameClass, point);
+        double point = 0;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập điểm: ");
+                point = Double.parseDouble(scanner.nextLine());
+                if (point > 100 || point < 0) {
+                    throw new PointException("Bạn không thể nhập điểm nhỏ hơn 0 hoặc lớn hơn 100");
+                }
+            } catch (PointException e) {
+                System.out.println( e.getMessage());
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Bạn nhập không phải là số. Yêu cầu nhập lại.");
+
+            }
+
+            System.out.print("Mời bạn nhập tên lớp: ");
+            String nameClass = scanner.nextLine();
+            return new Student(id, name, gender, dateOfBirth, nameClass, point);
+        }
     }
 }

@@ -29,23 +29,22 @@ public class Circle extends Shape implements InterfaceResizeable {
         return radius * radius * Math.PI;
     }
 
+//    @Override
+//    public double getPerimeter() {
+//        return 2 * radius * Math.PI;
+//    }
+
     @Override
     public double getPerimeter() {
         return 2 * radius * Math.PI;
     }
 
-    @Override
     public void resizeable(double percent) {
         this.setRadius(this.getRadius() * (1 + percent));
     }
 
     @Override
     public String toString() {
-//        return "Circle{" +
-//                "radius=" + radius +
-//                ", color='" + color + '\'' +
-//                ", filled=" + filled +
-//                '}';
         return String.format("|Circle    |radius= %.2f|       -      | color: %-6s|", radius, color);
 
     }

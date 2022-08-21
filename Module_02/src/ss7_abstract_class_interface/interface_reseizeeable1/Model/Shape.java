@@ -4,7 +4,6 @@ public abstract class Shape implements InterfaceResizeable {
     protected String color = "Green";
     protected boolean filled = true;
 
-
     public Shape() {
 
     }
@@ -34,8 +33,8 @@ public abstract class Shape implements InterfaceResizeable {
 
     public abstract double getPerimeter();
 
-    public void resizeable(double percent) {
-    }
+//    public void resizeable(double percent) {
+//    }
 
     @Override
     public String toString() {

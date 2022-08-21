@@ -44,10 +44,9 @@ public class Rectangle extends Shape implements InterfaceResizeable {
         return 2 * (width + this.length);
     }
 
-    @Override
     public void resizeable(double percent) {
-        this.width += this.width *percent;
-        this.length += this.length *percent;
+        this.width += this.width * percent;
+        this.length += this.length * percent;
     }
 
 //    @Override
@@ -59,9 +58,6 @@ public class Rectangle extends Shape implements InterfaceResizeable {
 
     @Override
     public String toString() {
-        return String.format("|Rectangle |width= %.2f |length= %.2f | color: %-6s|", width,length, color);
-
+        return String.format("|Rectangle |width= %.2f |length= %.2f | color: %-6s|", width, length, color);
     }
-
-
 }

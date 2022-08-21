@@ -5,7 +5,7 @@ public class AccessModifier {
     private static String color = "red";
 
     public  double radius2 = 1;
-    private  String color2 = "red";
+    private final String color2 = "red";
 
 
 
@@ -13,8 +13,8 @@ public class AccessModifier {
     }
 
     public AccessModifier(double radius, String color) {
-        this.radius = radius;
-        this.color = color;
+        AccessModifier.radius = radius;
+        AccessModifier.color = color;
     }
 
     public double getRadius() {
@@ -22,7 +22,7 @@ public class AccessModifier {
     }
 
     public void setRadius(double radius) {
-        this.radius = radius;
+        AccessModifier.radius = radius;
     }
 
     public String getColor() {
@@ -30,6 +30,6 @@ public class AccessModifier {
     }
 
     public void setColor(String color) {
-        this.color = color;
+        AccessModifier.color = color;
     }
 }

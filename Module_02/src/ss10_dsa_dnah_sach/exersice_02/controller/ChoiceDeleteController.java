@@ -24,13 +24,13 @@ public class ChoiceDeleteController {
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    truckController.remove();
+//                    truckController.remove();
                     break;
                 case 2:
-                    carController.remove();
+//                    carController.remove();
                     break;
                 case 3:
-                    motorController.remove();
+//                    motorController.remove();
                     break;
                 case 4:
                     return;

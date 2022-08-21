@@ -47,8 +47,10 @@ public class TruckService implements IVehicle {
         }
     }
 
+
+
     @Override
-    public void remove() {
+    public void removeByLicensePlates() {
         Vehicle truck = this.input("Mời bạn nhập vào biển kiểm xoát  cần xóa: ");
         if (truck == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");

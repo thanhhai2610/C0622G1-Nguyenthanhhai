@@ -1,6 +1,6 @@
 package ss10_dsa_dnah_sach.exercise_01.model;
 
-public abstract class Person {
+public abstract class  Person {
     private int iD;
     private String name;
     private String gender;

@@ -78,12 +78,37 @@ public class TeacherService implements ITeacherService {
      * tiềm kiếm giáo viên theo tên
      */
     public void searchName() {
-        Teacher teacherGetI = inputName();
-        if (teacherGetI == null) {
+        List<Teacher> searchTeacher = new ArrayList<>();
+        System.out.print("Mời bạn nhập vào tên : ");
+        String name = scanner.nextLine();
+//        for (int i = 0; i < arrTeacher.size(); i++) {
+//            if (arrTeacher.get(i).getName().contains(name)) {
+//                searchStudent.add(arrTeacher.get(i).getName());
+//            }
+//        }
+        for (Teacher teacher : arrTeacher) {
+            if (teacher.getName().contains( name)) {
+                searchTeacher.add(teacher);
+            }
+        }
+        if (searchTeacher.isEmpty()) {
             System.out.println("Không tìm thấy đối tượng ");
         } else {
-            System.out.println(teacherGetI);
+            for (Teacher teacher : searchTeacher) {
+                System.out.println(teacher.toString());
+
+            }
         }
+    }
+    /**
+     * check name
+     *
+     * @return vùng nhớ dữ liệu chứa Name nhập vào
+     */
+
+    public Teacher inputName() {
+
+        return null;
     }
 
     /**
@@ -107,22 +132,7 @@ public class TeacherService implements ITeacherService {
         }
     }
 
-    /**
-     * check name
-     *
-     * @return vùng nhớ dữ liệu chứa Name nhập vào
-     */
 
-    public Teacher inputName() {
-        System.out.print("Mời bạn nhập vào tên : ");
-        String name = scanner.nextLine();
-        for (int i = 0; i < arrTeacher.size(); i++) {
-            if (arrTeacher.get(i).getName().contains(name)) {
-                return arrTeacher.get(i);
-            }
-        }
-        return null;
-    }
 
     /**
      * check ID nhập vào
