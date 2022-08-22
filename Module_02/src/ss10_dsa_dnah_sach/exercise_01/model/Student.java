@@ -4,7 +4,8 @@ public class Student extends Person{
     private String className;
     private double point;
 
-    public Student(int iD, String name, String gender, String dataOfBirth, String className, double point) {
+
+    public Student(String iD, String name, String gender, String dataOfBirth, String className, double point) {
         super(iD, name, gender, dataOfBirth);
         this.className = className;
         this.point = point;
@@ -28,7 +29,7 @@ public class Student extends Person{
 
     @Override
     public String toString() {
-        return super.toString()+ String.format("|%-15s|%.2f|", className, point);
+        return super.toString()+ String.format(",%-15s,%.2f", className, point);
 
     }
 }

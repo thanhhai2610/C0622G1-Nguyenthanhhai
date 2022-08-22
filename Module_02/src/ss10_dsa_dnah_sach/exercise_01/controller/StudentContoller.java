@@ -3,6 +3,7 @@ package ss10_dsa_dnah_sach.exercise_01.controller;
 import ss10_dsa_dnah_sach.exercise_01.service.IStudentService;
 import ss10_dsa_dnah_sach.exercise_01.service.impl.StudentService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class StudentContoller {
@@ -10,7 +11,7 @@ public class StudentContoller {
     private static Scanner scanner = new Scanner(System.in);
     private IStudentService studentService = new StudentService();
 
-    public void menuManagementStudent() {
+    public void menuManagementStudent() throws IOException {
         while (true) {
             System.out.println("---------------------------------------------");
             System.out.println("Chào mừng bạn đến với Codegym");

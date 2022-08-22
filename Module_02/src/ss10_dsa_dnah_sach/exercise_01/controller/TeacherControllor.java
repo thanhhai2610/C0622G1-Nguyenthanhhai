@@ -3,13 +3,14 @@ package ss10_dsa_dnah_sach.exercise_01.controller;
 import ss10_dsa_dnah_sach.exercise_01.service.ITeacherService;
 import ss10_dsa_dnah_sach.exercise_01.service.impl.TeacherService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TeacherControllor {
     private static Scanner scanner = new Scanner(System.in);
     private ITeacherService teacherService = new TeacherService();
 
-    public void menuManagementTeacher() {
+    public void menuManagementTeacher() throws IOException {
 
         while (true) {
             System.out.println("---------------------------------------------");

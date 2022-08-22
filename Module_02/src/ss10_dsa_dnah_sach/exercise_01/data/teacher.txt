@@ -1,0 +1,8 @@
+1        ,Nguyễn Thanh Hải    ,NAM ,26/10/1996  ,Toán  
+2        ,Nguyễn Thanh Sơn    ,NỮ  ,12/12/1997  ,Lý    
+3        ,Nguyễn Thanh Sơn    ,NỮ  ,12/12/1997  ,Lý    
+4        ,Lê Hữu Trường       ,NỮ  ,12/12/1997  ,Lý    
+5        ,Cát Uyên            ,NỮ  ,12/12/1997  ,Lý    
+6        ,Lê Bá Hoàng Giang   ,NỮ  ,12/12/1997  ,Lý    
+9        ,thay ong noi        ,NAM ,1221212     ,ngu   
+321231   ,Cô uyên             ,5/5 ,03/08/1997  ,all

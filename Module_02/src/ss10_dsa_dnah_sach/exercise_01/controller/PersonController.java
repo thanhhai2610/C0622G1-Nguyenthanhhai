@@ -1,5 +1,6 @@
 package ss10_dsa_dnah_sach.exercise_01.controller;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class PersonController {
@@ -9,7 +10,7 @@ public class PersonController {
     private StudentContoller studentContoller = new StudentContoller();
     private TeacherControllor teacherControllor = new TeacherControllor();
 
-    public void managementPerson() {
+    public void managementPerson() throws IOException {
 
         while (true) {
             System.out.println("---------------------------------------------");
