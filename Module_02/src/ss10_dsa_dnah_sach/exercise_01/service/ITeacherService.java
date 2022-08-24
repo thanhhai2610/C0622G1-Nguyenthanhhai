@@ -5,7 +5,7 @@ import java.io.IOException;
 public interface ITeacherService {
     void addTeacher() throws IOException;
 
-    void displayAllYTeacher();
+    void displayAllYTeacher() throws IOException;
 
     void removeTeacher();
 

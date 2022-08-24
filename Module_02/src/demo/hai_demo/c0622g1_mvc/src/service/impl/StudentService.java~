@@ -1,0 +1,130 @@
+package service.impl;
+
+import model.Student;
+import service.IStudentService;
+import utils.exception.PointException;
+import utils.read_write.ReadFile;
+import utils.read_write.WriteFile;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class StudentService implements IStudentService {
+    private static final String SRC_DATA_STUDENT_FILE_CSV = "src/data/studentFile.csv";
+    private static Scanner scanner = new Scanner(System.in);
+    private static List<Student> students = new ArrayList<>();
+
+    @Override
+    public void addStudent() {
+        Student student = this.infoStudent();
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(student);
+        System.out.println("Thêm mới học sinh thành công");
+        WriteFile.writeFile(SRC_DATA_STUDENT_FILE_CSV, true, convertListStudentToListString(studentList));
+    }
+
+    @Override
+    public void displayAllStudent() {
+        students = this.readFileStudent();
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
+
+    @Override
+    public void removeStudent() {
+        students = this.readFileStudent();
+        Student student = this.findStudent();
+        if (student == null) {
+            System.out.println("Không tìm thấy đối tượng cần xóa");
+        } else {
+            System.out.println("Bạn có chắc muốn xóa đối tượng có id là " + student.getId() + " không?");
+            System.out.println("1. Có");
+            System.out.println("2. Không");
+            int choice = Integer.parseInt(scanner.nextLine());
+            if (choice == 1) {
+                students.remove(student);
+                WriteFile.writeFile(SRC_DATA_STUDENT_FILE_CSV, false, convertListStudentToListString(students));
+                System.out.println("Xóa thành công!");
+            }
+        }
+
+    }
+
+    public Student findStudent() {
+        students = this.readFileStudent();
+        System.out.print("Mời bạn nhập vào id cần xóa: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId() == id) {
+                return students.get(i);
+            }
+        }
+        return null;
+    }
+
+    public Student infoStudent() {
+        students = this.readFileStudent();
+        System.out.print("Mời bạn nhập id: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        System.out.print("Mời bạn nhập tên: ");
+        String name = scanner.nextLine();
+        System.out.print("Mời bạn nhập ngày sinh: ");
+        String dateOfBirth = scanner.nextLine();
+
+        double point;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập điểm: ");
+                point = Double.parseDouble(scanner.nextLine());
+                if (point < 0 || point > 100) {
+                    throw new PointException("Bạn không thể nhập điểm nhỏ hơn 0 hoặc lớn hơn 100");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn nhập không phải là số. Yêu cầu nhập lại.");
+            } catch (PointException p) {
+                System.err.println(p.getMessage());
+            } catch (Exception e) {
+
+            }
+
+        }
+
+        System.out.print("Mời bạn nhập tên lớp: ");
+        String nameClass = scanner.nextLine();
+        Student student = new Student(id, name, dateOfBirth, point, nameClass);
+        return student;
+    }
+
+    private List<Student> readFileStudent() {
+        List<String> studentList = ReadFile.readFile(SRC_DATA_STUDENT_FILE_CSV);
+        List<Student> students = new ArrayList<>();
+        if (studentList.size() == 0) {
+            System.out.println("Dữ liệu trong file không có");
+            return null;
+        } else {
+            String[] propertiesOfStudent;
+            Student student;
+            for (int i = 0; i < studentList.size(); i++) {
+                propertiesOfStudent = studentList.get(i).split(",");
+                if (propertiesOfStudent.length == 5) {
+                    student = new Student(Integer.parseInt(propertiesOfStudent[0]), propertiesOfStudent[1], propertiesOfStudent[2], Double.parseDouble(propertiesOfStudent[3]), propertiesOfStudent[4]);
+                    students.add(student);
+                }
+            }
+            return students;
+        }
+    }
+    private String convertStudentToString(Student student) {
+        return student.getId()+","+student.getName()+","+student.getDateOfBirth()+","+student.getPoint()+","+student.getNameClass();
+    }
+    private List<String> convertListStudentToListString(List<Student> students) {
+       List<String> strings = new ArrayList<>();
+        for(Student student: students) {
+            strings.add(convertStudentToString(student));
+        }
+        return strings;
+    }
+}

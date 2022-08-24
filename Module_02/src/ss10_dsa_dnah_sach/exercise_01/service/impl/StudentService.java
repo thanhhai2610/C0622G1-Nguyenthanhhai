@@ -2,79 +2,44 @@ package ss10_dsa_dnah_sach.exercise_01.service.impl;
 
 import ss10_dsa_dnah_sach.exercise_01.model.Student;
 import ss10_dsa_dnah_sach.exercise_01.service.IStudentService;
-import ss10_dsa_dnah_sach.exercise_01.service.utils.PointException;
+import utils.exception.InvalidAgeException;
+import utils.exception.InvalidStringException;
+import utils.exception.PointException;
 
-import java.io.*;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import static utils.read_write_file.WriteFileUtil.writeFile;
+
 public class StudentService implements IStudentService {
+    public static final String SS_10_DSA_DNAH_SACH_EXERCISE_01_DATA_STUDENT_CSV = "Module_02\\src\\ss10_dsa_dnah_sach\\exercise_01\\data\\student.csv";
     private static Scanner scanner = new Scanner(System.in);
     private static List<Student> arrStudent = new ArrayList<>();
-
-    static {
-        arrStudent.add(new Student("1", "HaiNT", "NAM", "26/10/1996", "C0622G1", 9));
-        arrStudent.add(new Student("2", "HaiTT", "Nu", "12/12/1997", "C0622G1", 9));
-    }
 
     /**
      * thêm mới học sinh
      */
     @Override
-    public void addStudent() throws IOException {
-        String path = "Module_02\\src\\ss10_dsa_dnah_sach\\exercise_01\\data\\student.txt";
-        List<Student> arrStudent = readFile(path);
-        arrStudent.add(infoStudent());
-        writeFile(arrStudent, path);
+    public void addStudent() throws ParseException {
+        Student student = this.infoStudent();
+        List<Student> studentsList = new ArrayList<>();
+        studentsList.add(student);
+        writeFile(SS_10_DSA_DNAH_SACH_EXERCISE_01_DATA_STUDENT_CSV, false, convertListStudentToListString(studentsList));
         System.out.println("Thêm mới học sinh thành công");
     }
 
-    /**
-     * viết mảng vừa được thêm phần tử vào file
-     * @param arrStudent
-     * @param path
-     * @throws IOException
-     */
-    private static void writeFile(List<Student> arrStudent, String path) throws IOException {
-        File file = new File(path);
-        FileWriter fileWriter = new FileWriter(file);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        for (Student student : arrStudent) {
-            bufferedWriter.write(student.toString());
-            bufferedWriter.newLine();
-        }
-        bufferedWriter.close();
-    }
-
-    /**
-     * đọc file danh sách student
-     * @param path
-     * @return mảng mảng có các phần tử là đối tượng student
-     * @throws IOException
-     */
-    private static List<Student> readFile(String path) throws IOException {
-        File file = new File(path);
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-        String line;
-        List<Student> arrStudent = new ArrayList<>();
-        while ((line = bufferedReader.readLine()) != null) {
-            if ("".equals(line)) {
-                continue;
-            }
-            String[] info = line.split(",");
-            Student student = new Student(info[0],info[1],info[2],info[3],info[4],Double.parseDouble(info[5]));
-            arrStudent.add(student);
-        }
-        bufferedReader.close();
-        return arrStudent;
-    }
 
     /**
      * hiểm thị sinh viên
      */
     @Override
     public void displayAllStudent() {
+        arrStudent = this.readFileStudent();
         for (Student x : arrStudent) {
             System.out.println(x.toString());
         }
@@ -85,7 +50,8 @@ public class StudentService implements IStudentService {
      */
     @Override
     public void removeStudent() {
-        Student student = this.inputID();
+        arrStudent = this.readFileStudent();
+        Student student = this.inputCheckID();
         if (student == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
@@ -98,18 +64,18 @@ public class StudentService implements IStudentService {
                 System.out.println("Xóa thành công!");
             }
         }
-
+        writeFile(SS_10_DSA_DNAH_SACH_EXERCISE_01_DATA_STUDENT_CSV, true, convertListStudentToListString(arrStudent));
     }
 
     /**
      * tìm kiếm sinh viên theo ID
      */
     public void searchID() {
-        Student studentGetI = inputID();
-        if (studentGetI == null) {
+        Student studentGetId = inputCheckID();
+        if (studentGetId == null) {
             System.out.println("Không tìm thấy đối tượng ");
         } else {
-            System.out.println(studentGetI);
+            System.out.println(studentGetId);
         }
     }
 
@@ -117,18 +83,30 @@ public class StudentService implements IStudentService {
      * tìm kiếm sinh viên theo tên
      */
     public void searchName() {
-        Student studentGetI = inputName();
-        if (studentGetI == null) {
+        arrStudent = this.readFileStudent();
+        List<Student> searchStudent = new ArrayList<>();
+        System.out.print("Mời bạn nhập vào tên : ");
+        String name = scanner.nextLine();
+        for (Student student : arrStudent) {
+            if (student.getName().contains(name)) {
+                searchStudent.add(student);
+            }
+        }
+        if (searchStudent.isEmpty()) {
             System.out.println("Không tìm thấy đối tượng ");
         } else {
-            System.out.println(studentGetI);
+            for (Student student : searchStudent) {
+                System.out.println(student.toString());
+
+            }
         }
     }
 
     /**
-     * sắp xếp theo tên
+     * sắp xếp sinh viên theo tên
      */
     public void sortReduceStudentName() {
+        arrStudent = this.readFileStudent();
         boolean isSwap = true;
         for (int i = 0; i < arrStudent.size() - 1; i++) {
             isSwap = false;
@@ -144,22 +122,7 @@ public class StudentService implements IStudentService {
         for (Student x : arrStudent) {
             System.out.println(x.toString());
         }
-    }
-
-    /**
-     * check tên nhập vào trong mảng student
-     *
-     * @return vùng nhớ dữ liệu có chưa tên nhập vào
-     */
-    public Student inputName() {
-        System.out.print("Mời bạn nhập vào tên : ");
-        String name = scanner.nextLine();
-        for (int i = 0; i < arrStudent.size(); i++) {
-            if (arrStudent.get(i).getName().contains(name)) {
-                return arrStudent.get(i);
-            }
-        }
-        return null;
+        writeFile(SS_10_DSA_DNAH_SACH_EXERCISE_01_DATA_STUDENT_CSV, true, convertListStudentToListString(arrStudent));
     }
 
     /**
@@ -167,8 +130,9 @@ public class StudentService implements IStudentService {
      *
      * @return vùng nhớ dữ liệu chưa iD nhập vào
      */
-    public Student inputID() {
-        System.out.print("Mời bạn nhập vào id : ");
+    public Student inputCheckID() {
+        arrStudent = this.readFileStudent();
+        System.out.print("Mời bạn nhập vào ID: ");
         String id = (scanner.nextLine());
         for (int i = 0; i < arrStudent.size(); i++) {
             if (arrStudent.get(i).getiD().equals(id)) {
@@ -179,19 +143,91 @@ public class StudentService implements IStudentService {
     }
 
     /**
-     * Nhập thông tin studet
+     * Nhập thông tin cho  student
      *
-     * @return vùng nhớ dữ liệu stuet với cái thuộc tính cưa nhập
+     * @return vùng nhớ dữ liệu student với cái thuộc tính cưa nhập
      */
-    public Student infoStudent() {
-        System.out.print("Mời bạn nhập ID: ");
-        String id = scanner.nextLine();
+    public Student infoStudent() throws ParseException {
+        String id = infoId();
+
         System.out.print("Mời bạn nhập tên: ");
         String name = scanner.nextLine();
+
         System.out.print("Mời bạn giới tính: ");
         String gender = scanner.nextLine();
-        System.out.print("Mời bạn nhập ngày sinh: ");
-        String dateOfBirth = scanner.nextLine();
+
+        String dateOfBirth = infoDateOfBirth();
+
+        System.out.print("Mời bạn nhập tên lớp: ");
+        String nameClass = scanner.nextLine();
+
+        double point = infoPoint();
+
+        return new Student(id, name, gender, dateOfBirth, nameClass, point);
+    }
+
+    /**
+     * nhập thông tin ngày sinh
+     *
+     * @return ngày sinh
+     */
+    public String infoDateOfBirth() {
+        String dateOfBirth = null;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập ngày sinh: ");
+                dateOfBirth = scanner.nextLine();
+                if (dateOfBirth.equals("")) {
+                    throw new InvalidStringException("Vui lòng nhập dữ liệu vào!");
+                }
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                formatter.setLenient(false); // kiểm tra chặt chẽ hơn
+                Date DateOfBirthToDate = formatter.parse(dateOfBirth);//được dụng để phân tích string thành date trong java.
+
+                String dateNowString = formatter.format(new Date());//được dụng để phân tích date nơ thành String trong java.
+                int yearNow = Integer.parseInt(dateNowString.substring(dateNowString.length() - 4));
+                int yearOfBirth = Integer.parseInt(dateOfBirth.substring(dateOfBirth.length() - 4));
+                int age = yearNow - yearOfBirth;
+                if (age < 18 || age > 100) {
+                    throw new InvalidAgeException("Tuổi phải lớn hơn hoặc bằng 18 và nhỏ hơn hoặc bằng 100");
+                }
+                return dateOfBirth;
+            } catch (NumberFormatException | ParseException e) {
+                System.out.println("Ngày sinh chưa đúng định dạng dd/MM/yyyy. Nhập lại: ");
+            } catch (InvalidAgeException | InvalidStringException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * nhập thông tin ID
+     *
+     * @return ID
+     */
+    public String infoId() {
+        String id = "";
+        while (true) {
+            System.out.print("Mời bạn nhập ID: ");
+            id = scanner.nextLine();
+            if (id.equals("")) {
+                try {
+                    throw new InvalidStringException("Vui lòng nhập lại ,bạn chưa nhập dữ liệu vào!");
+                } catch (InvalidStringException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            return id;
+        }
+
+    }
+
+    /**
+     * nhập thông tin điểm
+     *
+     * @return trả về điểm
+     */
+    public double infoPoint() {
         double point = 0;
         while (true) {
             try {
@@ -200,16 +236,49 @@ public class StudentService implements IStudentService {
                 if (point > 100 || point < 0) {
                     throw new PointException("Bạn không thể nhập điểm nhỏ hơn 0 hoặc lớn hơn 100");
                 }
+                return point;
             } catch (PointException e) {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {
                 System.out.println("Bạn nhập không phải là số. Yêu cầu nhập lại.");
-
             }
-
-            System.out.print("Mời bạn nhập tên lớp: ");
-            String nameClass = scanner.nextLine();
-            return new Student(id, name, gender, dateOfBirth, nameClass, point);
         }
+    }
+
+    /**
+     * đọc file danh sách student
+     *
+     * @return mảng mảng có các phần tử là các đối tượng student
+     * @throws IOException
+     */
+    private List<Student> readFileStudent() {
+        List<String> studentList = utils.read_write.ReadFile.readFile(SS_10_DSA_DNAH_SACH_EXERCISE_01_DATA_STUDENT_CSV);
+        List<Student> arrStudent = new ArrayList<>();
+        if (studentList.size() == 0) {
+            System.out.println("Dữ liệu trong file không có");
+            return null;
+        } else {
+            for (int i = 0; i < studentList.size(); i++) {
+                String[] infoStudent = studentList.get(i).split(",");
+                Student student = new Student(infoStudent[0], infoStudent[1], infoStudent[2], infoStudent[3], infoStudent[4], Double.parseDouble(infoStudent[5]));
+                arrStudent.add(student);
+            }
+        }
+        return arrStudent;
+    }
+
+    /**
+     * chuyển mảng sudent có dữ liệu Student thành dữ liệu String
+     *
+     * @param studentList mảng có dữ liệu là Student
+     * @return mảng các đối tượng studebt có dữ liệu là String
+     */
+    private List<String> convertListStudentToListString(List<Student> studentList) {
+        List<String> stringsStudentList = new ArrayList<>();
+        for (Student student : studentList) {
+            stringsStudentList.add(student.toString());
+        }
+        return stringsStudentList;
+
     }
 }

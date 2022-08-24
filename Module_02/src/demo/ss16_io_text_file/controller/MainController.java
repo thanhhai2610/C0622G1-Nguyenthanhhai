@@ -23,7 +23,7 @@ public class MainController {
     }
 
     private static void writeFile(List<Student> students) throws IOException {
-        File file = new File("src/ss16_io_text_file/data/student.txt");
+        File file = new File("src/ss16_io_text_file/data/student.csv");
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
@@ -36,7 +36,7 @@ public class MainController {
     }
 
     private static List<Student> readFile() throws IOException {
-        File file = new File("src/ss16_io_text_file/data/student.txt");
+        File file = new File("src/ss16_io_text_file/data/student.csv");
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
