@@ -172,7 +172,14 @@ public class StudentService implements IStudentService {
      * @return ngày sinh
      */
     public String infoDateOfBirth() {
-        String dateOfBirth = null;
+        String dateOfBirth;
+        SimpleDateFormat formatter;
+        Date DateOfBirthToDate;
+        String dateNowString;
+        int yearNow;
+        int yearOfBirth;
+        int age;
+
         while (true) {
             try {
                 System.out.print("Mời bạn nhập ngày sinh: ");
@@ -180,20 +187,23 @@ public class StudentService implements IStudentService {
                 if (dateOfBirth.equals("")) {
                     throw new InvalidStringException("Vui lòng nhập dữ liệu vào!");
                 }
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                formatter = new SimpleDateFormat("dd/MM/yyyy");
                 formatter.setLenient(false); // kiểm tra chặt chẽ hơn
-                Date DateOfBirthToDate = formatter.parse(dateOfBirth);//được dụng để phân tích string thành date trong java.
-
-                String dateNowString = formatter.format(new Date());//được dụng để phân tích date nơ thành String trong java.
-                int yearNow = Integer.parseInt(dateNowString.substring(dateNowString.length() - 4));
-                int yearOfBirth = Integer.parseInt(dateOfBirth.substring(dateOfBirth.length() - 4));
-                int age = yearNow - yearOfBirth;
+                //được dụng để phân tích string thành date trong java.
+                DateOfBirthToDate = formatter.parse(dateOfBirth);
+                //được dụng để phân tích date nơ thành String trong java.
+                dateNowString = formatter.format(new Date());
+                yearNow = Integer.parseInt(dateNowString.substring(dateNowString.length() - 4));
+                yearOfBirth = Integer.parseInt(dateOfBirth.substring(dateOfBirth.length() - 4));
+                age = yearNow - yearOfBirth;
                 if (age < 18 || age > 100) {
                     throw new InvalidAgeException("Tuổi phải lớn hơn hoặc bằng 18 và nhỏ hơn hoặc bằng 100");
                 }
                 return dateOfBirth;
-            } catch (NumberFormatException | ParseException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ngày sinh chưa đúng định dạng dd/MM/yyyy. Nhập lại: ");
+            } catch (ParseException e) {
+                System.out.println("Bạn cần nhập đúng ngày tháng năm sinh . Nhập lại: ");
             } catch (InvalidAgeException | InvalidStringException e) {
                 System.out.println(e.getMessage());
             }
@@ -228,7 +238,7 @@ public class StudentService implements IStudentService {
      * @return trả về điểm
      */
     public double infoPoint() {
-        double point = 0;
+        double point ;
         while (true) {
             try {
                 System.out.print("Mời bạn nhập điểm: ");

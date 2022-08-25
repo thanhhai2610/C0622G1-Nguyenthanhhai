@@ -1,9 +1,12 @@
 package casestudy_furama_resort_module_02.controller;
 
+import casestudy_furama_resort_module_02.service.impl.EmployeeServiceImpl;
+
 import java.util.Scanner;
 
 public class FuramaController {
     private static Scanner scanner = new Scanner(System.in);
+    EmployeeServiceImpl employeeService =new EmployeeServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
 
     public void displayMainMenu() {
         while (true) {

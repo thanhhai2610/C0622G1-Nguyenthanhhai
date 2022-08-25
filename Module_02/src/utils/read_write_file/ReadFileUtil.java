@@ -8,24 +8,24 @@ public class ReadFileUtil {
     /**
      * đọc một file bất kì với file là  tham số
      *
-     * @param src file bất kì
+     * @param path file bất kì
      * @return mảng string chứa các kí tự trong file
      */
-    public static List<String> readFile(String src) {
-        List<String> strings = new ArrayList<>();
+    public static List<String> readFile(String path) {
+        List<String> stringList = new ArrayList<>();
         String line = "";
+        File file = new File(path);
         BufferedReader bufferedReader = null;
         try {
-            FileReader fileReader = new FileReader(src);
+            FileReader fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
 
             while ((line = bufferedReader.readLine()) != null) {
                 if ("".equals(line)) {
                     continue;
                 }
-                strings.add(line);
+                stringList.add(line);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -35,7 +35,7 @@ public class ReadFileUtil {
                 e.printStackTrace();
             }
         }
-        return strings;
+        return stringList;
 
     }
 
