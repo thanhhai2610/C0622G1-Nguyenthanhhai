@@ -1,4 +1,4 @@
 package casestudy_furama_resort_module_02.service;
 
-public interface ICustomerService {
+public interface ICustomerService extends IService {
 }

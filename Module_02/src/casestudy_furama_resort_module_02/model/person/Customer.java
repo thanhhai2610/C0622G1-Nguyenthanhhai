@@ -4,10 +4,10 @@ public class Customer extends  Person{
     String guestType;
     String address;
 
-    public Customer(String employeeId, String name, String dateOfBirth,
+    public Customer(String iD, String name, String dateOfBirth,
                     String gender, int numberIdentity, int numberPhone,
                     String email, String guestType, String address) {
-        super(employeeId, name, dateOfBirth, gender, numberIdentity,
+        super(iD, name, dateOfBirth, gender, numberIdentity,
                 numberPhone, email);
         this.guestType = guestType;
         this.address = address;
@@ -31,7 +31,7 @@ public class Customer extends  Person{
 
     @Override
     public String toString() {
-        return super.toString() + String.format("%-12s||%-30s", guestType, address);
+        return super.toString() + String.format("=%s=%s", guestType, address);
 
     }
 }

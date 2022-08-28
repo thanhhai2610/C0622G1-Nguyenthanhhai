@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class FuramaController {
     private static Scanner scanner = new Scanner(System.in);
     EmployeeServiceImpl employeeService =new EmployeeServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
-
     public void displayMainMenu() {
         while (true) {
             System.out.println("---------------------------------------------");
@@ -45,23 +44,28 @@ public class FuramaController {
 
     }
 
+    /**
+     *  Management cho phép cọn các chức năng CRUD cho Employee
+     */
     public void employeeManagement() {
         while (true) {
             System.out.println("---------------------------------------------");
-            System.out.println("Chào mừng bạn đến với Codegym");
+            System.out.println("Chào mừng bạn đến với EmployeeManagement");
             System.out.println("1. Display list employees");
             System.out.println("2. Add new employee");
             System.out.println("3. Edit employee");
             System.out.println("4. Return main menu");
             System.out.print("Mời bạn nhập chức năng 1-> 4: ");
             int choice = Integer.parseInt(scanner.nextLine());
-
             switch (choice) {
                 case 1:
+                    employeeService.display();
                     break;
                 case 2:
+                    employeeService.add();
                     break;
                 case 3:
+                    employeeService.update();
                     break;
                 case 4:
                     return;
@@ -74,14 +78,13 @@ public class FuramaController {
     public void customerManagement() {
         while (true) {
             System.out.println("---------------------------------------------");
-            System.out.println("Chào mừng bạn đến với Codegym");
+            System.out.println("Chào mừng bạn đến với CustomerManagement");
             System.out.println("1. Display list customers");
             System.out.println("2. Add new customer");
             System.out.println("3. Edit customer");
             System.out.println("4 Return main menu");
             System.out.print("Mời bạn nhập chức năng 1-> 4: ");
             int choice = Integer.parseInt(scanner.nextLine());
-
             switch (choice) {
                 case 1:
                     break;

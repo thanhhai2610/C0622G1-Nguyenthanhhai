@@ -1,7 +1,7 @@
 package casestudy_furama_resort_module_02.model.person;
 
 public class Person {
-    String employeeId;
+    String iD;
     String name;
     String dateOfBirth;
     String gender;
@@ -9,11 +9,11 @@ public class Person {
     int numberPhone;
     String email;
 
-    public Person(String employeeId, String name,
+    public Person(String id, String name,
                   String dateOfBirth, String gender,
                   int numberIdentity, int numberPhone,
                   String email) {
-        this.employeeId = employeeId;
+        this.iD = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -22,12 +22,12 @@ public class Person {
         this.email = email;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public String getId() {
+        return iD;
     }
 
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+    public void setId(String iD) {
+        this.iD = iD;
     }
 
     public String getName() {
@@ -80,7 +80,9 @@ public class Person {
 
     @Override
     public String toString() {
-        return String.format("%-9s||%-15s||%-10s||%-5s||%-12d||%-12d||%-12s", employeeId, name, dateOfBirth, gender,numberIdentity,numberPhone,email);
+        return String.format("%s=%s=%s=%s=%d=%d=%s",
+                iD, name, dateOfBirth, gender,
+                numberIdentity, numberPhone, email);
 
     }
 }

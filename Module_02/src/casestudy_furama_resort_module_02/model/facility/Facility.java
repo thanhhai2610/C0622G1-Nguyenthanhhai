@@ -1,18 +1,30 @@
 package casestudy_furama_resort_module_02.model.facility;
 
 public abstract class Facility {
+    String idService;
     String nameService;
     double usableArea;
     double cost;
     String maximumPeople;
     String rentType;
 
-    public Facility(String nameService, double usableArea, double cost, String maximumPeople, String rentType) {
+    public Facility(String idService, String nameService,
+                    double usableArea, double cost, String maximumPeople,
+                    String rentType) {
+        this.idService = idService;
         this.nameService = nameService;
         this.usableArea = usableArea;
         this.cost = cost;
         this.maximumPeople = maximumPeople;
         this.rentType = rentType;
+    }
+
+    public String getIdService() {
+        return idService;
+    }
+
+    public void setIdService(String idService) {
+        this.idService = idService;
     }
 
     public String getNameService() {
@@ -57,7 +69,7 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return String.format("%-9s||%-6.2f||%-6.2f||%-5s||%-12s", nameService, usableArea, cost, maximumPeople,rentType);
+        return String.format("%-9s||%-9s||%-6.2f||%-6.2f||%-5s||%-12s||",idService, nameService, usableArea, cost, maximumPeople,rentType);
 
     }
 }

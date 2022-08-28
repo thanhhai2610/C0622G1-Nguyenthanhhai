@@ -1,16 +1,14 @@
 package casestudy_furama_resort_module_02.model.facility;
 
-public class Villa extends Facility {
+public class House extends Facility {
     String roomStandard;
-    double poolArea;
     int numberFloors;
 
-    public Villa(String idService, String nameService, double usableArea,
-                 double cost, String maximumPeople, String rentType,
-                 String roomStandard, double poolArea, int numberFloors) {
+    public House(String idService, String nameService,
+                 double usableArea, double cost, String maximumPeople,
+                 String rentType, String roomStandard, int numberFloors) {
         super(idService, nameService, usableArea, cost, maximumPeople, rentType);
         this.roomStandard = roomStandard;
-        this.poolArea = poolArea;
         this.numberFloors = numberFloors;
     }
 
@@ -20,14 +18,6 @@ public class Villa extends Facility {
 
     public void setRoomStandard(String roomStandard) {
         this.roomStandard = roomStandard;
-    }
-
-    public double getPoolArea() {
-        return poolArea;
-    }
-
-    public void setPoolArea(double poolArea) {
-        this.poolArea = poolArea;
     }
 
     public int getNumberFloors() {
@@ -40,7 +30,7 @@ public class Villa extends Facility {
 
     @Override
     public String toString() {
-        return super.toString() + String.format("||%-9s||%-6.2f||%-6d", roomStandard, poolArea, numberFloors);
+        return super.toString() + String.format("||%-9s||%-6d", roomStandard, numberFloors);
 
     }
 }
