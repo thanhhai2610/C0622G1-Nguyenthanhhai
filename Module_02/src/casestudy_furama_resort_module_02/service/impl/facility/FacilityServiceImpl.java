@@ -5,6 +5,7 @@ import casestudy_furama_resort_module_02.model.facility.House;
 import casestudy_furama_resort_module_02.model.facility.Room;
 import casestudy_furama_resort_module_02.model.facility.Villa;
 import casestudy_furama_resort_module_02.service.IFacilityService;
+import utils.ConvertListToListString;
 import utils.exception.exception.InvalidException;
 import utils.exception.exception.InvalidStringException;
 
@@ -16,43 +17,53 @@ public class FacilityServiceImpl implements IFacilityService {
     public static final String VILLA_CSV = "Module_02\\src\\casestudy_furama_resort_module_02\\data\\villa.csv";
     public static final String HOUSE_CSV = "Module_02\\src\\casestudy_furama_resort_module_02\\data\\house.csv";
     public static final String ROOM_CSV = "Module_02\\src\\casestudy_furama_resort_module_02\\data\\room.csv";
+    public static final String FACILITY_CSV = "Module_02\\src\\casestudy_furama_resort_module_02\\data\\facility.csv";
     Scanner scanner = new Scanner(System.in);
     InputInfoFacitily inputInfoFacitily = new InputInfoFacitily();
     Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
-    Map<House, Integer> houseIntegerMap = new LinkedHashMap<>();
-    Map<Villa, Integer> villaIntegerMap = new LinkedHashMap<>();
-    Map<Room, Integer> roomIntegerMap = new LinkedHashMap<>();
+    ConvertListToListString convertListToListString = new ConvertListToListString();
+
 
     @Override
     public void addHouse() {
         House house = this.infoFacilityHouse();
+        this.facilityIntegerMap.put(house, 4);
+        writeFile(FACILITY_CSV, true, convertListToListString.listFacilityToString(this.facilityIntegerMap));
         Map<House, Integer> houseIntegerMap = new LinkedHashMap<>();
         houseIntegerMap.put(house, 1);
-        writeFile(HOUSE_CSV, true, convertListHouseToListString(houseIntegerMap));
+        writeFile(HOUSE_CSV, true, convertListToListString.listHouseToListString(houseIntegerMap));
         System.out.println("Thêm mới thành công");
     }
 
     @Override
     public void addRoom() {
         Room room = this.infoFacilityRoom();
+        this.facilityIntegerMap.put(room, 4);
+        writeFile(FACILITY_CSV, true, convertListToListString.listFacilityToString(this.facilityIntegerMap));
         Map<Room, Integer> roomIntegerMap = new LinkedHashMap<>();
         roomIntegerMap.put(room, 1);
-        writeFile(ROOM_CSV, true, convertListRoomToListString(roomIntegerMap));
+        writeFile(ROOM_CSV, true, convertListToListString.listRoomToListString(roomIntegerMap));
         System.out.println("Thêm mới thành công");
     }
 
     @Override
     public void addVilla() {
         Villa villa = this.infoFacilityVilla();
+        this.facilityIntegerMap.put(villa, 4);
+        writeFile(FACILITY_CSV, true, convertListToListString.listFacilityToString(this.facilityIntegerMap));
         Map<Villa, Integer> villaIntegerMap = new LinkedHashMap<>();
         villaIntegerMap.put(villa, 1);
-        writeFile(VILLA_CSV, true, convertListVillaToListString(villaIntegerMap));
+        writeFile(VILLA_CSV, true, convertListToListString.listVillaToListString(villaIntegerMap));
         System.out.println("Thêm mới thành công");
     }
 
     @Override
     public void displayFacility() {
-
+        Map<Facility, Integer> facilityInteger = this.readFileFacility();
+        Set<Facility> facilitySet = facilityInteger.keySet();
+        for (Facility facility : facilitySet) {
+            System.out.println(facility.toString() + "" + facilityInteger.get(facility));
+        }
     }
 
     @Override
@@ -166,40 +177,6 @@ public class FacilityServiceImpl implements IFacilityService {
     }
 
     /**
-     * @param houseIntegerMap
-     * @return
-     */
-    public List<String> convertListHouseToListString(Map<House, Integer> houseIntegerMap) {
-        Set<House> houseSet = houseIntegerMap.keySet();
-        List<String> stringHouseList = new ArrayList<>();
-
-        for (House house : houseSet) {
-            stringHouseList.add(house.toString() + houseIntegerMap.get(house));
-        }
-        return stringHouseList;
-    }
-
-    public List<String> convertListRoomToListString(Map<Room, Integer> roomIntegerMap) {
-        Set<Room> roomSet = roomIntegerMap.keySet();
-        List<String> stringRoomList = new ArrayList<>();
-
-        for (Room room : roomSet) {
-            stringRoomList.add(room.toString() + roomIntegerMap.get(room));
-        }
-        return stringRoomList;
-    }
-
-    public List<String> convertListVillaToListString(Map<Villa, Integer> villaIntegerMap) {
-        Set<Villa> villaSet = villaIntegerMap.keySet();
-        List<String> stringVillaList = new ArrayList<>();
-
-        for (Villa villa : villaSet) {
-            stringVillaList.add(villa.toString() + villaIntegerMap.get(villa));
-        }
-        return stringVillaList;
-    }
-
-    /**
      * đọc file danh sách Facility
      *
      * @return mảng có các phần tử là các đối tượng Facility là key  và     là value
@@ -208,18 +185,31 @@ public class FacilityServiceImpl implements IFacilityService {
         List<String> facilityArrString = null;
         Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
         try {
-            facilityArrString = utils.read_write.ReadFile.readFile(HOUSE_CSV);
+            facilityArrString = utils.read_write.ReadFile.readFile(FACILITY_CSV);
             if (facilityArrString.size() == 0) {
                 System.out.println("Dữ liệu trong file không có");
             }
+            for (int i = 0; i < facilityArrString.size(); i++) {
+                String[] strings = facilityArrString.get(i).split("=");
+                if (strings[0].contains("SVHO")) {
+                    facilityIntegerMap.put(new House(strings[0], strings[1], Double.parseDouble(strings[2]),
+                                    Double.parseDouble(strings[3]), Integer.parseInt(strings[4]), strings[5],
+                                    strings[6], Integer.parseInt(strings[7])),
+                            Integer.parseInt(strings[strings.length - 1]));
+                } else if (strings[0].contains("SVRO")) {
+                    facilityIntegerMap.put(new Room(strings[0], strings[1], Double.parseDouble(strings[2]),
+                                    Double.parseDouble(strings[3]), Integer.parseInt(strings[4]), strings[5],
+                                    strings[6]),
+                            Integer.parseInt(strings[strings.length - 1]));
+                } else if (strings[0].contains("SVVL")) {
+                    facilityIntegerMap.put(new Villa(strings[0], strings[1], Double.parseDouble(strings[2]),
+                                    Double.parseDouble(strings[3]), Integer.parseInt(strings[4]), strings[5],
+                                    strings[6], Double.parseDouble(strings[7]), Integer.parseInt(strings[8])),
+                            Integer.parseInt(strings[strings.length - 1]));
+                }
+            }
         } catch (NullPointerException e) {
             System.out.println("Dữ liệu trong file không có");
-        }
-        for (int i = 0; i < facilityArrString.size(); i++) {
-            String[] infoHouse = facilityArrString.get(i).split("=");
-            House house = new House(infoHouse[0], infoHouse[1], Double.parseDouble(infoHouse[2]), Integer.parseInt(infoHouse[3]), Integer.parseInt(infoHouse[4]),
-                    (infoHouse[5]), infoHouse[6], Integer.parseInt(infoHouse[7]));
-            facilityIntegerMap.put(house, Integer.parseInt(infoHouse[9]));
         }
         return facilityIntegerMap;
     }

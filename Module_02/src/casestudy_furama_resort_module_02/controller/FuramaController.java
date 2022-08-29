@@ -1,5 +1,6 @@
 package casestudy_furama_resort_module_02.controller;
 
+import casestudy_furama_resort_module_02.service.impl.facility.FacilityServiceImpl;
 import casestudy_furama_resort_module_02.service.impl.person.CustomerServiceImpl;
 import casestudy_furama_resort_module_02.service.impl.person.EmployeeServiceImpl;
 
@@ -9,17 +10,18 @@ public class FuramaController {
     private static Scanner scanner = new Scanner(System.in);
     EmployeeServiceImpl employeeService = new EmployeeServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
     CustomerServiceImpl customerService = new CustomerServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
+    FacilityServiceImpl facilityService = new FacilityServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
 
     public void displayMainMenu() {
         while (true) {
             System.out.println("---------------------------------------------");
             System.out.println("Chào mừng bạn đến với Furama");
-            System.out.println("1. Employee Management");
-            System.out.println("2. Customer Management");
-            System.out.println("3. Facility Management ");
-            System.out.println("4. Booking Management");
-            System.out.println("5. Promotion Management");
-            System.out.println("6.  Exit");
+            System.out.println("1.\tEmployee Management\n" +
+                    "2.\tCustomer Management\n" +
+                    "3.\tFacility Management \n" +
+                    "4.\tBooking Management\n" +
+                    "5.\tPromotion Management\n" +
+                    "6.\tExit\n");
             switch (choice()) {
                 case 1:
                     employeeManagement();
@@ -52,10 +54,10 @@ public class FuramaController {
         while (true) {
             System.out.println("---------------------------------------------");
             System.out.println("Chào mừng bạn đến với EmployeeManagement");
-            System.out.println("1. Display list employees");
-            System.out.println("2. Add new employee");
-            System.out.println("3. Edit employee");
-            System.out.println("4. Return main menu");
+            System.out.println("1\tDisplay list employees\n" +
+                    "2\tAdd new employee\n" +
+                    "3\tEdit employee\n" +
+                    "4\tReturn main menu\n");
             switch (choice()) {
                 case 1:
                     employeeService.display();
@@ -81,10 +83,10 @@ public class FuramaController {
         while (true) {
             System.out.println("---------------------------------------------");
             System.out.println("Chào mừng bạn đến với CustomerManagement");
-            System.out.println("1. Display list customers");
-            System.out.println("2. Add new customer");
-            System.out.println("3. Edit customer");
-            System.out.println("4 Return main menu");
+            System.out.println("1.\tDisplay list customers\n" +
+                    "2.\tAdd new customer\n" +
+                    "3.\tEdit customer\n" +
+                    "4.\tReturn main menu\n");
             switch (choice()) {
                 case 1:
                     customerService.display();
@@ -108,17 +110,19 @@ public class FuramaController {
         while (true) {
             System.out.println("---------------------------------------------");
             System.out.println("Chào mừng bạn đến với FacilityManagement");
-            System.out.println("1. Display list facility");
-            System.out.println("2. Add new facility");
-            System.out.println("3. Edit facility");
-            System.out.println("4 Return main menu");
+            System.out.println("1\tDisplay list facility\n" +
+                    "2\tAdd new facility\n" +
+                    "3\tDisplay list facility maintenance\n" +
+                    "4\tReturn main menu\n");
             switch (choice()) {
                 case 1:
+                    facilityService.displayFacility();
                     break;
                 case 2:
                     facilityManagementAdd();
                     break;
                 case 3:
+                    facilityService.displayFacilityMaintenance();
                     break;
                 case 4:
                     return;
@@ -187,10 +191,13 @@ public class FuramaController {
                     "4.\tBack to menu\n");
             switch (choice()) {
                 case 1:
+                    facilityService.addVilla();
                     break;
                 case 2:
+                    facilityService.addHouse();
                     break;
                 case 3:
+                    facilityService.addRoom();
                     break;
                 case 4:
                     return;
