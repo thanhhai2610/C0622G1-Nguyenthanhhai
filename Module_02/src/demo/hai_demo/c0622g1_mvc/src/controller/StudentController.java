@@ -1,7 +1,7 @@
-package controller;
+package demo.hai_demo.c0622g1_mvc.src.controller;
 
+import demo.hai_demo.c0622g1_mvc.src.service.impl.StudentService;
 import service.IStudentService;
-import service.impl.StudentService;
 
 import java.util.Scanner;
 

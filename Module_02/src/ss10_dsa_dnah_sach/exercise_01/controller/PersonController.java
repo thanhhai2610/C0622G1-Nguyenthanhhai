@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class PersonController {
     private static Scanner scanner = new Scanner(System.in);
-    //    DI
-//    Nguyên lý D trong SOLID
     private StudentContoller studentContoller = new StudentContoller();
     private TeacherControllor teacherControllor = new TeacherControllor();
 

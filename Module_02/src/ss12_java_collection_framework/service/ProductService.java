@@ -51,26 +51,7 @@ public class ProductService implements IProductService {
         }
     }
 
-    /**
-     * update một sản phẩm theo ID
-     */
-    public void update() {
-        Product productGetI = inputID("Mời bạn nhập id cần tìm: ");
-        if (productGetI != null) {
-            Product productUpdate = this.updateInfoProduct(productGetI.getId());
-            int index = arrProduct.indexOf(productGetI);
-            System.out.println("Bạn có chắc muốn update đối tượng có ID là " + productUpdate.getId() + " không?");
-            System.out.println("1. Yes");
-            System.out.println("2. No");
-            int choice = Integer.parseInt(scanner.nextLine());
-            if (choice == 1) {
-                arrProduct.set(index, productUpdate);
-                System.out.println("Update thành công!");
-            }
-        } else {
-            System.out.println("Không tìm thấy đối tượng cần update");
-        }
-    }
+
 
     /**
      * hiển thị all product
@@ -92,7 +73,26 @@ public class ProductService implements IProductService {
             System.out.println(productGetI);
         }
     }
-
+    /**
+     * update một sản phẩm theo ID
+     */
+    public void update() {
+        Product productGetI = inputID("Mời bạn nhập id cần tìm: ");
+        if (productGetI != null) {
+            Product productUpdate = this.updateInfoProduct(productGetI.getId());
+            int index = arrProduct.indexOf(productGetI);
+            System.out.println("Bạn có chắc muốn update đối tượng có ID là " + productUpdate.getId() + " không?");
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+            int choice = Integer.parseInt(scanner.nextLine());
+            if (choice == 1) {
+                arrProduct.set(index, productUpdate);
+                System.out.println("Update thành công!");
+            }
+        } else {
+            System.out.println("Không tìm thấy đối tượng cần update");
+        }
+    }
     /**
      * sắp xếp product theo chiều tăng dần
      */
@@ -150,7 +150,6 @@ public class ProductService implements IProductService {
                 String made = scanner.nextLine();
                 System.out.print("Mời bạn nhập giá: ");
                 double price = Integer.parseInt(scanner.nextLine());
-
                 return new Product(id, yearManufacture, made, price);
             }
         }

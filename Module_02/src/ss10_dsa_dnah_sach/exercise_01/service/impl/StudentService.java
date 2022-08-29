@@ -2,9 +2,9 @@ package ss10_dsa_dnah_sach.exercise_01.service.impl;
 
 import ss10_dsa_dnah_sach.exercise_01.model.Student;
 import ss10_dsa_dnah_sach.exercise_01.service.IStudentService;
-import utils.exception.InvalidAgeException;
-import utils.exception.InvalidStringException;
 import utils.exception.PointException;
+import utils.exception.exception.InvalidException;
+import utils.exception.exception.InvalidStringException;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -25,11 +25,11 @@ public class StudentService implements IStudentService {
      * thêm mới học sinh
      */
     @Override
-    public void addStudent() throws ParseException {
+    public void addStudent()  {
         Student student = this.infoStudent();
         List<Student> studentsList = new ArrayList<>();
         studentsList.add(student);
-        writeFile(SS_10_DSA_DNAH_SACH_EXERCISE_01_DATA_STUDENT_CSV, false, convertListStudentToListString(studentsList));
+        writeFile(SS_10_DSA_DNAH_SACH_EXERCISE_01_DATA_STUDENT_CSV, true, convertListStudentToListString(studentsList));
         System.out.println("Thêm mới học sinh thành công");
     }
 
@@ -43,6 +43,7 @@ public class StudentService implements IStudentService {
         for (Student x : arrStudent) {
             System.out.println(x.toString());
         }
+
     }
 
     /**
@@ -147,7 +148,7 @@ public class StudentService implements IStudentService {
      *
      * @return vùng nhớ dữ liệu student với cái thuộc tính cưa nhập
      */
-    public Student infoStudent() throws ParseException {
+    public Student infoStudent()  {
         String id = infoId();
 
         System.out.print("Mời bạn nhập tên: ");
@@ -197,14 +198,14 @@ public class StudentService implements IStudentService {
                 yearOfBirth = Integer.parseInt(dateOfBirth.substring(dateOfBirth.length() - 4));
                 age = yearNow - yearOfBirth;
                 if (age < 18 || age > 100) {
-                    throw new InvalidAgeException("Tuổi phải lớn hơn hoặc bằng 18 và nhỏ hơn hoặc bằng 100");
+                    throw new InvalidException("Tuổi phải lớn hơn hoặc bằng 18 và nhỏ hơn hoặc bằng 100");
                 }
                 return dateOfBirth;
             } catch (NumberFormatException e) {
                 System.out.println("Ngày sinh chưa đúng định dạng dd/MM/yyyy. Nhập lại: ");
             } catch (ParseException e) {
                 System.out.println("Bạn cần nhập đúng ngày tháng năm sinh . Nhập lại: ");
-            } catch (InvalidAgeException | InvalidStringException e) {
+            } catch (InvalidException | InvalidStringException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -289,6 +290,5 @@ public class StudentService implements IStudentService {
             stringsStudentList.add(student.toString());
         }
         return stringsStudentList;
-
     }
 }

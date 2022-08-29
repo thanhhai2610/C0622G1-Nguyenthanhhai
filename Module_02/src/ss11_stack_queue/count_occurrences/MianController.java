@@ -24,7 +24,7 @@ public class MianController {
             }
         }
         for (Map.Entry<Character, Integer> entry : stringMap.entrySet()) {
-            System.out.println(entry.getKey() + " " + entry.getValue());
+            System.out.println(entry.getKey() + "=" + entry.getValue());
         }
     }
 

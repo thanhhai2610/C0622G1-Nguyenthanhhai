@@ -1,10 +1,10 @@
-package service.impl;
+package demo.hai_demo.c0622g1_mvc.src.service.impl;
 
-import model.Student;
+import demo.hai_demo.c0622g1_mvc.src.model.Student;
+import demo.hai_demo.c0622g1_mvc.src.utils.read_write.WriteFile;
 import service.IStudentService;
 import utils.exception.PointException;
 import utils.read_write.ReadFile;
-import utils.read_write.WriteFile;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package model;
+package demo.hai_demo.c0622g1_mvc.src.model;
 
-public class Student extends Person {
+public class Student extends model.Person {
     private double point;
     private String nameClass;
 

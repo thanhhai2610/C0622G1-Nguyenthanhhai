@@ -5,11 +5,12 @@ public abstract class Facility {
     String nameService;
     double usableArea;
     double cost;
-    String maximumPeople;
+    int maximumPeople;
     String rentType;
 
     public Facility(String idService, String nameService,
-                    double usableArea, double cost, String maximumPeople,
+                    double usableArea, double cost,
+                    int maximumPeople,
                     String rentType) {
         this.idService = idService;
         this.nameService = nameService;
@@ -51,11 +52,11 @@ public abstract class Facility {
         this.cost = cost;
     }
 
-    public String getMaximumPeople() {
+    public int getMaximumPeople() {
         return maximumPeople;
     }
 
-    public void setMaximumPeople(String maximumPeople) {
+    public void setMaximumPeople(int maximumPeople) {
         this.maximumPeople = maximumPeople;
     }
 
@@ -69,7 +70,7 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return String.format("%-9s||%-9s||%-6.2f||%-6.2f||%-5s||%-12s||",idService, nameService, usableArea, cost, maximumPeople,rentType);
+        return String.format("%s=%s=%.2f=%.2f=%s=%s",idService, nameService, usableArea, cost, maximumPeople,rentType);
 
     }
 }

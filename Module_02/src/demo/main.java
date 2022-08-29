@@ -1,7 +1,7 @@
 package demo;
 
-import utils.exception.InvalidAgeException;
-import utils.exception.InvalidStringException;
+import utils.exception.exception.InvalidException;
+import utils.exception.exception.InvalidStringException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,12 +30,12 @@ public class main {
                 System.out.println(yearOfBirth);
                 int age = yearNow - yearOfBirth;
                 if (age < 18 || age > 100) {
-                    throw new InvalidAgeException("Tuổi phải lớn hơn hoặc bằng 18 và nhỏ hơn hoặc bằng 100");
+                    throw new InvalidException("Tuổi phải lớn hơn hoặc bằng 18 và nhỏ hơn hoặc bằng 100");
                 }
                 System.out.println(dateOfBirth);
             } catch (NumberFormatException | ParseException e) {
                 System.out.println("Ngày sinh chưa đúng định dạng dd/MM/yyyy. Nhập lại: ");
-            } catch (InvalidAgeException | InvalidStringException e) {
+            } catch (InvalidException | InvalidStringException e) {
                 System.out.println(e.getMessage());
             }
         }

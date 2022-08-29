@@ -2,7 +2,7 @@ package ss10_dsa_dnah_sach.exercise_01.service.impl;
 
 import ss10_dsa_dnah_sach.exercise_01.model.Teacher;
 import ss10_dsa_dnah_sach.exercise_01.service.ITeacherService;
-import utils.exception.InvalidStringException;
+import utils.exception.exception.InvalidStringException;
 import utils.read_write_file.ReadFileUtil;
 
 import java.io.IOException;

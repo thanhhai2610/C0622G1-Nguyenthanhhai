@@ -12,8 +12,8 @@ public class Main {
             if (validateName.validate(inputClass)) {
                 System.out.println("Name is " + inputClass + " đúng");
             } else {
-                System.out.println("Name is " + inputClass + " không đúng định dạng");
-
+//                System.out.println("Name is " + inputClass + " không đúng định dạng");
+                System.out.println("return ");
             }
         }
     }

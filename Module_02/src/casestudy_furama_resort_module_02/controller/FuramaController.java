@@ -1,25 +1,26 @@
 package casestudy_furama_resort_module_02.controller;
 
-import casestudy_furama_resort_module_02.service.impl.EmployeeServiceImpl;
+import casestudy_furama_resort_module_02.service.impl.person.CustomerServiceImpl;
+import casestudy_furama_resort_module_02.service.impl.person.EmployeeServiceImpl;
 
 import java.util.Scanner;
 
 public class FuramaController {
     private static Scanner scanner = new Scanner(System.in);
-    EmployeeServiceImpl employeeService =new EmployeeServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
+    EmployeeServiceImpl employeeService = new EmployeeServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
+    CustomerServiceImpl customerService = new CustomerServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
+
     public void displayMainMenu() {
         while (true) {
             System.out.println("---------------------------------------------");
-            System.out.println("Chào mừng bạn đến với Codegym");
+            System.out.println("Chào mừng bạn đến với Furama");
             System.out.println("1. Employee Management");
             System.out.println("2. Customer Management");
             System.out.println("3. Facility Management ");
             System.out.println("4. Booking Management");
             System.out.println("5. Promotion Management");
             System.out.println("6.  Exit");
-            System.out.print("Mời bạn nhập chức năng 1-> 4: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
+            switch (choice()) {
                 case 1:
                     employeeManagement();
                     break;
@@ -30,7 +31,7 @@ public class FuramaController {
                     facilityManagement();
                     break;
                 case 4:
-                   bookingManagement();
+                    bookingManagement();
                     break;
                 case 5:
                     promotionManagement();
@@ -45,7 +46,7 @@ public class FuramaController {
     }
 
     /**
-     *  Management cho phép cọn các chức năng CRUD cho Employee
+     * Management cho phép cọn các chức năng CRUD cho Employee
      */
     public void employeeManagement() {
         while (true) {
@@ -55,9 +56,7 @@ public class FuramaController {
             System.out.println("2. Add new employee");
             System.out.println("3. Edit employee");
             System.out.println("4. Return main menu");
-            System.out.print("Mời bạn nhập chức năng 1-> 4: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
+            switch (choice()) {
                 case 1:
                     employeeService.display();
                     break;
@@ -75,6 +74,9 @@ public class FuramaController {
         }
     }
 
+    /**
+     * Management cho phép cọn các chức năng CRUD cho Customer
+     */
     public void customerManagement() {
         while (true) {
             System.out.println("---------------------------------------------");
@@ -83,14 +85,15 @@ public class FuramaController {
             System.out.println("2. Add new customer");
             System.out.println("3. Edit customer");
             System.out.println("4 Return main menu");
-            System.out.print("Mời bạn nhập chức năng 1-> 4: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
+            switch (choice()) {
                 case 1:
+                    customerService.display();
                     break;
                 case 2:
+                    customerService.add();
                     break;
                 case 3:
+                    customerService.update();
                     break;
                 case 4:
                     return;
@@ -104,17 +107,16 @@ public class FuramaController {
     public void facilityManagement() {
         while (true) {
             System.out.println("---------------------------------------------");
-            System.out.println("Chào mừng bạn đến với Codegym");
+            System.out.println("Chào mừng bạn đến với FacilityManagement");
             System.out.println("1. Display list facility");
             System.out.println("2. Add new facility");
             System.out.println("3. Edit facility");
             System.out.println("4 Return main menu");
-            System.out.print("Mời bạn nhập chức năng 1-> 4: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
+            switch (choice()) {
                 case 1:
                     break;
                 case 2:
+                    facilityManagementAdd();
                     break;
                 case 3:
                     break;
@@ -129,16 +131,14 @@ public class FuramaController {
     public void bookingManagement() {
         while (true) {
             System.out.println("---------------------------------------------");
-            System.out.println("Chào mừng bạn đến với Codegym");
+            System.out.println("Chào mừng bạn đến với Booking");
             System.out.println("1. Add new booking");
             System.out.println("2. Display list booking");
             System.out.println("3. Create new constracts");
             System.out.println("4. Display list contracts");
             System.out.println("5. Edit contracts");
             System.out.println("6 Return main menu");
-            System.out.print("Mời bạn nhập chức năng 1-> 4: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
+            switch (choice()) {
                 case 1:
                     break;
                 case 2:
@@ -161,13 +161,11 @@ public class FuramaController {
     public void promotionManagement() {
         while (true) {
             System.out.println("---------------------------------------------");
-            System.out.println("Chào mừng bạn đến với Codegym");
+            System.out.println("Chào mừng bạn đến với Promotion");
             System.out.println("1. Display list customers use service");
             System.out.println("2. Display list customers get voucher");
             System.out.println("3. Return main menu");
-            System.out.print("Mời bạn nhập chức năng 1-> 3: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
+            switch (choice()) {
                 case 1:
                     break;
                 case 2:
@@ -180,5 +178,39 @@ public class FuramaController {
         }
     }
 
+    public void facilityManagementAdd() {
+        while (true) {
+            System.out.println("---------------------------------------------");
+            System.out.println("1.\tAdd New Villa\n" +
+                    "2.\tAdd New House\n" +
+                    "3.\tAdd New Room\n" +
+                    "4.\tBack to menu\n");
+            switch (choice()) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Lựa chọn bạn nhập không đúng!");
+            }
+        }
+    }
+
+    public int choice() {
+        int choice;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập các chức năng : ");
+                choice = Integer.parseInt(scanner.nextLine());
+                return choice;
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn nhập không phải là số. Yêu cầu nhập lại.");
+            }
+        }
+    }
 
 }

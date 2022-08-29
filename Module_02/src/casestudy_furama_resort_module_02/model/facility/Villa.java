@@ -6,7 +6,7 @@ public class Villa extends Facility {
     int numberFloors;
 
     public Villa(String idService, String nameService, double usableArea,
-                 double cost, String maximumPeople, String rentType,
+                 double cost, int maximumPeople, String rentType,
                  String roomStandard, double poolArea, int numberFloors) {
         super(idService, nameService, usableArea, cost, maximumPeople, rentType);
         this.roomStandard = roomStandard;
@@ -40,7 +40,7 @@ public class Villa extends Facility {
 
     @Override
     public String toString() {
-        return super.toString() + String.format("||%-9s||%-6.2f||%-6d", roomStandard, poolArea, numberFloors);
+        return super.toString() + String.format("=%s=%.2f=%d=", roomStandard, poolArea, numberFloors);
 
     }
 }
