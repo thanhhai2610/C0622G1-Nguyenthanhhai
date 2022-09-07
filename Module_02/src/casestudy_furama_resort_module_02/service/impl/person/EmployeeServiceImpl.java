@@ -1,11 +1,13 @@
 package casestudy_furama_resort_module_02.service.impl.person;
 
 import casestudy_furama_resort_module_02.model.person.Employee;
+import casestudy_furama_resort_module_02.model.person.Person;
 import casestudy_furama_resort_module_02.service.IEmployeeService;
 import utils.exception.exception.InvalidStringException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +16,7 @@ import static utils.read_write_file.WriteFileUtil.writeFile;
 public class EmployeeServiceImpl implements IEmployeeService {
     public static final String EMPLOYEE_CSV = "Module_02\\src\\casestudy_furama_resort_module_02\\data\\employee.csv";
     Scanner scanner = new Scanner(System.in);
-    private List<Employee> employeelList = new ArrayList<>();
+    private List<Employee> employeeList = new ArrayList<>();
     private InputInfoPeronServiceImpl inputInfoPeronService = new InputInfoPeronServiceImpl();
 
     @Override
@@ -28,31 +30,40 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public void display() {
-        employeelList = this.readFileEmployee();
-        for (Employee x : employeelList) {
+        employeeList = this.readFileEmployee();
+        for (Employee x : employeeList) {
             System.out.println(x.toString());
         }
     }
 
     @Override
     public void update() {
-        Employee employeeGetId = checkId(inputString("ID"));
+        Employee employeeGetId = check(inputString("ID"), "ID");
         if (employeeGetId != null) {
-            int idIndex = employeelList.indexOf(employeeGetId);
+            int idIndex = employeeList.indexOf(employeeGetId);
             Employee employeeUpdate = infoEmployee(employeeGetId.getId());
             System.out.println("Bạn có chắc muốn update đối tượng có ID là " + employeeGetId.getId() + " không?");
             System.out.println("1. Yes");
             System.out.println("2. No");
             int choice = Integer.parseInt(scanner.nextLine());
             if (choice == 1) {
-                employeelList.set(idIndex, employeeUpdate);
-                writeFile(EMPLOYEE_CSV, false, convertListEmployeeToListString(employeelList));
+                employeeList.set(idIndex, employeeUpdate);
+                writeFile(EMPLOYEE_CSV, false, convertListEmployeeToListString(employeeList));
                 System.out.println("Update thành công!");
             }
         } else {
             System.out.println("Không tìm thấy đối tượng cần update");
         }
     }
+
+    public void sort() {
+        employeeList = this.readFileEmployee();
+        employeeList.sort(Comparator.comparing(Person::getName));
+        for (Employee x : employeeList) {
+            System.out.println(x.toString());
+        }
+    }
+
 
     /**
      * Nhập thông tin nhân viên
@@ -63,21 +74,19 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public Employee infoEmployee(String booleanId) {
         String infoID;
         if (booleanId.equals("info")) {
-            infoID = inputInfoPeronService.infoId("Employee","ID Employee ");
+            infoID = inputInfoPeronService.infoId("Employee", "ID Employee ");
         } else {
             infoID = booleanId;
         }
-        String infoLevel = infoLevel();
-        String infoLocation = infoLocation();
-        double infoSalary = infoSalary();
-        return new Employee(infoID,
+        return new Employee(
+                infoID,
                 inputInfoPeronService.infoName(),
                 inputInfoPeronService.infoGender(),
                 inputInfoPeronService.infoDateOfBirth(),
-                Integer.parseInt(inputInfoPeronService.infoNumberIdentity()),
-                Integer.parseInt(inputInfoPeronService.infoNumberPhone()),
+                infoNumberPhone(),
+                infoNumberIdentity(),
                 inputInfoPeronService.infoEmail(),
-                infoLevel, infoLocation, infoSalary);
+                infoLevel(), infoLocation(), infoSalary());
     }
 
     /**
@@ -160,6 +169,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         }
     }
 
+
     /**
      * check giá trị nhập (inputValue) vào không đc để rỗng
      *
@@ -183,19 +193,51 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     /**
-     * kiểm tra ID có tồn tại hay không
+     * kiểm tra (ID, NumberIdentity, NumberIdentity) có tồn tại hay không
      *
-     * @param idValue giá trị ID
-     * @return trả vè đối tượng có ID trùng với ID nhập vào
+     * @param Value giá trị (ID, NumberIdentity, NumberIdentity)
+     * @return trả vè đối tượng có (ID, NumberIdentity, NumberIdentity) trùng với (ID, NumberIdentity, NumberIdentity) nhập vào
      */
-    public Employee checkId(String idValue) {
-        employeelList = this.readFileEmployee();
-        for (int i = 0; i < employeelList.size(); i++) {
-            if (employeelList.get(i).getId().equals(idValue)) {
-                return employeelList.get(i);
+    public Employee check(String Value, String what) {
+        employeeList = this.readFileEmployee();
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (what.equals("ID") && employeeList.get(i).getId().equals(Value)) {
+                return employeeList.get(i);
+            }
+            if (what.equals("NumberIdentity") && employeeList.get(i).getNumberIdentity().equals(Value)) {
+                return employeeList.get(i);
+            }
+            if (what.equals("NumberPhone") && employeeList.get(i).getNumberPhone().equals(Value)) {
+                return employeeList.get(i);
             }
         }
         return null;
+    }
+
+    public String infoNumberPhone() {
+        while (true) {
+            try {
+                if (check(inputInfoPeronService.infoNumberPhone(), "NumberPhone") != null) {
+                    throw new NumberFormatException();
+                }
+                return inputInfoPeronService.infoNumberPhone();
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn nhập bị trùng số điện thoại. Yêu cầu nhập lại.");
+            }
+        }
+    }
+
+    public String infoNumberIdentity() {
+        while (true) {
+            try {
+                if (check(inputInfoPeronService.infoNumberIdentity(), "NumberIdentity") != null) {
+                    throw new Exception();
+                }
+                return inputInfoPeronService.infoNumberPhone();
+            } catch (Exception e) {
+                System.out.println("Bạn nhập bị trùng số điện thoại. Yêu cầu nhập lại.");
+            }
+        }
     }
 
     public int choice() {
@@ -244,8 +286,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
         }
         for (int i = 0; i < employeeArrString.size(); i++) {
             String[] infoEmployee = employeeArrString.get(i).split("=");
-            Employee employee = new Employee(infoEmployee[0], infoEmployee[1], infoEmployee[2], infoEmployee[3], Integer.parseInt(infoEmployee[4]),
-                    Integer.parseInt(infoEmployee[5]), infoEmployee[6], infoEmployee[7], infoEmployee[8], Double.parseDouble(infoEmployee[9]));
+            Employee employee = new Employee(infoEmployee[0], infoEmployee[1], infoEmployee[2], infoEmployee[3], infoEmployee[4],
+                    infoEmployee[5], infoEmployee[6], infoEmployee[7], infoEmployee[8], Double.parseDouble(infoEmployee[9]));
             employeeArr.add(employee);
         }
         return employeeArr;

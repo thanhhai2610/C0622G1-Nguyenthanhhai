@@ -19,9 +19,9 @@ public class FacilityServiceImpl implements IFacilityService {
     public static final String ROOM_CSV = "Module_02\\src\\casestudy_furama_resort_module_02\\data\\room.csv";
     public static final String FACILITY_CSV = "Module_02\\src\\casestudy_furama_resort_module_02\\data\\facility.csv";
     Scanner scanner = new Scanner(System.in);
-    InputInfoFacitily inputInfoFacitily = new InputInfoFacitily();
-    Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
-    ConvertListToListString convertListToListString = new ConvertListToListString();
+    private InputInfoFacitily inputInfoFacitily = new InputInfoFacitily();
+    private Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+    private ConvertListToListString convertListToListString = new ConvertListToListString();
 
 
     @Override
@@ -62,13 +62,26 @@ public class FacilityServiceImpl implements IFacilityService {
         Map<Facility, Integer> facilityInteger = this.readFileFacility();
         Set<Facility> facilitySet = facilityInteger.keySet();
         for (Facility facility : facilitySet) {
-            System.out.println(facility.toString() + "" + facilityInteger.get(facility));
+            System.out.println(facility + "" + facilityInteger.get(facility));
         }
     }
 
     @Override
     public void displayFacilityMaintenance() {
+        Map<Facility, Integer> maintainList = this.readFileFacility();
+        Map<Facility, Integer> maintainingList = new LinkedHashMap<>();
 
+        Set<Facility> facilitySet = maintainList.keySet();
+        for (Facility facility : facilitySet) {
+            if (maintainList.get(facility) >= 5) {
+                maintainingList.put(facility, maintainList.get(facility));
+            }
+        }
+        if (maintainingList.size() == 0) {
+            System.out.println("No facilities are under maintenance");
+        } else {
+            System.out.print("Facilities under maintenance: " + maintainingList);
+        }
     }
 
     public House infoFacilityHouse() {
@@ -153,14 +166,13 @@ public class FacilityServiceImpl implements IFacilityService {
 
     }
 
-
     /**
      * check giá trị nhập (inputValue) vào không đc để rỗng
      *
      * @param inputString có thể là ID, name ,,, bất kì cái nào nhập vào là chuỗi
      * @return tả về giá trị nhập vào cho các thuộc tính
      */
-    public String inputString(String inputString) {
+    private String inputString(String inputString) {
         String inputValue;
         while (true) {
             System.out.print("Mời bạn nhập " + inputString + " : ");

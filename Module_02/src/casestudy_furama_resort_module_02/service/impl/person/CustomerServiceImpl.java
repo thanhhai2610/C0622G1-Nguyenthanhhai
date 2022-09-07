@@ -2,7 +2,6 @@ package casestudy_furama_resort_module_02.service.impl.person;
 
 import casestudy_furama_resort_module_02.model.person.Customer;
 import casestudy_furama_resort_module_02.service.ICustomerService;
-import utils.exception.check.Person.ValidateCustomer.ValidateAddress;
 import utils.exception.exception.InvalidStringException;
 
 import java.io.IOException;
@@ -14,7 +13,7 @@ import java.util.Scanner;
 import static utils.read_write_file.WriteFileUtil.writeFile;
 
 public class CustomerServiceImpl implements ICustomerService {
-    public static final String SRC_CASESTUDY_FURAMA_RESORT_MODULE_02_DATA_CUSTOMER_CSV = "Module_02\\src\\casestudy_furama_resort_module_02\\data\\customer.csv";
+    public static final String CUSTOMER_CSV = "Module_02\\src\\casestudy_furama_resort_module_02\\data\\customer.csv";
     Scanner scanner = new Scanner(System.in);
     InputInfoPeronServiceImpl inputInfoPeronService = new InputInfoPeronServiceImpl();
     List<Customer> customerList = new LinkedList<>();
@@ -24,7 +23,7 @@ public class CustomerServiceImpl implements ICustomerService {
         Customer customerAdd = this.infoCustomer("info");
         List<Customer> customerList = new LinkedList<>();
         customerList.add(customerAdd);
-        writeFile(SRC_CASESTUDY_FURAMA_RESORT_MODULE_02_DATA_CUSTOMER_CSV, true, convertListCustomerToListString(customerList));
+        writeFile(CUSTOMER_CSV, true, convertListCustomerToListString(customerList));
         System.out.println("Thêm mới thành công");
     }
 
@@ -48,7 +47,7 @@ public class CustomerServiceImpl implements ICustomerService {
             int choice = Integer.parseInt(scanner.nextLine());
             if (choice == 1) {
                 customerList.set(idIndex, employeeUpdate);
-                writeFile(SRC_CASESTUDY_FURAMA_RESORT_MODULE_02_DATA_CUSTOMER_CSV, false, convertListCustomerToListString(customerList));
+                writeFile(CUSTOMER_CSV, false, convertListCustomerToListString(customerList));
                 System.out.println("Update thành công!");
             }
         } else {
@@ -63,24 +62,64 @@ public class CustomerServiceImpl implements ICustomerService {
      * @return trả về vùng nhớ cùa đối tượng có các thuộc tính
      */
     public Customer infoCustomer(String booleanId) {
+        customerList = this.readFileCustomer();
         String infoID;
         if (booleanId.equals("info")) {
-            infoID = inputInfoPeronService.infoId("Customer","ID Customer");
+            infoID = inputInfoPeronService.infoId("Customer", "ID Customer");
         } else {
             infoID = booleanId;
         }
-        String infoGuestType = infoGuestType();
-        String infoAddress = infoAddress();
         return new Customer(infoID,
                 inputInfoPeronService.infoName(),
                 inputInfoPeronService.infoGender(),
                 inputInfoPeronService.infoDateOfBirth(),
-                Integer.parseInt(inputInfoPeronService.infoNumberIdentity()),
-                Integer.parseInt(inputInfoPeronService.infoNumberPhone()),
+                infoNumberIdentity(),
+                infoNumberPhone(),
                 inputInfoPeronService.infoEmail(),
-                infoGuestType, infoAddress);
+                infoGuestType(), infoAddress());
     }
 
+    public String infoNumberPhone() {
+        while (true) {
+            try {
+                if (check(inputInfoPeronService.infoNumberPhone(), "NumberPhone") != null) {
+                    throw new NumberFormatException();
+                }
+                return inputInfoPeronService.infoNumberPhone();
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn nhập bị trùng số điện thoại. Yêu cầu nhập lại.");
+            }
+        }
+    }
+
+    public String infoNumberIdentity() {
+        while (true) {
+            try {
+                if (check(inputInfoPeronService.infoNumberIdentity(), "NumberIdentity") != null) {
+                    throw new Exception();
+                }
+                return inputInfoPeronService.infoNumberPhone();
+            } catch (Exception e) {
+                System.out.println("Bạn nhập bị trùng số điện thoại. Yêu cầu nhập lại.");
+            }
+        }
+    }
+
+    public Customer check(String Value, String what) {
+        customerList = this.readFileCustomer();
+        for (int i = 0; i < customerList.size(); i++) {
+            if (what.equals("ID") && customerList.get(i).getId().equals(Value)) {
+                return customerList.get(i);
+            }
+            if (what.equals("NumberIdentity") && customerList.get(i).getNumberIdentity().equals(Value)) {
+                return customerList.get(i);
+            }
+            if (what.equals("NumberPhone") && customerList.get(i).getNumberPhone().equals(Value)) {
+                return customerList.get(i);
+            }
+        }
+        return null;
+    }
 
     /**
      * nhập thông tin GuestType
@@ -119,7 +158,6 @@ public class CustomerServiceImpl implements ICustomerService {
      * @return vị trí làm việc
      */
     public String infoAddress() {
-        ValidateAddress validateAddress = new ValidateAddress();
         String address;
         while (true) {
             address = inputString("address");
@@ -127,11 +165,6 @@ public class CustomerServiceImpl implements ICustomerService {
                 continue;
             }
             return address;
-//            if (validateAddress.validate(address)) {
-//                return address;
-//            } else {
-//                System.out.println("Bạn cần nhập theo quy định , vui lòng nhập lại!");
-//            }
         }
     }
 
@@ -141,7 +174,7 @@ public class CustomerServiceImpl implements ICustomerService {
      * @param inputString có thể là ID, name ,,, bất kì cái nào nhập vào là chuỗi
      * @return tả về giá trị nhập vào cho các thuộc tính
      */
-    public String inputString(String inputString) {
+    private String inputString(String inputString) {
         String inputValue;
         while (true) {
             System.out.print("Mời bạn nhập " + inputString + " : ");
@@ -163,7 +196,7 @@ public class CustomerServiceImpl implements ICustomerService {
      * @param idValue giá trị ID
      * @return trả vè đối tượng có ID trùng với ID nhập vào
      */
-    public Customer checkId(String idValue) {
+    private Customer checkId(String idValue) {
         customerList = this.readFileCustomer();
         for (int i = 0; i < customerList.size(); i++) {
             if (customerList.get(i).getId().equals(idValue)) {
@@ -206,11 +239,11 @@ public class CustomerServiceImpl implements ICustomerService {
      * @return mảng mảng có các phần tử là các đối tượng student
      * @throws IOException
      */
-    private List<Customer> readFileCustomer() {
+    public List<Customer> readFileCustomer() {
         List<Customer> customersArr = new ArrayList<>();
         List<String> customerArrString = null;
         try {
-            customerArrString = utils.read_write.ReadFile.readFile(SRC_CASESTUDY_FURAMA_RESORT_MODULE_02_DATA_CUSTOMER_CSV);
+            customerArrString = utils.read_write.ReadFile.readFile(CUSTOMER_CSV);
             if (customerArrString.size() == 0) {
                 throw new NullPointerException();
             }
@@ -220,8 +253,8 @@ public class CustomerServiceImpl implements ICustomerService {
         for (int i = 0; i < customerArrString.size(); i++) {
             String[] infoCustomer = customerArrString.get(i).split("=");
             Customer customer = new Customer(infoCustomer[0], infoCustomer[1], infoCustomer[2],
-                    infoCustomer[3], Integer.parseInt(infoCustomer[4]),
-                    Integer.parseInt(infoCustomer[5]), infoCustomer[6],
+                    infoCustomer[3], infoCustomer[4],
+                    (infoCustomer[5]), infoCustomer[6],
                     infoCustomer[7], infoCustomer[8]);
             customersArr.add(customer);
         }

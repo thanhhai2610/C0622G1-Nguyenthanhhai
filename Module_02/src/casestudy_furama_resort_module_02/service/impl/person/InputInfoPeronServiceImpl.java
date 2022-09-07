@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 public class InputInfoPeronServiceImpl {
     Scanner scanner = new Scanner(System.in);
-
     public String infoId(String person, String idType) {
         ValidateIdPerson validateId = new ValidateIdPerson();
         String iD;

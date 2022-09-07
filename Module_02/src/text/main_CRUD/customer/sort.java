@@ -1,10 +1,10 @@
-package text.info.Person.text_customer.text_employee;
+package text.main_CRUD.customer;
 
 import casestudy_furama_resort_module_02.service.impl.person.EmployeeServiceImpl;
 
-public class InpuInfoLocation {
+public class sort {
     public static void main(String[] args) {
         EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
-        System.out.println(employeeService.infoNumberPhone());
+        employeeService.sort();
     }
 }

@@ -5,6 +5,6 @@ import casestudy_furama_resort_module_02.service.impl.facility.FacilityServiceIm
 public class display_facility {
     public static void main(String[] args) {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
-        facilityService.displayFacility();
+        facilityService.displayFacilityMaintenance();
     }
 }

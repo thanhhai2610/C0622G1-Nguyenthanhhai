@@ -127,7 +127,7 @@ public class StudentService implements IStudentService {
     }
 
     /**
-     * check ID nhập vào trong mảng student
+     * check ID nhập vào có tồn tại  trong mảng student
      *
      * @return vùng nhớ dữ liệu chưa iD nhập vào
      */

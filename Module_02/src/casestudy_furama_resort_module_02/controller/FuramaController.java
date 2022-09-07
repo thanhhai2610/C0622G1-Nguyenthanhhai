@@ -1,5 +1,6 @@
 package casestudy_furama_resort_module_02.controller;
 
+import casestudy_furama_resort_module_02.service.impl.facility.BookingServiceImpl;
 import casestudy_furama_resort_module_02.service.impl.facility.FacilityServiceImpl;
 import casestudy_furama_resort_module_02.service.impl.person.CustomerServiceImpl;
 import casestudy_furama_resort_module_02.service.impl.person.EmployeeServiceImpl;
@@ -11,6 +12,7 @@ public class FuramaController {
     EmployeeServiceImpl employeeService = new EmployeeServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
     CustomerServiceImpl customerService = new CustomerServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
     FacilityServiceImpl facilityService = new FacilityServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
+    BookingServiceImpl bookingService = new BookingServiceImpl(); //Tạo đối tượng EmployeeServiceImpl trong FuramaController
 
     public void displayMainMenu() {
         while (true) {
@@ -144,14 +146,22 @@ public class FuramaController {
             System.out.println("6 Return main menu");
             switch (choice()) {
                 case 1:
+                    bookingService.addBooking();
                     break;
                 case 2:
+                    bookingService.displayBooking();
+
                     break;
                 case 3:
+                    bookingService.createContract();
+
                     break;
                 case 4:
+                    bookingService.displayContract();
+
                     break;
                 case 5:
+                    bookingService.editContract();
                     break;
                 case 6:
                     return;
